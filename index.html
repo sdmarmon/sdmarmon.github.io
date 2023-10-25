@@ -138,7 +138,7 @@
         <!-- Central Part (3/5) with Text -->
         <div class="text-black h-3/5 flex">
             <div class="w-1/2 p-4 text-center lg:hidden">
-                <h1 class="text-4xl font-bold mt-0">Sylvain<br>Duhau-Marmon</h1>
+                <h1 class="text-2xl font-bold mt-0">Sylvain<br>Duhau-Marmon</h1>
             </div>
             <div class="w-1/3 p-4 text-center hidden lg:block">
                 <h1 class="text-4xl font-bold">Hi! I am Sylvain Duhau-Marmon.</h1>
@@ -150,8 +150,8 @@
 
         <!-- Bottom Part (1/5) with Centered CTA Buttons -->
         <div class="text-white text-center p-4 h-1/5 flex items-center justify-center">
-            <a href="#about" class="bg-white text-indigo-500 hover:bg-white hover:text-indigo-500 lg:hover:bg-indigo-500 lg:hover:text-white px-6 py-2 rounded-full mr-4 mb-8 lg:mb-0">About Me</a>
-            <a href="#portfolio" class="bg-white text-indigo-500 hover:bg-white hover:text-indigo-500 lg:hover:bg-indigo-500 lg:hover:text-white px-6 py-2 rounded-full mb-8 lg:mb-0">View Portfolio</a>
+            <a href="#about" class="bg-white text-indigo-500 hover:bg-white hover:text-indigo-500 lg:hover:bg-indigo-500 lg:hover:text-white px-6 py-2 rounded-full mr-4 mb-16 lg:mb-0">About Me</a>
+            <a href="#portfolio" class="bg-white text-indigo-500 hover:bg-white hover:text-indigo-500 lg:hover:bg-indigo-500 lg:hover:text-white px-6 py-2 rounded-full mb-16 lg:mb-0">View Portfolio</a>
         </div>
     </div>
 
@@ -205,12 +205,12 @@
                                                     @click="selectedSubject = (selectedSubject === subject) ? null : subject"
                                                     @click="selectedProject = project.title"
                                                     :class="{
-                                                        'bg-violet-500 text-white border-2 border-gray-300 rounded-full mr-2 mt-1 px-2 hover:bg-violet-500 lg:hover:bg-violet-700': selectedSubject === subject && subject === 'UX Research',
-                                                        'bg-amber-500 text-white border-2 border-gray-300 rounded-full mr-2 mt-1 px-2 hover:bg-amber-500 lg:hover:bg-amber-700': selectedSubject === subject && subject === 'UX Design',
-                                                        'bg-emerald-500 text-white border-2 border-gray-300 rounded-full mr-2 mt-1 px-2 hover:bg-emerald-500 lg:hover:bg-emerald-700': selectedSubject === subject && subject === 'Data Analysis',
-                                                        'bg-pink-500 text-white border-2 border-gray-300 rounded-full mr-2 mt-1 px-2 hover:bg-pink-500 lg:hover:bg-pink-700': selectedSubject === subject && subject === 'AI',
-                                                        'bg-red-500 text-white border-2 border-gray-300 rounded-full mr-2 mt-1 px-2 hover:bg-red-500 lg:hover:bg-red-700': selectedSubject === subject && subject === 'Programming',
-                                                        'bg-white text-blue-500 border border-gray-300 rounded-full mr-2 mt-1 px-2 hover:bg-white lg:hover:bg-blue-500 hover:text-blue-500 lg:hover:text-white': selectedSubject !== subject',
+                                                        'bg-violet-500 text-white border-2 border-gray-300 rounded-full mr-2 mt-1 px-2 hover:bg-violet-700': selectedSubject === subject && subject === 'UX Research',
+                                                        'bg-amber-500 text-white border-2 border-gray-300 rounded-full mr-2 mt-1 px-2 hover:bg-amber-700': selectedSubject === subject && subject === 'UX Design',
+                                                        'bg-emerald-500 text-white border-2 border-gray-300 rounded-full mr-2 mt-1 px-2 hover:bg-emerald-700': selectedSubject === subject && subject === 'Data Analysis',
+                                                        'bg-pink-500 text-white border-2 border-gray-300 rounded-full mr-2 mt-1 px-2 hover:bg-pink-700': selectedSubject === subject && subject === 'AI',
+                                                        'bg-red-500 text-white border-2 border-gray-300 rounded-full mr-2 mt-1 px-2 hover:bg-red-700': selectedSubject === subject && subject === 'Programming',
+                                                        'bg-white text-blue-500 hover:bg-white lg:hover:bg-blue-500 hover:text-blue-500 lg:hover:text-white border border-gray-300 rounded-full mr-2 mt-1 px-2': selectedSubject !== subject
                                                         }"
                                                     x-text="subject"
                                                     >
