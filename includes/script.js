@@ -1,16 +1,18 @@
 // Function to fetch and include HTML content
-function includeHTML(url, targetSelector) {
+document.addEventListener('DOMContentLoaded', function() {
+  function includeHTML(url, targetSelector) {
     fetch(url)
-        .then(response => {
+      .then(response => {
         return response.text();
-        })
-        .then(data => {
+      })
+      .then(data => {
         document.querySelector(targetSelector).innerHTML = data;
-        });
-    }
+      });
+  }
 
   // Include the header
-includeHTML("../includes/header.html", "header");
+  includeHTML("../includes/header.html", "header");
 
   // Include the footer
-includeHTML("../includes/footer.html", "footer");
+  includeHTML("../includes/footer.html", "footer");
+});
