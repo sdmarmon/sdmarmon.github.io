@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy</title>
+
+    <!-- Favicon Links -->
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+
+    <!-- Stylesheets and Scripts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/tailwindcss-cdn@3.3.4/tailwindcss.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<!-- Tailwind CSS and Alpine.js -->
+<body
+    class="flex flex-col min-h-screen scroll-pt-16"
+    x-data="{ showMobileNav: false, transform: 'translate-y-0', transformMobileNav: 'translate-x-0' }"
+    x-on:show-nav.window="transform = $event.detail ? 'translate-y-0' : 'translate-y-[-100%]'; transformMobileNav = $event.detail ? 'translate-x-0' : 'translate-x-[-100%]'"
+    >
+    <main class="flex-grow">
+    <header>
+        <!-- Hidden Navigation Bar -->
+        <div
+            class="p-4 fixed top-0 left-0 right-0 bg-indigo-500 text-white shadow-md z-10 transition-transform transform translate-y-0 hidden lg:block"
+            x-cloak
+            x-transition:enter="transition duration-500 ease-in-out" x-transition:enter-start="opacity-0 transform -translate-y-full" x-transition:enter-end="opacity-100 transform translate-y-0"
+            x-transition:leave="transition duration-300 ease-in-out" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform -translate-y-full"
+            :class="transform"
+            >
+            <div class="container mx-auto flex justify-between items-center">
+                <h1 class="text-2xl text-white font-bold ">
+                    <a href="index.html">Sylvain Duhau-Marmon</a></h1>
+                <ul class="hidden lg:flex space-x-4">
+                    <li>
+                        <a href="#about">
+                        <i class="fas fa-user"></i> About Me</a>
+                    </li>
+                    <li>
+                        <a href="#portfolio">
+                        <i class="fas fa-briefcase"></i> Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="#contact">
+                        <i class="fas fa-envelope"></i> Contact Me</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/sdmarmon" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> GitHub</a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/sylvain-d-marmon" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin"></i> LinkedIn</a>
+                    </li>
+                    <li>
+                        <a href="assets/Resume_Duhau-Marmon.pdf" download target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-file-pdf"></i> Resume</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu (Hamburger Menu) -->
+        <div x-cloak x-show="!showMobileNav">
+            <button class="lg:hidden fixed top-2 left-2 text-black z-20" @click="showMobileNav = true">
+                <svg class="w-14 h-14" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Overlay (Left Sidebar) -->
+        <div
+            class="lg:hidden fixed top-0 left-0 w-4/5 h-full z-10 transition-transform transform translate-x-0"
+            x-cloak
+            x-show="showMobileNav"
+            @click.away="showMobileNav = false"
+            x-transition:enter="transition duration-500 ease-in-out" x-transition:enter-start="opacity-0 transform -translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0"
+            x-transition:leave="transition duration-300 ease-in-out" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform -translate-x-full"
+            :class="transformMobileNav"
+            >
+            <div class="h-full bg-gray-200 p-0">
+                <ul>
+                    <li>
+                        <a href="index.html" class="block text-2xl text-indigo-500 bg-white px-4 py-4 w-full" @click="showMobileNav = false">
+                            <i class="fas fa-home"></i> Home</a>
+                        <div class="w-full h-px bg-gray-200"></div>
+                    </li>
+                    <li>
+                        <a href="#about" class="block text-2xl text-indigo-500 bg-white px-4 py-4 w-full" @click="showMobileNav = false">
+                            <i class="fas fa-user"></i> About Me</a>
+                        <div class="w-full h-px bg-gray-200"></div>
+                    </li>
+                    <li>
+                        <a href="#portfolio" class="block text-2xl text-indigo-500 bg-white px-4 py-4 w-full" @click="showMobileNav = false">
+                            <i class="fas fa-briefcase"></i> Portfolio</a>
+                        <div class="w-full h-px bg-gray-200"></div>
+                    </li>
+                    <li>
+                        <a href="#contact" class="block text-2xl text-indigo-500 bg-white px-4 py-4 w-full" @click="showMobileNav = false">
+                            <i class="fas fa-envelope"></i> Contact Me</a>
+                        <div class="w-full h-px bg-gray-200"></div>
+                    </li>
+                    <li>
+                        <a href="https://github.com/sdmarmon" class="block text-2xl text-indigo-500 bg-white px-4 py-4 w-full" target="_blank" rel="noopener noreferrer" @click="showMobileNav = false">
+                            <i class="fab fa-github"></i> GitHub</a>
+                        <div class="w-full h-px bg-gray-200"></div>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/sylvain-d-marmon" class="block text-2xl text-indigo-500 bg-white px-4 py-4 w-full" target="_blank" rel="noopener noreferrer" @click="showMobileNav = false">
+                            <i class="fab fa-linkedin"></i> LinkedIn</a>
+                        <div class="w-full h-px bg-gray-200"></div>
+                    </li>
+                    <li>
+                        <a href="assets/Resume_Duhau-Marmon.pdf" class="block text-2xl text-indigo-500 bg-white px-4 py-4 w-full" download target="_blank" rel="noopener noreferrer" @click="showMobileNav = false">
+                            <i class="fas fa-file-pdf"></i> Resume</a>
+                        <div class="w-full h-px bg-gray-200"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Apply Navigation Settings -->
+    <div x-bind:style="{ 'opacity': showMobileNav ? '0.5' : '1' , 'pointer-events': showMobileNav ? 'none' : 'auto' }">
+        <!-- Container Wrap -->
+        <div class="container mx-auto p-4 mt-16">
+            <div class="block fixed top-0 left-0 right-0 opacity-50 lg:hidden bg-white w-full h-16 z-10"></div>
+            <h1 class="text-4xl font-bold text-center mt-8">Under construction!</h1>
+            <p class="mt-4 text-center">
+                Feel free to contact me at <a href="mailto:sylvain.duhau.marmon@gmail.com" class="text-blue-500 hover:underline hover:text-blue-700">sylvain.duhau.marmon@gmail.com</a> if you have any questions.</p>
+        </div>
+    </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-200 py-4 text-center">
+        <div class="container mx-auto">
+            <ul class="flex justify-center space-x-4">
+                <li>
+                    <a href="accessibility.html" class="text-blue-500 hover:underline hover:text-blue-700">
+                        <i class="fas fa-universal-access"></i> Accessibility
+                    </a>
+                </li>
+                <li>
+                    <a href="privacy.html" class="text-blue-500 hover:underline hover:text-blue-700">
+                        <i class="fas fa-lock"></i> Privacy
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/sdmarmon/sdmarmon.github.io" class="text-blue-500 hover:underline hover:text-blue-700">
+                        <i class="fab fa-github"></i> Source Code
+                    </a>
+                </li>
+            </ul>
+            <br/>
+            <p class="text-gray-500 text-sm">
+                © Sylvain Duhau-Marmon, 2023-
+                <br />
+                This work is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="text-blue-500 hover:underline hover:text-blue-700">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

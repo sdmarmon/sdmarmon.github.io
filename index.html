@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sylvain Duhau-Marmon</title>
+
+    <!-- Favicon Links -->
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+
+    <!-- Stylesheets and Scripts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/tailwindcss-cdn@3.3.4/tailwindcss.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<!-- Tailwind CSS and Alpine.js -->
+<body
+    class="scroll-pt-16"
+    x-data="{ showNav: false, showMobileNav: false, showTopaque: false, transform: 'translate-y-0', transformMobileNav: 'translate-x-0' }"
+    @scroll.window="showNav = (window.scrollY > 50) ; showTopaque = (window.scrollY > window.innerHeight) ; "
+    x-on:show-nav.window="transform = $event.detail ? 'translate-y-0' : 'translate-y-[-100%]'; transformMobileNav = $event.detail ? 'translate-x-0' : 'translate-x-[-100%]'"
+    >
+    <header>
+        <!-- Hidden Navigation Bar -->
+        <div
+            class="p-4 fixed top-0 left-0 right-0 bg-indigo-500 text-white shadow-md z-10 transition-transform transform translate-y-0 hidden lg:block"
+            x-cloak
+            x-show="showNav"
+            x-transition:enter="transition duration-500 ease-in-out" x-transition:enter-start="opacity-0 transform -translate-y-full" x-transition:enter-end="opacity-100 transform translate-y-0"
+            x-transition:leave="transition duration-300 ease-in-out" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform -translate-y-full"
+            :class="transform"
+            >
+            <div class="container mx-auto flex justify-between items-center">
+                <h1 class="text-2xl text-white font-bold ">
+                    <a href="index.html">Sylvain Duhau-Marmon</a></h1>
+                <ul class="hidden lg:flex space-x-4">
+                    <li>
+                        <a href="#about">
+                        <i class="fas fa-user"></i> About Me</a>
+                    </li>
+                    <li>
+                        <a href="#portfolio">
+                        <i class="fas fa-briefcase"></i> Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="#contact">
+                        <i class="fas fa-envelope"></i> Contact Me</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/sdmarmon" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> GitHub</a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/sylvain-d-marmon" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin"></i> LinkedIn</a>
+                    </li>
+                    <li>
+                        <a href="assets/Resume_Duhau-Marmon.pdf" download target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-file-pdf"></i> Resume</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu (Hamburger Menu) -->
+        <div x-cloak x-show="!showMobileNav && showNav">
+            <button class="lg:hidden fixed top-2 left-2 text-black z-20" @click="showMobileNav = true">
+                <svg class="w-14 h-14" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Overlay (Left Sidebar) -->
+        <div
+            class="lg:hidden fixed top-0 left-0 w-4/5 h-full z-10 transition-transform transform translate-x-0"
+            x-cloak
+            x-show="showMobileNav"
+            @click.away="showMobileNav = false"
+            x-transition:enter="transition duration-500 ease-in-out" x-transition:enter-start="opacity-0 transform -translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0"
+            x-transition:leave="transition duration-300 ease-in-out" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform -translate-x-full"
+            :class="transformMobileNav"
+            >
+            <div class="h-full bg-gray-200 p-0">
+                <ul>
+                    <li>
+                        <a href="index.html" class="block text-2xl text-indigo-500 bg-white px-4 py-4 w-full" @click="showMobileNav = false">
+                            <i class="fas fa-home"></i> Home</a>
+                        <div class="w-full h-px bg-gray-200"></div>
+                    </li>
+                    <li>
+                        <a href="#about" class="block text-2xl text-indigo-500 bg-white px-4 py-4 w-full" @click="showMobileNav = false">
+                            <i class="fas fa-user"></i> About Me</a>
+                        <div class="w-full h-px bg-gray-200"></div>
+                    </li>
+                    <li>
+                        <a href="#portfolio" class="block text-2xl text-indigo-500 bg-white px-4 py-4 w-full" @click="showMobileNav = false">
+                            <i class="fas fa-briefcase"></i> Portfolio</a>
+                        <div class="w-full h-px bg-gray-200"></div>
+                    </li>
+                    <li>
+                        <a href="#contact" class="block text-2xl text-indigo-500 bg-white px-4 py-4 w-full" @click="showMobileNav = false">
+                            <i class="fas fa-envelope"></i> Contact Me</a>
+                        <div class="w-full h-px bg-gray-200"></div>
+                    </li>
+                    <li>
+                        <a href="https://github.com/sdmarmon" class="block text-2xl text-indigo-500 bg-white px-4 py-4 w-full" target="_blank" rel="noopener noreferrer" @click="showMobileNav = false">
+                            <i class="fab fa-github"></i> GitHub</a>
+                        <div class="w-full h-px bg-gray-200"></div>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/sylvain-d-marmon" class="block text-2xl text-indigo-500 bg-white px-4 py-4 w-full" target="_blank" rel="noopener noreferrer" @click="showMobileNav = false">
+                            <i class="fab fa-linkedin"></i> LinkedIn</a>
+                        <div class="w-full h-px bg-gray-200"></div>
+                    </li>
+                    <li>
+                        <a href="assets/Resume_Duhau-Marmon.pdf" class="block text-2xl text-indigo-500 bg-white px-4 py-4 w-full" download target="_blank" rel="noopener noreferrer" @click="showMobileNav = false">
+                            <i class="fas fa-file-pdf"></i> Resume</a>
+                        <div class="w-full h-px bg-gray-200"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Apply Navigation Settings -->
+    <div x-bind:style="{ 'opacity': showMobileNav ? '0.5' : '1' , 'pointer-events': showMobileNav ? 'none' : 'auto' }">
+
+    <!-- Hero Banner (Divided into Three Parts) -->
+    <div class="bg-no-repeat bg-cover bg-center bg-fixed h-screen flex flex-col" style="background-image: url('images/herochess.jpg');">
+        <!-- Top Part (1/5) with Empty Space -->
+        <div class="h-1/5 flex"></div>
+
+        <!-- Central Part (3/5) with Text -->
+        <div class="text-black h-3/5 flex">
+            <div class="w-1/2 p-4 text-center lg:hidden">
+                <h1 class="text-4xl font-bold mt-0">Sylvain<br>Duhau-Marmon</h1>
+            </div>
+            <div class="w-1/3 p-4 text-center hidden lg:block">
+                <h1 class="text-4xl font-bold">Hi! I am Sylvain Duhau-Marmon.</h1>
+                <p class="mt-4 text-xl font-semibold">
+                    I am a passionate and dedicated UX researcher, data analyst, and front-end developer.<br>With a strong background in understanding user behavior and data-driven decision-making, I create intuitive and user-centric experiences.
+                </p>
+            </div>
+        </div>
+
+        <!-- Bottom Part (1/5) with Centered CTA Buttons -->
+        <div class="text-white text-center p-4 h-1/5 flex items-center justify-center">
+            <a href="#about" class="bg-white text-indigo-500 hover:bg-indigo-500 hover:text-white px-6 py-2 rounded-full mr-4">About Me</a>
+            <a href="#portfolio" class="bg-white text-indigo-500 hover:bg-indigo-500 hover:text-white px-6 py-2 rounded-full">View Portfolio</a>
+        </div>
+    </div>
+
+    <!-- Container Wrap -->
+    <div class="container mx-auto p-4">
+        <div class="block fixed top-0 left-0 right-0 opacity-50 lg:hidden bg-white w-full h-16 z-10" x-cloak x-show="showTopaque"></div>
+
+    <!-- About Me Section -->
+    <section id="about" class="container mx-auto mt-8 scroll-mt-16">
+        <h2 class="text-3xl font-semibold">About Me</h2>
+        <p class="mt-4">
+            I am a passionate and dedicated UX researcher, data analyst, and front-end developer. With a strong background in understanding user behavior and data-driven decision-making, I create intuitive and user-centric experiences.
+        </p>
+        <p class="mt-4">More to come...</p>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="container mx-auto mt-8 scroll-mt-16">
+        <div x-data="{
+            projects: [
+                { title: 'OCUS', subjects: ['UX Research', 'UX Design', 'Data Analysis'], tools: ['R', 'SQL', 'Google Analytics', 'Hotjar', 'Excel', 'Communication Tools'], image: 'images/ocus.jpg', link: 'projects/ocus.html', description: 'Summarizing my work as an UX Researcher at OCUS.' },
+                { title: 'Unilux', subjects: ['UX Research', 'Data Analysis'], tools: ['R', 'Python', 'SPSS', 'SQL', 'Communication Tools'], image: 'images/unilux.PNG', link: 'projects/unilux.html', description: 'Studying the applicability and validity of generic user experience scales.' },
+                { title: 'Rush-hour', subjects: ['AI', 'Programming'], tools: ['Prolog'], image: 'images/rush-hour.PNG', link: 'projects/rush-hour.html', description: 'Coding a GUI and AI to play rush hour.' },
+                { title: 'Gameloft', subjects: ['UX Research'], tools: ['Communication Tools'], image: 'images/gameloft.PNG', link: 'projects/gameloft.html', description: 'Presenting a usability assessment of the FTUE of the mobile game Asphalt 9: Legends.' },
+                { title: 'PassWorthy', subjects: ['Programming', 'UX Design'], tools: ['C#/.NET', 'Windows Forms', 'NHibernate', 'SQL'], image: 'images/passworthy.PNG', link: 'projects/passworthy.html', description: 'Designing a desktop app to store and generate secure passwords.' },
+                { title: 'TEEMON', subjects: ['Programming', 'Data Analysis', 'UX Design'], tools: ['React Native', 'SQL', 'Communication Tools'], image: 'images/teemon.PNG', link: 'projects/teemon.html', description: 'Designing a mobile app to team on with other league players.' }
+                ],
+            selectedProject: null,
+            selectedSubject: null,
+            selectedTool: null
+            }">
+            <h2 class="text-3xl font-semibold">Portfolio</h2>
+            <p class="mt-4">Explore some of my recent projects:</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4">
+                <!-- Projects Grid -->
+                <template x-for="project in projects" :key="project.title">
+                    <div class="scroll-mt-16" x-bind:id="project.title" x-cloak x-show="(selectedProject === null || selectedProject === project.title) && (!selectedSubject || project.subjects.includes(selectedSubject)) && (!selectedTool || project.tools.includes(selectedTool))">
+                        <div class="group border-2 border-gray-200 p-4 rounded-lg relative hover:border-blue-500 hover:border-4">
+                            <a x-bind:href="project.link">
+                                <div class="flex flex-col h-full">
+                                    <img class="w-full h-64 object-cover rounded-t-lg" x-bind:src="project.image" x-bind:alt="project.title + ' image'">
+                                    <h3 class="text-xl font-semibold mt-2 group-hover:text-blue-500 group-hover:font-bold" x-text="project.title"></h3>
+                                    <p class="mt-2 group-hover:font-semibold" x-text="project.description"></p>
+
+                                    <div class="mt-8 space-x-4 flex flex-wrap">
+                                        <!-- Subject Buttons -->
+                                        <template x-for="subject in project.subjects" :key="subject">
+                                            <a x-bind:href="'#' + project.title">
+                                                <button
+                                                    @click="selectedSubject = (selectedSubject === subject) ? null : subject"
+                                                    @click="selectedProject = project.title"
+                                                    :class="{
+                                                        'bg-violet-500 text-white hover:bg-violet-700 hover:text-white border-2 border-gray-300 rounded-full mr-2 mt-1 px-2': selectedSubject === subject && subject === 'UX Research',
+                                                        'bg-white hover:bg-blue-500 text-blue-500 hover:text-white border border-gray-300 hover:border-violet-500 rounded-full mr-2 mt-1 px-2': selectedSubject !== subject && subject === 'UX Research',
+                                                        'bg-amber-500 text-white hover:bg-amber-700 hover:text-white border-2 border-gray-300 rounded-full mr-2 mt-1 px-2': selectedSubject === subject && subject === 'UX Design',
+                                                        'bg-white hover:bg-blue-500 text-blue-500 hover:text-white border border-gray-300 hover:border-amber-500 rounded-full mr-2 mt-1 px-2': selectedSubject !== subject && subject === 'UX Design',
+                                                        'bg-emerald-500 text-white hover:bg-emerald-700 hover:text-white border-2 border-gray-300 rounded-full mr-2 mt-1 px-2': selectedSubject === subject && subject === 'Data Analysis',
+                                                        'bg-white hover:bg-blue-500 text-blue-500 hover:text-white border border-gray-300 hover:border-emerald-500 rounded-full mr-2 mt-1 px-2': selectedSubject !== subject && subject === 'Data Analysis',
+                                                        'bg-pink-500 text-white hover:bg-pink-700 hover:text-white border-2 border-gray-300 rounded-full mr-2 mt-1 px-2': selectedSubject === subject && subject === 'AI',
+                                                        'bg-white hover:bg-blue-500 text-blue-500 hover:text-white border border-gray-300 hover:border-pink-500 rounded-full mr-2 mt-1 px-2': selectedSubject !== subject && subject === 'AI',
+                                                        'bg-red-500 text-white hover:bg-red-700 hover:text-white border-2 border-gray-300 rounded-full mr-2 mt-1 px-2': selectedSubject === subject && subject === 'Programming',
+                                                        'bg-white hover:bg-blue-500 text-blue-500 hover:text-white border border-gray-300 hover:border-red-500 rounded-full mr-2 mt-1 px-2': selectedSubject !== subject && subject === 'Programming',
+                                                        }"
+                                                    x-text="subject"
+                                                    >
+                                                </button>
+                                            </a>
+                                        </template>
+                                    </div>
+
+                                    <div class="mt-4 space-x-4 flex flex-wrap">
+                                        <!-- Tool Buttons -->
+                                        <template x-for="tool in project.tools" :key="tool">
+                                            <a x-bind:href="'#' + project.title">
+                                                <button
+                                                    @click="selectedTool = (selectedTool === tool) ? null : tool"
+                                                    @click="selectedProject = project.title"
+                                                    :class="{
+                                                        'bg-blue-500 text-white hover:bg-blue-700 hover:text-white border-2 border-gray-300 rounded-full mr-2 mt-1 px-2': selectedTool === tool,
+                                                        'bg-white text-blue-500 hover:bg-blue-500 hover:text-white border border-gray-300 rounded-full mr-2 mt-1 px-2': selectedTool !== tool
+                                                        }"
+                                                    x-text="tool"
+                                                    >
+                                                </button>
+                                            </a>
+                                        </template>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container mx-auto mt-8 scroll-mt-16">
+        <h2 class="text-3xl font-semibold">Contact Me</h2>
+        <p class="mt-4">
+            Feel free to get in touch with me at <a href="mailto:sylvain.duhau.marmon@gmail.com" class="text-blue-500 hover:underline hover:text-blue-700">sylvain.duhau.marmon@gmail.com</a>.
+        </p>
+    </section>
+    </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-200 py-4 text-center">
+        <div class="container mx-auto">
+            <ul class="flex justify-center space-x-4">
+                <li>
+                    <a href="accessibility.html" class="text-blue-500 hover:underline hover:text-blue-700">
+                        <i class="fas fa-universal-access"></i> Accessibility
+                    </a>
+                </li>
+                <li>
+                    <a href="privacy.html" class="text-blue-500 hover:underline hover:text-blue-700">
+                        <i class="fas fa-lock"></i> Privacy
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/sdmarmon/sdmarmon.github.io" class="text-blue-500 hover:underline hover:text-blue-700">
+                        <i class="fab fa-github"></i> Source Code
+                    </a>
+                </li>
+            </ul>
+            <br/>
+            <p class="text-gray-500 text-sm">
+                © Sylvain Duhau-Marmon, 2023-
+                <br />
+                This work is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="text-blue-500 hover:underline hover:text-blue-700">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
