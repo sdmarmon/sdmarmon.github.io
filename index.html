@@ -20,8 +20,8 @@
 <!-- Tailwind CSS and Alpine.js -->
 <body
     class="scroll-pt-16"
-    x-data="{ showNav: false, showMobileNav: false, showTopaque: false, transform: 'translate-y-0', transformMobileNav: 'translate-x-0' }"
-    @scroll.window="showNav = (window.scrollY > 50) ; showTopaque = (window.scrollY > window.innerHeight) ; "
+    x-data="{ showNav: false, showMobileNav: false, transform: 'translate-y-0', transformMobileNav: 'translate-x-0' }"
+    @scroll.window="showNav = (window.scrollY > 50)"
     x-on:show-nav.window="transform = $event.detail ? 'translate-y-0' : 'translate-y-[-100%]'; transformMobileNav = $event.detail ? 'translate-x-0' : 'translate-x-[-100%]'"
     >
     <header>
@@ -150,14 +150,14 @@
 
         <!-- Bottom Part (1/5) with Centered CTA Buttons -->
         <div class="text-white text-center p-4 h-1/5 flex items-center justify-center">
-            <a href="#about" class="bg-white text-indigo-500 hover:bg-indigo-500 hover:text-white px-6 py-2 rounded-full mr-4">About Me</a>
-            <a href="#portfolio" class="bg-white text-indigo-500 hover:bg-indigo-500 hover:text-white px-6 py-2 rounded-full">View Portfolio</a>
+            <a href="#about" class="bg-white text-indigo-500 hover:bg-white hover:text-indigo-500 lg:hover:bg-indigo-500 lg:hover:text-white px-6 py-2 rounded-full mr-4 mb-4">About Me</a>
+            <a href="#portfolio" class="bg-white text-indigo-500 hover:bg-white hover:text-indigo-500 lg:hover:bg-indigo-500 lg:hover:text-white px-6 py-2 rounded-full mb-4">View Portfolio</a>
         </div>
     </div>
 
     <!-- Container Wrap -->
     <div class="container mx-auto p-4">
-        <div class="block fixed top-0 left-0 right-0 opacity-50 lg:hidden bg-white w-full h-16 z-10" x-cloak x-show="showTopaque"></div>
+        <div class="block fixed top-0 left-0 right-0 opacity-50 lg:hidden bg-white w-full h-16 z-10" x-cloak x-show="showNav"></div>
 
     <!-- About Me Section -->
     <section id="about" class="container mx-auto mt-8 scroll-mt-16">
@@ -205,16 +205,16 @@
                                                     @click="selectedSubject = (selectedSubject === subject) ? null : subject"
                                                     @click="selectedProject = project.title"
                                                     :class="{
-                                                        'bg-violet-500 text-white hover:bg-violet-700 hover:text-white border-2 border-gray-300 rounded-full mr-2 mt-1 px-2': selectedSubject === subject && subject === 'UX Research',
-                                                        'bg-white hover:bg-blue-500 text-blue-500 hover:text-white border border-gray-300 hover:border-violet-500 rounded-full mr-2 mt-1 px-2': selectedSubject !== subject && subject === 'UX Research',
-                                                        'bg-amber-500 text-white hover:bg-amber-700 hover:text-white border-2 border-gray-300 rounded-full mr-2 mt-1 px-2': selectedSubject === subject && subject === 'UX Design',
-                                                        'bg-white hover:bg-blue-500 text-blue-500 hover:text-white border border-gray-300 hover:border-amber-500 rounded-full mr-2 mt-1 px-2': selectedSubject !== subject && subject === 'UX Design',
-                                                        'bg-emerald-500 text-white hover:bg-emerald-700 hover:text-white border-2 border-gray-300 rounded-full mr-2 mt-1 px-2': selectedSubject === subject && subject === 'Data Analysis',
-                                                        'bg-white hover:bg-blue-500 text-blue-500 hover:text-white border border-gray-300 hover:border-emerald-500 rounded-full mr-2 mt-1 px-2': selectedSubject !== subject && subject === 'Data Analysis',
-                                                        'bg-pink-500 text-white hover:bg-pink-700 hover:text-white border-2 border-gray-300 rounded-full mr-2 mt-1 px-2': selectedSubject === subject && subject === 'AI',
-                                                        'bg-white hover:bg-blue-500 text-blue-500 hover:text-white border border-gray-300 hover:border-pink-500 rounded-full mr-2 mt-1 px-2': selectedSubject !== subject && subject === 'AI',
-                                                        'bg-red-500 text-white hover:bg-red-700 hover:text-white border-2 border-gray-300 rounded-full mr-2 mt-1 px-2': selectedSubject === subject && subject === 'Programming',
-                                                        'bg-white hover:bg-blue-500 text-blue-500 hover:text-white border border-gray-300 hover:border-red-500 rounded-full mr-2 mt-1 px-2': selectedSubject !== subject && subject === 'Programming',
+                                                        'bg-violet-500 text-white hover:bg-violet-500 lg:hover:bg-violet-700 border-2 border-gray-300 rounded-full mr-2 mt-1 px-2': selectedSubject === subject && subject === 'UX Research',
+                                                        'bg-white hover:bg-white lg:hover:bg-blue-500 text-blue-500 hover:text-blue-500 lg:hover:text-white border border-gray-300 rounded-full mr-2 mt-1 px-2': selectedSubject !== subject && subject === 'UX Research',
+                                                        'bg-amber-500 text-white hover:bg-amber-500 lg:hover:bg-amber-700 border-2 border-gray-300 rounded-full mr-2 mt-1 px-2': selectedSubject === subject && subject === 'UX Design',
+                                                        'bg-white hover:bg-white lg:hover:bg-blue-500 text-blue-500 hover:text-blue-500 lg:hover:text-white border border-gray-300 rounded-full mr-2 mt-1 px-2': selectedSubject !== subject && subject === 'UX Design',
+                                                        'bg-emerald-500 text-white hover:bg-emerald-500 lg:hover:bg-emerald-700 border-2 border-gray-300 rounded-full mr-2 mt-1 px-2': selectedSubject === subject && subject === 'Data Analysis',
+                                                        'bg-white hover:bg-white lg:hover:bg-blue-500 text-blue-500 hover:text-blue-500 lg:hover:text-white border border-gray-300 rounded-full mr-2 mt-1 px-2': selectedSubject !== subject && subject === 'Data Analysis',
+                                                        'bg-pink-500 text-white hover:bg-pink-500 lg:hover:bg-pink-700 border-2 border-gray-300 rounded-full mr-2 mt-1 px-2': selectedSubject === subject && subject === 'AI',
+                                                        'bg-white hover:bg-white lg:hover:bg-blue-500 text-blue-500 hover:text-blue-500 lg:hover:text-white border border-gray-300 rounded-full mr-2 mt-1 px-2': selectedSubject !== subject && subject === 'AI',
+                                                        'bg-red-500 text-white hover:bg-red-500 lg:hover:bg-red-700 border-2 border-gray-300 rounded-full mr-2 mt-1 px-2': selectedSubject === subject && subject === 'Programming',
+                                                        'bg-white hover:bg-white lg:hover:bg-blue-500 text-blue-500 hover:text-blue-500 lg:hover:text-white border border-gray-300 rounded-full mr-2 mt-1 px-2': selectedSubject !== subject && subject === 'Programming',
                                                         }"
                                                     x-text="subject"
                                                     >
@@ -231,8 +231,8 @@
                                                     @click="selectedTool = (selectedTool === tool) ? null : tool"
                                                     @click="selectedProject = project.title"
                                                     :class="{
-                                                        'bg-blue-500 text-white hover:bg-blue-700 hover:text-white border-2 border-gray-300 rounded-full mr-2 mt-1 px-2': selectedTool === tool,
-                                                        'bg-white text-blue-500 hover:bg-blue-500 hover:text-white border border-gray-300 rounded-full mr-2 mt-1 px-2': selectedTool !== tool
+                                                        'bg-blue-500 text-white hover:bg-blue-500 lg:hover:bg-blue-700 border-2 border-gray-300 rounded-full mr-2 mt-1 px-2': selectedTool === tool,
+                                                        'bg-white text-blue-500 hover:bg-white lg:hover:bg-blue-500 hover:text-blue-500 lg:hover:text-white border border-gray-300 rounded-full mr-2 mt-1 px-2': selectedTool !== tool
                                                         }"
                                                     x-text="tool"
                                                     >
