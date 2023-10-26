@@ -207,10 +207,8 @@
                                         <template x-for="subject in project.subjects" :key="subject">
                                             <a x-bind:href="'#' + project.title">
                                                 <button
-                                                    x-on:click="
-                                                        selectedSubject = (selectedSubject === subject) ? null : subject ;
-                                                        selectedProject = project.title;
-                                                    "
+                                                    @click="selectedSubject = (selectedSubject === subject) ? null : subject"
+                                                    @click="selectedProject = project.title"
                                                     :class="{
                                                         'bg-violet-500 text-white border-2 border-gray-300 rounded-full mr-2 mt-1 px-2 hover:bg-violet-700': selectedSubject === subject && subject === 'UX Research',
                                                         'bg-amber-500 text-white border-2 border-gray-300 rounded-full mr-2 mt-1 px-2 hover:bg-amber-700': selectedSubject === subject && subject === 'UX Design',
@@ -231,10 +229,8 @@
                                         <template x-for="tool in project.tools" :key="tool">
                                             <a x-bind:href="'#' + project.title">
                                                 <button
-                                                    x:on:click="
-                                                        selectedTool = (selectedTool === tool) ? null : tool ;
-                                                        selectedProject = project.title ;
-                                                    "
+                                                    @click="selectedTool = (selectedTool === tool) ? null : tool"
+                                                    @click="selectedProject = project.title"
                                                     :class="{
                                                         'bg-blue-500 text-white hover:bg-blue-500 lg:hover:bg-blue-700 border-2 border-gray-300 rounded-full mr-2 mt-1 px-2': selectedTool === tool,
                                                         'bg-white text-blue-500 hover:bg-white lg:hover:bg-blue-500 hover:text-blue-500 lg:hover:text-white border border-gray-300 rounded-full mr-2 mt-1 px-2': selectedTool !== tool
