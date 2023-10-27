@@ -130,15 +130,22 @@
     </header>
 
     <!-- Apply Navigation Settings -->
-    <div x-bind:style="{ 'opacity': showMobileNav ? '0.5' : '1' , 'pointer-events': showMobileNav ? 'none' : 'auto' }" @resize.window="showMobileNav = window.innerWidth < 1024 ? showMobileNav : false;">
+    <div x-bind:class="showMobileNav ? 'opacity-50 pointer-events-none' : 'opacity-100 pointer-events-auto'" @resize.window="showMobileNav = window.innerWidth < 1024 ? showMobileNav : false;">
 
     <!-- Hero Banner (Divided into Three Parts) -->
-    <div class="flex flex-col h-screen bg-scroll bg-center bg-no-repeat bg-cover lg:bg-fixed" style="background-image: url('images/herochesscompressed.jpg');">
+    <div class="relative flex flex-col h-screen bg-gradient-to-r from-[#00000080] to-[#f1ee631a]">
+        <img
+            class="absolute object-cover w-full h-full mix-blend-color"
+            srcset="images/herochess-1920.jpg 1920w, images/herochess-1280.jpg 1280w, images/herochess-1024.jpg 1024w, images/herochess-768.jpg 768w, images/herochess-600.jpg 6000w, images/herochess-428.jpg 428w, images/herochess-360.jpg 360w"
+            sizes="100vw"
+            src="images/herochess-1024.jpg"
+            alt="Sylvain Duhau-Marmon playing chess"
+            >
         <!-- Top Part (1/5) -->
-        <div class="flex h-1/5" style="background-color:rgba(0, 0, 0, 0.3);"></div>
+        <div class="relative flex h-1/5"></div>
 
         <!-- Central Part (3/5) with Text -->
-        <div class="flex text-white h-3/5" style="background-color:rgba(0, 0, 0, 0.3);">
+        <div class="relative flex text-white h-3/5">
             <div class="w-1/2 p-4 text-center lg:hidden">
                 <h1 class="mt-0 text-4xl font-bold">Sylvain<br>Duhau-Marmon</h1>
             </div>
@@ -151,7 +158,7 @@
         </div>
 
         <!-- Bottom Part (1/5) with CTA Buttons -->
-        <div class="flex items-center justify-center p-4 font-mono font-semibold text-white text-centers h-1/5" style="background-color:rgba(0, 0, 0, 0.3);">
+        <div class="relative flex items-center justify-center p-4 font-mono font-semibold text-white text-centers h-1/5">
             <a href="#about" class="px-6 py-2 mb-16 mr-4 text-indigo-500 bg-white rounded-full md:mb-8 lg:mb-4 betterhover:hover:bg-indigo-500 betterhover:hover:text-white betterhover:hover:font-black betterhover:hover:border-4 betterhover:hover:border-indigo-500 betterhover:hover:shadow-xl">ABOUT ME</a>
             <a href="#portfolio" class="px-6 py-2 mb-16 text-indigo-500 bg-white rounded-full md:mb-8 lg:mb-4 betterhover:hover:bg-indigo-500 betterhover:hover:text-white betterhover:hover:font-black betterhover:hover:border-4 betterhover:hover:border-indigo-500 betterhover:hover:shadow-xl">VIEW PORTFOLIO</a>
         </div>
@@ -255,7 +262,7 @@
                         <div class="relative p-4 border-2 border-gray-200 rounded-lg group hover:border-blue-500 hover:shadow-xl">
                             <a x-bind:href="project.link">
                                 <div class="flex flex-col h-full">
-                                    <img class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-100 lg:group-hover:opacity:80" x-bind:src="project.image" x-bind:alt="project.title + ' image'">
+                                    <img class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-100 lg:group-hover:opacity:80" x-bind:src="project.image" x-bind:alt="project.title + ' project image'">
                                     <h3 class="mt-2 text-xl font-semibold group-hover:text-blue-500 group-hover:font-bold" x-text="project.title"></h3>
                                     <p class="mt-2" x-text="project.description"></p>
                                 </div>
