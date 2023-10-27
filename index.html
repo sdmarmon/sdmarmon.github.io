@@ -25,19 +25,17 @@
 <!-- Tailwind CSS and Alpine.js -->
 <body
     class="scroll-pt-16"
-    x-data="{ showNav: false, showMobileNav: false, isLarge: false, transform: 'translate-y-0', transformMobileNav: 'translate-x-0' }"
+    x-data="{ showNav: false, showMobileNav: false }"
     @scroll.window="showNav = (window.scrollY > 50)"
-    x-on:show-nav.window="transform = $event.detail ? 'translate-y-0' : 'translate-y-[-100%]'; transformMobileNav = $event.detail ? 'translate-x-0' : 'translate-x-[-100%]'"
     >
     <header>
         <!-- Hidden Navigation Bar -->
         <div
-            class="fixed top-0 left-0 right-0 z-10 hidden p-4 text-white transition-transform transform translate-y-0 bg-indigo-500 shadow-xl lg:block"
+            class="fixed top-0 left-0 right-0 z-10 hidden p-4 text-white bg-indigo-500 shadow-xl lg:block"
             x-cloak
             x-show="showNav"
-            x-transition:enter="transition duration-500 ease-in-out" x-transition:enter-start="opacity-0 transform -translate-y-full" x-transition:enter-end="opacity-100 transform translate-y-0"
-            x-transition:leave="transition duration-300 ease-in-out" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform -translate-y-full"
-            :class="transform"
+            x-transition:enter="transition duration-500 ease-out" x-transition:enter-start="opacity-0 transform -translate-y-full" x-transition:enter-end="opacity-100 transform translate-y-0"
+            x-transition:leave="transition duration-300 ease-in" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform -translate-y-full"
             >
             <div class="container flex items-center justify-between mx-auto">
                 <h1 class="text-2xl font-bold text-white ">
@@ -82,13 +80,12 @@
 
         <!-- Mobile Navigation Overlay (Left Sidebar) -->
         <div
-            class="fixed top-0 left-0 z-10 w-4/5 h-full transition-transform transform translate-x-0 shadow-lg lg:hidden"
+            class="fixed top-0 left-0 z-10 w-4/5 h-full shadow-lg lg:hidden"
             x-cloak
             x-show="showMobileNav"
             @click.away="showMobileNav = false"
-            x-transition:enter="transition duration-500 ease-in-out" x-transition:enter-start="opacity-0 transform -translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0"
-            x-transition:leave="transition duration-300 ease-in-out" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform -translate-x-full"
-            :class="transformMobileNav"
+            x-transition:enter="transition duration-500 ease-out" x-transition:enter-start="opacity-0 transform -translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0"
+            x-transition:leave="transition duration-300 ease-in" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform -translate-x-full"
             >
             <div class="h-full p-0 bg-gray-200">
                 <ul>
@@ -136,7 +133,7 @@
     <div x-bind:style="{ 'opacity': showMobileNav ? '0.5' : '1' , 'pointer-events': showMobileNav ? 'none' : 'auto' }" @resize.window="showMobileNav = window.innerWidth < 1024 ? showMobileNav : false;">
 
     <!-- Hero Banner (Divided into Three Parts) -->
-    <div class="flex flex-col h-screen bg-fixed bg-center bg-no-repeat bg-cover" style="background-image: url('images/herochess.jpg');">
+    <div class="flex flex-col h-screen bg-fixed bg-center bg-no-repeat bg-cover" style="background-image: url('images/herochess.jpg'); background-size: cover;">
         <!-- Top Part (1/5) with Empty Space -->
         <div class="flex h-1/5" style="background-color:rgba(0, 0, 0, 0.3);"></div>
 
@@ -176,7 +173,7 @@
     <!-- Portfolio Section -->
     <section id="portfolio" class="container mx-auto mt-8 scroll-mt-16">
         <div x-data="{
-            // Projects Data, could implement sql.js-httpvfs to scale
+            // Projects Data, could implement a real database with sql.js-httpvfs to scale
             projects: [
             { title: 'OCUS', subjects: ['UX Research', 'UX Design', 'Data Analysis'], tools: ['R', 'SQL', 'Google Analytics', 'Hotjar', 'Excel', 'Communication Tools'], image: 'images/ocus.jpg', link: 'projects/ocus.html', description: 'Summarizing my work as an UX Researcher at OCUS.' },
             { title: 'Unilux', subjects: ['UX Research', 'Data Analysis'], tools: ['R', 'Python', 'SPSS', 'SQL', 'Communication Tools'], image: 'images/unilux.PNG', link: 'projects/unilux.html', description: 'Studying the applicability and validity of generic user experience scales.' },
@@ -186,7 +183,7 @@
             { title: 'TEEMON', subjects: ['Programming', 'Data Analysis', 'UX Design'], tools: ['React Native', 'SQL', 'Communication Tools'], image: 'images/teemon.PNG', link: 'projects/teemon.html', description: 'Designing a mobile app to team on with other league players.' }
             ],
 
-            // Functions and Variables
+            // Variables and Functions
             selectedSubjects: [],
             selectedTools: [],
             toggleSelectedSubject(subject) {
@@ -244,13 +241,13 @@
                         x-bind:id="project.title"
                         x-cloak
                         x-show="matchSelectedCriteria(project)"
-                        x-transition:enter="transition ease-in duration-350" x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100"
-                        x-transition:leave="transition ease-out duration-350" x-transition:leave-start="opacity-100 transform scale-100" x-transition:leave-end="opacity-0 transform scale-95"
+                        x-transition:enter="transition ease-in-out duration-300" x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100"
+                        x-transition:leave="transition ease-in-out duration-300" x-transition:leave-start="opacity-100 transform scale-100" x-transition:leave-end="opacity-0 transform scale-95"
                         >
                         <div class="relative p-4 border-2 border-gray-200 rounded-lg group hover:border-blue-500 hover:shadow-xl">
                             <a x-bind:href="project.link">
                                 <div class="flex flex-col h-full">
-                                    <img class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80" x-bind:src="project.image" x-bind:alt="project.title + ' image'">
+                                    <img class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-100 lg:group-hover:opacity:80" x-bind:src="project.image" x-bind:alt="project.title + ' image'">
                                     <h3 class="mt-2 text-xl font-semibold group-hover:text-blue-500 group-hover:font-bold" x-text="project.title"></h3>
                                     <p class="mt-2" x-text="project.description"></p>
                                 </div>
@@ -310,31 +307,34 @@
     </div>
 
     <!-- Footer -->
-    <footer class="py-4 text-center bg-gray-200">
-        <div class="container mx-auto">
-            <ul class="flex justify-center space-x-4">
-                <li>
-                    <a href="accessibility.html" class="text-blue-500 hover:underline hover:text-blue-700">
-                        <i class="fas fa-universal-access"></i> Accessibility
-                    </a>
-                </li>
-                <li>
-                    <a href="privacy.html" class="text-blue-500 hover:underline hover:text-blue-700">
-                        <i class="fas fa-lock"></i> Privacy
-                    </a>
-                </li>
-                <li>
-                    <a href="https://github.com/sdmarmon/sdmarmon.github.io" class="text-blue-500 hover:underline hover:text-blue-700">
-                        <i class="fab fa-github"></i> Source Code
-                    </a>
-                </li>
-            </ul>
-            <br/>
-            <p class="text-sm text-gray-500">
-                © Sylvain Duhau-Marmon, 2023-
-                <br />
-                This work is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="text-blue-500 hover:underline hover:text-blue-700">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
-            </p>
+    <footer>
+        <div class="w-full h-px bg-gray-400"></div>
+        <div class="py-4 text-center bg-gray-200">
+            <div class="container mx-auto">
+                <ul class="flex justify-center space-x-4">
+                    <li>
+                        <a href="accessibility.html" class="text-blue-500 hover:underline hover:text-blue-700">
+                            <i class="fas fa-universal-access"></i> Accessibility
+                        </a>
+                    </li>
+                    <li>
+                        <a href="privacy.html" class="text-blue-500 hover:underline hover:text-blue-700">
+                            <i class="fas fa-lock"></i> Privacy
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/sdmarmon/sdmarmon.github.io" class="text-blue-500 hover:underline hover:text-blue-700">
+                            <i class="fab fa-github"></i> Source Code
+                        </a>
+                    </li>
+                </ul>
+                <br/>
+                <p class="text-sm text-gray-500">
+                    © Sylvain Duhau-Marmon, 2023-
+                    <br />
+                    This work is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="text-blue-500 hover:underline hover:text-blue-700">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+                </p>
+            </div>
         </div>
     </footer>
 </body>
