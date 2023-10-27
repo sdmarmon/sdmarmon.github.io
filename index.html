@@ -133,8 +133,8 @@
     <div x-bind:style="{ 'opacity': showMobileNav ? '0.5' : '1' , 'pointer-events': showMobileNav ? 'none' : 'auto' }" @resize.window="showMobileNav = window.innerWidth < 1024 ? showMobileNav : false;">
 
     <!-- Hero Banner (Divided into Three Parts) -->
-    <div class="flex flex-col h-screen bg-fixed bg-center bg-no-repeat bg-cover" style="background-image: url('images/herochess.jpg'); background-size: cover;">
-        <!-- Top Part (1/5) with Empty Space -->
+    <div class="flex flex-col h-screen bg-scroll bg-center bg-no-repeat bg-cover lg:bg-fixed" style="background-image: url('images/herochesscompressed.jpg');">
+        <!-- Top Part (1/5) -->
         <div class="flex h-1/5" style="background-color:rgba(0, 0, 0, 0.3);"></div>
 
         <!-- Central Part (3/5) with Text -->
@@ -150,7 +150,7 @@
             </div>
         </div>
 
-        <!-- Bottom Part (1/5) with Centered CTA Buttons -->
+        <!-- Bottom Part (1/5) with CTA Buttons -->
         <div class="flex items-center justify-center p-4 font-mono font-semibold text-white text-centers h-1/5" style="background-color:rgba(0, 0, 0, 0.3);">
             <a href="#about" class="px-6 py-2 mb-16 mr-4 text-indigo-500 bg-white rounded-full md:mb-8 lg:mb-4 betterhover:hover:bg-indigo-500 betterhover:hover:text-white betterhover:hover:font-black betterhover:hover:border-4 betterhover:hover:border-indigo-500 betterhover:hover:shadow-xl">ABOUT ME</a>
             <a href="#portfolio" class="px-6 py-2 mb-16 text-indigo-500 bg-white rounded-full md:mb-8 lg:mb-4 betterhover:hover:bg-indigo-500 betterhover:hover:text-white betterhover:hover:font-black betterhover:hover:border-4 betterhover:hover:border-indigo-500 betterhover:hover:shadow-xl">VIEW PORTFOLIO</a>
@@ -164,10 +164,13 @@
     <!-- About Me Section -->
     <section id="about" class="container mx-auto mt-8 scroll-mt-16">
         <h2 class="text-3xl font-semibold"><i class="fas fa-user"></i> About Me</h2>
+        <p class="mt-4 font-semibold">
+            Under construction!
+        </p>
         <p class="mt-4">
             I am a passionate and dedicated UX researcher, data analyst, and front-end developer. With a strong background in understanding user behavior and data-driven decision-making, I create intuitive and user-centric experiences.
         </p>
-        <p class="mt-4">More to come...</p>
+        <p class="mt-4"><a href="assets/Resume_Duhau-Marmon.pdf" class="text-blue-500 hover:underline hover:text-blue-700 download" target="_blank" rel="noopener noreferrer" @click="showMobileNav = false">Download my resume.</a></p>
     </section>
 
     <!-- Portfolio Section -->
@@ -222,16 +225,21 @@
                 return hasAllSelectedSubjects && hasAllSelectedTools;
             },
 
-            // 500ms delay to match the transition
+            // 400ms delay to match the transition
             scrollToProject(project) {
                 setTimeout(() => {
                     window.location.href = `#${project}`;
-                }, 500);
+                }, 400);
             }
             }"
             >
             <h2 class="text-3xl font-semibold"><i class="fas fa-briefcase"></i> Portfolio</h2>
-            <p class="mt-4">Explore some of my recent projects:</p>
+            <p class="mt-4 font-semibold">
+                Under construction!
+            </p>
+            <p class="mt-4">
+                Explore some of my recent projects:
+            </p>
 
             <div class="grid grid-cols-1 gap-4 mt-4 lg:grid-cols-2">
                 <!-- Projects Grid -->
@@ -303,22 +311,44 @@
             Feel free to get in touch with me at <a href="mailto:sylvain.duhau.marmon@gmail.com" class="text-blue-500 hover:underline hover:text-blue-700">sylvain.duhau.marmon@gmail.com</a>.
         </p>
     </section>
+
+    <!-- Accessibility Section -->
+    <section id="accessibility" class="container mx-auto mt-8 scroll-mt-16">
+        <h2 class="text-3xl font-semibold"><i class="fas fa-universal-access"></i> Accessibility</h2>
+        <p class="mt-4 font-semibold">
+            Under construction!
+        </p>
+        <p class="mt-4">
+            <a href="mailto:sylvain.duhau.marmon@gmail.com" class="text-blue-500 hover:underline hover:text-blue-700">Contact me</a> if you have trouble accessing this content.
+        </p>
+    </section>
+
+    <!-- Privacy Section -->
+    <section id="privacy" class="container mx-auto mt-8 scroll-mt-16">
+        <h2 class="text-3xl font-semibold"><i class="fas fa-lock"></i> Privacy</h2>
+        <p class="mt-4 font-semibold">
+            Under construction!
+        </p>
+        <p class="mt-4">
+            No personal data is collected on this website.
+        </p>
+    </section>
     </div>
     </div>
 
     <!-- Footer -->
     <footer>
-        <div class="w-full h-px bg-gray-400"></div>
+        <div class="w-full h-px mt-16 bg-gray-400"></div>
         <div class="py-4 text-center bg-gray-200">
             <div class="container mx-auto">
                 <ul class="flex justify-center space-x-4">
                     <li>
-                        <a href="accessibility.html" class="text-blue-500 hover:underline hover:text-blue-700">
+                        <a href="#accessibility" class="text-blue-500 hover:underline hover:text-blue-700">
                             <i class="fas fa-universal-access"></i> Accessibility
                         </a>
                     </li>
                     <li>
-                        <a href="privacy.html" class="text-blue-500 hover:underline hover:text-blue-700">
+                        <a href="#privacy" class="text-blue-500 hover:underline hover:text-blue-700">
                             <i class="fas fa-lock"></i> Privacy
                         </a>
                     </li>
