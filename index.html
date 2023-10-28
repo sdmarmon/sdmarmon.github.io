@@ -133,10 +133,10 @@
     <div x-bind:class="showMobileNav ? 'opacity-50 pointer-events-none' : 'opacity-100 pointer-events-auto'" @resize.window="showMobileNav = window.innerWidth < 1024 ? showMobileNav : false;">
 
     <!-- Hero Banner (Divided into Three Parts) -->
-    <div class="relative flex flex-col h-screen bg-gradient-to-r from-[#00000080] to-[#f1ee631a]">
+    <div class="relative flex flex-col h-screen bg-gradient-to-r from-[rgba(0,0,0,0.6)] to-[rgba(254,140,31,0.06)]">
         <img
-            class="absolute object-cover w-full h-full mix-blend-color"
-            srcset="images/herochess-1920.jpg 1920w, images/herochess-1280.jpg 1280w, images/herochess-1024.jpg 1024w, images/herochess-768.jpg 768w, images/herochess-600.jpg 6000w, images/herochess-428.jpg 428w, images/herochess-360.jpg 360w"
+            class="absolute object-cover w-full h-full mix-blend-darken"
+            srcset="images/herochess-3840.jpg 3840w, images/herochess-2860.jpg 2860w, images/herochess-1920.jpg 1920w, images/herochess-1280.jpg 1280w, images/herochess-1024.jpg 1024w, images/herochess-768.jpg 768w, images/herochess-600.jpg 6000w, images/herochess-428.jpg 428w, images/herochess-360.jpg 360w"
             sizes="100vw"
             src="images/herochess-1024.jpg"
             alt="Sylvain Duhau-Marmon playing chess"

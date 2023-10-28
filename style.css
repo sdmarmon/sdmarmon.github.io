@@ -2075,8 +2075,136 @@ video {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
+.from-\[\#\#ffffff80\] {
+  --tw-gradient-from: ##ffffff80 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.from-\[\#\#\#ffffffe6\] {
+  --tw-gradient-from: ###ffffffe6 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.from-\[rgba\(0\2c 0\2c 0\2c 0\.5\)\] {
+  --tw-gradient-from: rgba(0,0,0,0.5) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgba(0, 0, 0, 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.from-\[rgba\(0\2c 0\2c 0\2c 0\.8\)\] {
+  --tw-gradient-from: rgba(0,0,0,0.8) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgba(0, 0, 0, 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.from-\[rgba\(0\2c 0\2c 0\2c 0\.7\)\] {
+  --tw-gradient-from: rgba(0,0,0,0.7) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgba(0, 0, 0, 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.from-\[rgba\(0\2c 0\2c 0\2c 0\.75\)\] {
+  --tw-gradient-from: rgba(0,0,0,0.75) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgba(0, 0, 0, 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.from-\[rgba\(0\2c 0\2c 0\2c 0\.6\)\] {
+  --tw-gradient-from: rgba(0,0,0,0.6) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgba(0, 0, 0, 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.from-\[rgba\(0\2c 0\2c 0\2c 0\.65\)\] {
+  --tw-gradient-from: rgba(0,0,0,0.65) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgba(0, 0, 0, 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
 .to-\[\#f1ee631a\] {
   --tw-gradient-to: #f1ee631a var(--tw-gradient-to-position);
+}
+
+.to-\[\#\#ffffff1a\] {
+  --tw-gradient-to: ##ffffff1a var(--tw-gradient-to-position);
+}
+
+.to-\[\#0000001a\] {
+  --tw-gradient-to: #0000001a var(--tw-gradient-to-position);
+}
+
+.to-\[\#ffffff1a\] {
+  --tw-gradient-to: #ffffff1a var(--tw-gradient-to-position);
+}
+
+.to-\[\#f18f631a\] {
+  --tw-gradient-to: #f18f631a var(--tw-gradient-to-position);
+}
+
+.to-\[\#fecdd31a\] {
+  --tw-gradient-to: #fecdd31a var(--tw-gradient-to-position);
+}
+
+.to-\[\#fe8c1f1a\] {
+  --tw-gradient-to: #fe8c1f1a var(--tw-gradient-to-position);
+}
+
+.to-\[\#ffff1a\] {
+  --tw-gradient-to: #ffff1a var(--tw-gradient-to-position);
+}
+
+.to-\[rgba\(254\2c 140\2c 31\2c 0\.5\)\] {
+  --tw-gradient-to: rgba(254,140,31,0.5) var(--tw-gradient-to-position);
+}
+
+.to-\[rgba\(254\2c 140\2c 31\2c 0\.3\)\] {
+  --tw-gradient-to: rgba(254,140,31,0.3) var(--tw-gradient-to-position);
+}
+
+.to-\[rgba\(254\2c 140\2c 31\2c 0\.25\)\] {
+  --tw-gradient-to: rgba(254,140,31,0.25) var(--tw-gradient-to-position);
+}
+
+.to-\[rgba\(254\2c 140\2c 31\2c 0\.2\)\] {
+  --tw-gradient-to: rgba(254,140,31,0.2) var(--tw-gradient-to-position);
+}
+
+.to-\[rgba\(254\2c 140\2c 31\2c 0\.1\)\] {
+  --tw-gradient-to: rgba(254,140,31,0.1) var(--tw-gradient-to-position);
+}
+
+.to-\[rgba\(0\2c 0\2c 0\2c 0\.2\)\] {
+  --tw-gradient-to: rgba(0,0,0,0.2) var(--tw-gradient-to-position);
+}
+
+.to-\[rgba\(254\2c 140\2c 31\2c 0\)\] {
+  --tw-gradient-to: rgba(254,140,31,0) var(--tw-gradient-to-position);
+}
+
+.to-\[rgba\(254\2c 140\2c 31\2c 0\.34\)\] {
+  --tw-gradient-to: rgba(254,140,31,0.34) var(--tw-gradient-to-position);
+}
+
+.to-\[rgba\(0\2c 0\2c 0\2c 0\.1\)\] {
+  --tw-gradient-to: rgba(0,0,0,0.1) var(--tw-gradient-to-position);
+}
+
+.to-\[rgba\(254\2c 140\2c 31\2c 0\.05\)\] {
+  --tw-gradient-to: rgba(254,140,31,0.05) var(--tw-gradient-to-position);
+}
+
+.to-\[rgba\(254\2c 140\2c 31\2c 0\.07\)\] {
+  --tw-gradient-to: rgba(254,140,31,0.07) var(--tw-gradient-to-position);
+}
+
+.to-\[rgba\(254\2c 140\2c 31\2c 0\.08\)\] {
+  --tw-gradient-to: rgba(254,140,31,0.08) var(--tw-gradient-to-position);
+}
+
+.to-\[rgba\(254\2c 140\2c 31\2c 0\.06\)\] {
+  --tw-gradient-to: rgba(254,140,31,0.06) var(--tw-gradient-to-position);
 }
 
 .decoration-slice {
