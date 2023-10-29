@@ -2069,20 +2069,10 @@ video {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
 
-.from-\[rgba\(0\2c 0\2c 0\2c 0\.6\)\] {
-  --tw-gradient-from: rgba(0,0,0,0.6) var(--tw-gradient-from-position);
-  --tw-gradient-to: rgba(0, 0, 0, 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-
 .from-\[rgba\(0\2c 0\2c 0\2c 0\.8\)\] {
   --tw-gradient-from: rgba(0,0,0,0.8) var(--tw-gradient-from-position);
   --tw-gradient-to: rgba(0, 0, 0, 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-
-.to-\[rgba\(254\2c 140\2c 31\2c 0\.06\)\] {
-  --tw-gradient-to: rgba(254,140,31,0.06) var(--tw-gradient-to-position);
 }
 
 .to-\[rgba\(254\2c 140\2c 31\2c 0\.08\)\] {
