@@ -134,11 +134,11 @@
     <div x-bind:class="showMobileNav ? 'opacity-50 pointer-events-none' : 'opacity-100 pointer-events-auto'" @resize.window="showMobileNav = window.innerWidth < 1024 ? showMobileNav : false;">
 
     <!-- Hero Banner (Divided into Three Parts) -->
-    <div class="relative flex flex-col h-screen bg-gradient-to-r from-[rgba(0,0,0,0.8)] to-[rgba(254,140,31,0.08)]">
+    <div class="relative flex flex-col h-screen bg-gradient-to-r from-slate-700 via-neutral-500 to-orange-200">
         <!-- Responsive Background Image -->
         <picture>
             <source
-                class= "absolute object-cover w-full h-full mix-blend-darken"
+                class="absolute object-cover w-full h-full mix-blend-darken"
                 media="(max-width: 767px)"
                 sizes="100vw"
                 srcset="
@@ -163,7 +163,7 @@
                     images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1533.jpg 1533w,
                     images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1534.jpg 1534w">
             <source
-                class= "absolute object-cover w-full h-full mix-blend-darken"
+                class="absolute object-cover w-full h-full mix-blend-darken"
                 media="(min-width: 768px) and (max-width: 991px)"
                 sizes="100vw"
                 srcset="
@@ -185,7 +185,7 @@
                     images/herochess_agurta/herochess_agurta_c_scale,w_1979.jpg 1979w,
                     images/herochess_agurta/herochess_agurta_c_scale,w_1982.jpg 1982w">
             <img
-                class= "absolute object-cover w-full h-full mix-blend-darken"
+                class="absolute object-cover w-full h-full mix-blend-darken"
                 sizes="100vw"
                 srcset="
                     images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_992.jpg 992w,
@@ -300,11 +300,11 @@
                 return hasAllSelectedSubjects && hasAllSelectedTools;
             },
 
-            // 400ms delay to match the transition
+            // 350ms delay to match the transition
             scrollToProject(project) {
                 setTimeout(() => {
                     window.location.href = `#${project}`;
-                }, 400);
+                }, 350);
             }
             }"
             >
