@@ -21,19 +21,13 @@
     <link href="../style.css" rel="stylesheet">
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script>
-        $(function(){
-            $("#header").load("../includes/header.html");
-            $("#footer").load("../includes/footer.html");
-            $("#construction").load("../includes/construction.html");
-        });
-    </script>
+    <script src="../includes/script.js"></script>
 </head>
 
 <!-- Tailwind CSS and Alpine.js -->
 <body
     class="flex flex-col min-h-screen scroll-pt-16"
-    x-data="{ showMobileNav: false }"
+    x-data="{ showMobileNavOverlay: false }"
     >
     <main class="flex-grow">
     <!-- Header -->

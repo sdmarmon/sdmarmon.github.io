@@ -21,12 +21,13 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
     <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="includes/script.js"></script>
 </head>
 
 <!-- Tailwind CSS and Alpine.js -->
 <body
     class="scroll-pt-16"
-    x-data="{showNavBar: false, showMobileNavMenu: false, showMobileNavOverlay: false}"
+    x-data="{ showNavBar: false, showMobileNavMenu: false, showMobileNavOverlay: false }"
     @scroll.window="showNavBar = (window.scrollY > 164); showMobileNavMenu = (window.scrollY > innerHeight-64) || showMobileNavOverlay"
     >
     <header>
@@ -248,7 +249,7 @@
     </div>
 
     <!-- About Me Section -->
-    <section id="about" class="container pt-8 mx-auto mb-8 scroll-mt-16">
+    <div id="about" class="container pt-8 mx-auto mb-8 scroll-mt-16">
         <h2 class="text-3xl font-semibold"><i class="fas fa-user"></i> About Me</h2>
         <p class="mt-4 font-semibold">
             Under construction!
@@ -257,7 +258,7 @@
             I am a passionate and dedicated UX researcher, data analyst, and front-end developer. With a strong background in understanding user behavior and data-driven decision-making, I create intuitive and user-centric experiences.
         </p>
         <p class="mt-4"><a href="assets/Resume_Duhau-Marmon.pdf" class="text-blue-500 hover:underline hover:text-blue-700 download" target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">Download my resume.</a></p>
-    </section>
+    </div>
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="container pt-8 mx-auto mb-8 scroll-mt-16">
@@ -397,30 +398,8 @@
             Feel free to get in touch with me at <a href="mailto:sylvain.duhau.marmon@gmail.com" class="text-blue-500 hover:underline hover:text-blue-700">sylvain.duhau.marmon@gmail.com</a>.
         </p>
     </section>
-
-    <!-- Accessibility Section -->
-    <section id="accessibility" class="container pt-8 mx-auto mb-8 scroll-mt-16">
-        <h2 class="text-3xl font-semibold"><i class="fas fa-universal-access"></i> Accessibility</h2>
-        <p class="mt-4 font-semibold">
-            Under construction!
-        </p>
-        <p class="mt-4">
-            <a href="mailto:sylvain.duhau.marmon@gmail.com" class="text-blue-500 hover:underline hover:text-blue-700">Contact me</a> if you have trouble accessing this content.
-        </p>
-    </section>
-
-    <!-- Privacy Section -->
-    <section id="privacy" class="container pt-8 mx-auto mb-8 scroll-mt-16">
-        <h2 class="text-3xl font-semibold"><i class="fas fa-lock"></i> Privacy</h2>
-        <p class="mt-4 font-semibold">
-            Under construction!
-        </p>
-        <p class="mt-4">
-            No personal data is collected on this website.
-        </p>
-    </section>
-    </div>
-    </div>
+    </div> <!-- Container Wrap-->
+    </div> <!-- Navigation Settings-->
 
     <!-- Footer -->
     <footer>
@@ -429,12 +408,12 @@
             <div class="container mx-auto">
                 <ul class="flex justify-center space-x-4">
                     <li>
-                        <a href="#accessibility" class="text-blue-500 hover:underline hover:text-blue-700">
+                        <a href="/pages/accessibility.html" class="text-blue-500 hover:underline hover:text-blue-700">
                             <i class="fas fa-universal-access"></i> Accessibility
                         </a>
                     </li>
                     <li>
-                        <a href="#privacy" class="text-blue-500 hover:underline hover:text-blue-700">
+                        <a href="/pages/privacy.html" class="text-blue-500 hover:underline hover:text-blue-700">
                             <i class="fas fa-lock"></i> Privacy
                         </a>
                     </li>

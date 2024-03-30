@@ -1,9 +1,14 @@
 <!-- Apply Navigation Settings -->
-<div x-bind:style="{ 'opacity': showMobileNav ? '0.5' : '1' , 'pointer-events': showMobileNav ? 'none' : 'auto' }" @resize.window="showMobileNav = window.innerWidth < 1024 ? showMobileNav : false;">
+<div x-bind:style="{ 'opacity': showMobileNavOverlay ? '0.5' : '1' , 'pointer-events': showMobileNavOverlay ? 'none' : 'auto' }" @resize.window="showMobileNavOverlay = window.innerWidth < 1024 ? showMobileNavOverlay : false;">
     <!-- Container Wrap -->
     <div class="container p-4 mx-auto mt-16">
-        <div class="fixed top-0 left-0 right-0 z-10 block w-full h-16 bg-white shadow-lg opacity-30 lg:hidden"></div>
-        <h1 class="mt-8 text-4xl font-bold text-center">Under construction!</h1>
+        <div
+        class="fixed top-0 left-0 right-0 z-10 block w-full h-16 bg-white shadow-lg lg:hidden" x-cloak x-show="showMobileNavMenu"
+        x-transition:enter="transition duration-500 ease-out" x-transition:enter-start="opacity-0 transform -translate-y-full" x-transition:enter-end="opacity-100 transform translate-y-0"
+        x-transition:leave="transition duration-300 ease-in" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform -translate-y-full"
+        >
+        </div>
+        <h1 class="pt-8 text-4xl font-bold text-center">Under construction!</h1>
         <p class="mt-4 text-center">
             Feel free to contact me at <a href="mailto:sylvain.duhau.marmon@gmail.com" class="text-blue-500 hover:underline hover:text-blue-700">sylvain.duhau.marmon@gmail.com</a> if you have any questions.</p>
     </div>
