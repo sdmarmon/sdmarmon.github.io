@@ -26,13 +26,13 @@
 <!-- Tailwind CSS and Alpine.js -->
 <body
     class="scroll-pt-16"
-    x-data="{ showNav: false, showMobileNav: false }"
-    @scroll.window="showNav = (window.scrollY > 50)"
+    x-data="{showNav: false, showMobileNav: false, showMobileMenu: false}"
+    @scroll.window="showNav = (window.scrollY > 164); showMobileNav = (window.scrollY > innerHeight-64)"
     >
     <header>
         <!-- Hidden Navigation Bar -->
         <div
-            class="fixed top-0 left-0 right-0 z-10 hidden p-4 text-white bg-indigo-500 shadow-xl lg:block"
+            class="fixed top-0 left-0 right-0 z-10 hidden p-4 text-white bg-indigo-600 shadow-xl lg:block"
             x-cloak
             x-show="showNav"
             x-transition:enter="transition duration-500 ease-out" x-transition:enter-start="opacity-0 transform -translate-y-full" x-transition:enter-end="opacity-100 transform translate-y-0"
@@ -71,8 +71,8 @@
         </div>
 
         <!-- Mobile Navigation Menu (Hamburger Menu) -->
-        <div x-cloak x-show="!showMobileNav && showNav">
-            <button class="fixed z-20 text-black lg:hidden top-2 left-2" @click="showMobileNav = true">
+        <div x-cloak x-show="!showMobileMenu && showMobileNav">
+            <button class="fixed z-20 text-indigo-600 lg:hidden top-2 left-2" @click="showMobileMenu = true">
                 <svg class="w-14 h-14" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
@@ -83,45 +83,45 @@
         <div
             class="fixed top-0 left-0 z-10 w-4/5 h-full shadow-lg lg:hidden"
             x-cloak
-            x-show="showMobileNav"
-            @click.away="showMobileNav = false"
+            x-show="showMobileMenu"
+            @click.away="showMobileMenu = false"
             x-transition:enter="transition duration-500 ease-out" x-transition:enter-start="opacity-0 transform -translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0"
             x-transition:leave="transition duration-300 ease-in" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform -translate-x-full"
             >
             <div class="h-full p-0 bg-gray-200">
                 <ul>
                     <li>
-                        <a href="index.html" class="block w-full px-4 py-4 text-2xl text-indigo-500 bg-white" @click="showMobileNav = false">
+                        <a href="index.html" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white" @click="showMobileMenu = false">
                             <i class="fas fa-home"></i> Home</a>
                         <div class="w-full h-px bg-gray-200"></div>
                     </li>
                     <li>
-                        <a href="#about" class="block w-full px-4 py-4 text-2xl text-indigo-500 bg-white" @click="showMobileNav = false">
+                        <a href="#about" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white" @click="showMobileMenu = false">
                             <i class="fas fa-user"></i> About Me</a>
                         <div class="w-full h-px bg-gray-200"></div>
                     </li>
                     <li>
-                        <a href="#portfolio" class="block w-full px-4 py-4 text-2xl text-indigo-500 bg-white" @click="showMobileNav = false">
+                        <a href="#portfolio" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white" @click="showMobileMenu = false">
                             <i class="fas fa-briefcase"></i> Portfolio</a>
                         <div class="w-full h-px bg-gray-200"></div>
                     </li>
                     <li>
-                        <a href="#contact" class="block w-full px-4 py-4 text-2xl text-indigo-500 bg-white" @click="showMobileNav = false">
+                        <a href="#contact" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white" @click="showMobileMenu = false">
                             <i class="fas fa-envelope"></i> Contact Me</a>
                         <div class="w-full h-px bg-gray-200"></div>
                     </li>
                     <li>
-                        <a href="https://github.com/sdmarmon" class="block w-full px-4 py-4 text-2xl text-indigo-500 bg-white" target="_blank" rel="noopener noreferrer" @click="showMobileNav = false">
+                        <a href="https://github.com/sdmarmon" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white" target="_blank" rel="noopener noreferrer" @click="showMobileMenu = false">
                             <i class="fab fa-github"></i> GitHub</a>
                         <div class="w-full h-px bg-gray-200"></div>
                     </li>
                     <li>
-                        <a href="https://www.linkedin.com/in/sylvain-d-marmon" class="block w-full px-4 py-4 text-2xl text-indigo-500 bg-white" target="_blank" rel="noopener noreferrer" @click="showMobileNav = false">
+                        <a href="https://www.linkedin.com/in/sylvain-d-marmon" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white" target="_blank" rel="noopener noreferrer" @click="showMobileMenu = false">
                             <i class="fab fa-linkedin"></i> LinkedIn</a>
                         <div class="w-full h-px bg-gray-200"></div>
                     </li>
                     <li>
-                        <a href="assets/Resume_Duhau-Marmon.pdf" class="block w-full px-4 py-4 text-2xl text-indigo-500 bg-white" download target="_blank" rel="noopener noreferrer" @click="showMobileNav = false">
+                        <a href="assets/Resume_Duhau-Marmon.pdf" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white" download target="_blank" rel="noopener noreferrer" @click="showMobileMenu = false">
                             <i class="fas fa-file-pdf"></i> Resume</a>
                         <div class="w-full h-px bg-gray-200"></div>
                     </li>
@@ -131,7 +131,7 @@
     </header>
 
     <!-- Apply Navigation Settings -->
-    <div x-bind:class="showMobileNav ? 'opacity-50 pointer-events-none' : 'opacity-100 pointer-events-auto'" @resize.window="showMobileNav = window.innerWidth < 1024 ? showMobileNav : false;">
+    <div x-bind:class="showMobileMenu ? 'opacity-50 pointer-events-none' : 'opacity-100 pointer-events-auto'" @resize.window="showMobileMenu = window.innerWidth < 1024 ? showMobileMenu : false;">
 
     <!-- Hero Banner (Divided into Three Parts) -->
     <div class="relative flex flex-col h-screen bg-gradient-to-r from-slate-700 via-neutral-500 to-orange-200">
@@ -227,17 +227,17 @@
 
         <!-- Bottom Part (1/5) with CTA Buttons -->
         <div class="relative flex items-center justify-center p-4 font-mono font-semibold text-white text-centers h-1/5">
-            <a href="#about" class="px-6 py-2 mb-16 mr-4 text-indigo-500 bg-white rounded-full md:mb-8 lg:mb-4 betterhover:hover:bg-indigo-500 betterhover:hover:text-white betterhover:hover:font-black betterhover:hover:border-4 betterhover:hover:border-indigo-500 betterhover:hover:shadow-xl">ABOUT ME</a>
-            <a href="#portfolio" class="px-6 py-2 mb-16 text-indigo-500 bg-white rounded-full md:mb-8 lg:mb-4 betterhover:hover:bg-indigo-500 betterhover:hover:text-white betterhover:hover:font-black betterhover:hover:border-4 betterhover:hover:border-indigo-500 betterhover:hover:shadow-xl">PORTFOLIO</a>
+            <a href="#about" class="px-6 py-2 mb-16 mr-4 text-indigo-600 bg-white rounded-full md:mb-8 lg:mb-4 betterhover:hover:bg-indigo-600 betterhover:hover:text-white betterhover:hover:font-black betterhover:hover:border-4 betterhover:border-white betterhover:hover:shadow-xl">ABOUT ME</a>
+            <a href="#portfolio" class="px-6 py-2 mb-16 text-indigo-600 bg-white rounded-full md:mb-8 lg:mb-4 betterhover:hover:bg-indigo-600 betterhover:hover:text-white betterhover:hover:font-black betterhover:hover:border-4 betterhover:border-white betterhover:hover:shadow-xl">PORTFOLIO</a>
         </div>
     </div>
 
     <!-- Container Wrap -->
     <div class="container p-4 mx-auto">
-        <div class="fixed top-0 left-0 right-0 z-10 block w-full h-16 bg-white shadow-lg opacity-30 lg:hidden" x-cloak x-show="showNav"></div>
+        <div class="fixed top-0 left-0 right-0 z-10 block w-full h-16 bg-white shadow-lg lg:hidden" x-cloak x-show="showMobileNav"></div>
 
     <!-- About Me Section -->
-    <section id="about" class="container mx-auto mt-8 scroll-mt-16">
+    <section id="about" class="container pt-8 mx-auto scroll-mt-16">
         <h2 class="text-3xl font-semibold"><i class="fas fa-user"></i> About Me</h2>
         <p class="mt-4 font-semibold">
             Under construction!
@@ -245,11 +245,11 @@
         <p class="mt-4">
             I am a passionate and dedicated UX researcher, data analyst, and front-end developer. With a strong background in understanding user behavior and data-driven decision-making, I create intuitive and user-centric experiences.
         </p>
-        <p class="mt-4"><a href="assets/Resume_Duhau-Marmon.pdf" class="text-blue-500 hover:underline hover:text-blue-700 download" target="_blank" rel="noopener noreferrer" @click="showMobileNav = false">Download my resume.</a></p>
+        <p class="mt-4"><a href="assets/Resume_Duhau-Marmon.pdf" class="text-blue-500 hover:underline hover:text-blue-700 download" target="_blank" rel="noopener noreferrer" @click="showMobileMenu = false">Download my resume.</a></p>
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="container mx-auto mt-8 scroll-mt-16">
+    <section id="portfolio" class="container pt-8 mx-auto mt-8 scroll-mt-16">
         <div x-data="{
             // Projects Data, could implement a real database with sql.js-httpvfs to scale
             projects: [
