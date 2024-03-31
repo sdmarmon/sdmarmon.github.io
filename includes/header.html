@@ -37,7 +37,7 @@
     <div x-cloak>
         <!-- Hamburger Menu Button -->
         <button class="fixed z-20 text-indigo-600 lg:hidden top-2 left-2" @click="showMobileNavOverlay = !showMobileNavOverlay">
-            <svg class="transition-all duration-300 transform w-14 h-14" :class="{ 'rotate-90': showMobileNavOverlay }" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg class="transition-all duration-200 transform w-14 h-14" :class="{ 'rotate-90': showMobileNavOverlay }" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path x-show="!showMobileNavOverlay" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 <!-- X Button Icon -->
                 <path x-show="showMobileNavOverlay" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -51,8 +51,8 @@
         x-cloak
         x-show="showMobileNavOverlay"
         @click.away="showMobileNavOverlay = false"
-        x-transition:enter="transition duration-500 ease-out" x-transition:enter-start="opacity-0 transform -translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0"
-        x-transition:leave="transition duration-300 ease-in" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform -translate-x-full"
+        x-transition:enter="transition duration-200 ease-out" x-transition:enter-start="opacity-0 transform -translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0"
+        x-transition:leave="transition duration-200 ease-in" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform -translate-x-full"
         >
         <div class="h-full bg-white">
             <ul>

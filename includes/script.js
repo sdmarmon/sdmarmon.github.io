@@ -9,7 +9,7 @@ function scrollToProject(project) {
     setTimeout(() => {
         // window.location.href = `#${project}`;
         scrollToElement(project);
-    }, 300);
+    }, 250);
 };
 
 function isOneColumnDisplay() {
