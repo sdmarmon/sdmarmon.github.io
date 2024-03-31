@@ -21,6 +21,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
     <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="includes/script.js"></script>
 </head>
 
@@ -44,27 +45,27 @@
                     <a href="index.html">Sylvain Duhau-Marmon</a></h1>
                 <ul class="hidden space-x-4 lg:flex">
                     <li>
-                        <a href="#about">
+                        <a href="#about" class="hover:font-bold">
                         <i class="fas fa-user"></i> About Me</a>
                     </li>
                     <li>
-                        <a href="#portfolio">
+                        <a href="#portfolio" class="hover:font-bold">
                         <i class="fas fa-briefcase"></i> Portfolio</a>
                     </li>
                     <li>
-                        <a href="#contact">
+                        <a href="#contact" class="hover:font-bold">
                         <i class="fas fa-envelope"></i> Contact Me</a>
                     </li>
                     <li>
-                        <a href="https://github.com/sdmarmon" target="_blank" rel="noopener noreferrer">
+                        <a href="https://github.com/sdmarmon" target="_blank" rel="noopener noreferrer" class="hover:font-bold">
                         <i class="fab fa-github"></i> GitHub</a>
                     </li>
                     <li>
-                        <a href="https://www.linkedin.com/in/sylvain-d-marmon" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.linkedin.com/in/sylvain-d-marmon" target="_blank" rel="noopener noreferrer" class="hover:font-bold">
                         <i class="fab fa-linkedin"></i> LinkedIn</a>
                     </li>
                     <li>
-                        <a href="assets/Resume_Duhau-Marmon.pdf" download target="_blank" rel="noopener noreferrer">
+                        <a href="assets/Resume_Duhau-Marmon.pdf" download target="_blank" rel="noopener noreferrer" class="hover:font-bold">
                         <i class="fas fa-file-pdf"></i> Resume</a>
                     </li>
                 </ul>
@@ -73,9 +74,9 @@
 
         <!-- Mobile Navigation Menu (Hamburger Menu or X Button) -->
         <div x-cloak x-show="showMobileNavMenu"
-        x-transition:enter="transition duration-500 ease-out" x-transition:enter-start="opacity-0 transform -translate-y-full" x-transition:enter-end="opacity-100 transform translate-y-0"
-        x-transition:leave="transition duration-300 ease-in" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform -translate-y-full"
-        >
+            x-transition:enter="transition duration-500 ease-out" x-transition:enter-start="opacity-0 transform -translate-y-full" x-transition:enter-end="opacity-100 transform translate-y-0"
+            x-transition:leave="transition duration-300 ease-in" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform -translate-y-full"
+            >
             <!-- Hamburger Menu Button -->
             <button class="fixed z-20 text-indigo-600 lg:hidden top-2 left-2" @click="showMobileNavOverlay = !showMobileNavOverlay; showMobileNavMenu = (window.scrollY > innerHeight-64)">
                 <svg class="transition-all duration-300 transform w-14 h-14" :class="{ 'rotate-90': showMobileNavOverlay }" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -88,7 +89,7 @@
 
         <!-- Mobile Navigation Overlay (Left Sidebar) -->
         <div
-            class="fixed left-0 z-10 w-4/5 h-full shadow-lg top-16 lg:hidden"
+            class="fixed left-0 z-10 w-3/4 h-full shadow-lg top-16 lg:hidden"
             x-cloak
             x-show="showMobileNavOverlay"
             @click.away="showMobileNavOverlay = false"
@@ -98,37 +99,37 @@
             <div class="h-full bg-white">
                 <ul>
                     <li>
-                        <a href="index.html" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white" @click="showMobileNavOverlay = false">
+                        <a href="index.html" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
                             <i class="fas fa-home"></i> Home</a>
                         <div class="w-full h-px bg-gray-200"></div>
                     </li>
                     <li>
-                        <a href="#about" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white" @click="showMobileNavOverlay = false">
+                        <a href="#about" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
                             <i class="fas fa-user"></i> About Me</a>
                         <div class="w-full h-px bg-gray-200"></div>
                     </li>
                     <li>
-                        <a href="#portfolio" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white" @click="showMobileNavOverlay = false">
+                        <a href="#portfolio" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
                             <i class="fas fa-briefcase"></i> Portfolio</a>
                         <div class="w-full h-px bg-gray-200"></div>
                     </li>
                     <li>
-                        <a href="#contact" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white" @click="showMobileNavOverlay = false">
+                        <a href="#contact" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
                             <i class="fas fa-envelope"></i> Contact Me</a>
                         <div class="w-full h-px bg-gray-200"></div>
                     </li>
                     <li>
-                        <a href="https://github.com/sdmarmon" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white" target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">
+                        <a href="https://github.com/sdmarmon" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">
                             <i class="fab fa-github"></i> GitHub</a>
                         <div class="w-full h-px bg-gray-200"></div>
                     </li>
                     <li>
-                        <a href="https://www.linkedin.com/in/sylvain-d-marmon" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white" target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">
+                        <a href="https://www.linkedin.com/in/sylvain-d-marmon" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">
                             <i class="fab fa-linkedin"></i> LinkedIn</a>
                         <div class="w-full h-px bg-gray-200"></div>
                     </li>
                     <li>
-                        <a href="assets/Resume_Duhau-Marmon.pdf" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white" download target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">
+                        <a href="assets/Resume_Duhau-Marmon.pdf" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" download target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">
                             <i class="fas fa-file-pdf"></i> Resume</a>
                         <div class="w-full h-px bg-gray-200"></div>
                     </li>
@@ -234,8 +235,8 @@
 
         <!-- Bottom Part (1/5) with CTA Buttons -->
         <div class="relative flex items-center justify-center p-4 font-mono font-semibold text-center text-white text-clamp0to3xl h-1/5">
-            <a href="#about" class="px-8 py-2 mx-2 mb-16 text-indigo-600 bg-white rounded-full sm:mx-4 lg:mx-8 xl:mx-12 xl:px-18 lg:px-16 sm:px-12 sm:mb-8 lg:mb-4 xl:mb-2 betterhover:hover:bg-indigo-600 betterhover:hover:text-white betterhover:hover:font-black betterhover:hover:border-4 betterhover:hover:border-white betterhover:hover:shadow-xl focus:bg-indigo-600 focus:text-white focus:font-black focus:border-4 focus:border-white focus:shadow-xl">ABOUT ME</a>
-            <a href="#portfolio" class="px-8 py-2 mx-2 mb-16 text-indigo-600 bg-white rounded-full sm:mx-4 lg:mx-8 xl:mx-12 xl:px-18 lg:px-16 sm:px-12 sm:mb-8 lg:mb-4 xl:mb-2 betterhover:hover:bg-indigo-600 betterhover:hover:text-white betterhover:hover:font-black betterhover:hover:border-4 betterhover:hover:border-white betterhover:hover:shadow-xl focus:bg-indigo-600 focus:text-white focus:font-black focus:border-4 focus:border-white focus:shadow-xl">PORTFOLIO</a>
+            <a href="#about" class="px-8 py-2 mx-2 mb-16 text-indigo-600 bg-white rounded-full sm:mx-4 lg:mx-8 xl:mx-12 xl:px-18 lg:px-16 sm:px-12 sm:mb-8 lg:mb-4 xl:mb-2 hover:bg-indigo-600 hover:text-white hover:font-black hover:border-4 hover:border-white hover:shadow-xl focus:bg-indigo-600 focus:text-white focus:font-black focus:border-4 focus:border-white focus:shadow-xl">ABOUT ME</a>
+            <a href="#portfolio" class="px-8 py-2 mx-2 mb-16 text-indigo-600 bg-white rounded-full sm:mx-4 lg:mx-8 xl:mx-12 xl:px-18 lg:px-16 sm:px-12 sm:mb-8 lg:mb-4 xl:mb-2 hover:bg-indigo-600 hover:text-white hover:font-black hover:border-4 hover:border-white hover:shadow-xl focus:bg-indigo-600 focus:text-white focus:font-black focus:border-4 focus:border-white focus:shadow-xl">PORTFOLIO</a>
         </div>
     </div>
 
@@ -262,40 +263,79 @@
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="container pt-8 mx-auto mb-8 scroll-mt-16">
-        <div x-data="{
-            // Projects Data, could implement a real database with sql.js-httpvfs to scale
+        <div
+        x-data="{
             projects: [
-            { title: 'OCUS', subjects: ['UX Research', 'UX Design', 'Data Analysis'], tools: ['R', 'SQL', 'Google Analytics', 'Hotjar', 'Excel', 'Communication Tools'], image: 'images/ocus.jpg', link: 'projects/ocus.html', description: 'Summarizing my work as an UX Researcher at OCUS.' },
-            { title: 'Unilux', subjects: ['UX Research', 'Data Analysis'], tools: ['R', 'Python', 'SPSS', 'SQL', 'Communication Tools'], image: 'images/unilux.PNG', link: 'projects/unilux.html', description: 'Studying the applicability and validity of generic user experience scales.' },
-            { title: 'Rush-hour', subjects: ['AI', 'Programming'], tools: ['Prolog'], image: 'images/rush-hour.PNG', link: 'projects/rush-hour.html', description: 'Coding a GUI and AI to play rush hour.' },
-            { title: 'Gameloft', subjects: ['UX Research'], tools: ['Communication Tools'], image: 'images/gameloft.PNG', link: 'projects/gameloft.html', description: 'Presenting a usability assessment of the FTUE of the mobile game Asphalt 9: Legends.' },
-            { title: 'PassWorthy', subjects: ['Programming', 'UX Design'], tools: ['C#/.NET', 'Windows Forms', 'NHibernate', 'SQL'], image: 'images/passworthy.PNG', link: 'projects/passworthy.html', description: 'Designing a desktop app to store and generate secure passwords.' },
-            { title: 'TEEMON', subjects: ['Programming', 'Data Analysis', 'UX Design'], tools: ['React Native', 'SQL', 'Communication Tools'], image: 'images/teemon.PNG', link: 'projects/teemon.html', description: 'Designing a mobile app to team on with other league players.' }
+                { title: 'OCUS', subjects: ['UX Research', 'UX Design', 'Data Analysis'], tools: ['R', 'SQL', 'Google Analytics', 'Hotjar', 'Excel', 'Communication Tools'], image: 'images/ocus.jpg', link: 'projects/ocus.html', description: 'Summarizing my work as an UX Researcher at OCUS.' },
+                { title: 'Unilux', subjects: ['UX Research', 'Data Analysis'], tools: ['R', 'Python', 'SPSS', 'SQL', 'Communication Tools'], image: 'images/unilux.PNG', link: 'projects/unilux.html', description: 'Studying the applicability and validity of generic user experience scales.' },
+                { title: 'Rush-hour', subjects: ['AI', 'Programming'], tools: ['Prolog'], image: 'images/rush-hour.PNG', link: 'projects/rush-hour.html', description: 'Coding a GUI and AI to play rush hour.' },
+                { title: 'Gameloft', subjects: ['UX Research'], tools: ['Communication Tools'], image: 'images/gameloft.PNG', link: 'projects/gameloft.html', description: 'Presenting a usability assessment of the FTUE of the mobile game Asphalt 9: Legends.' },
+                { title: 'PassWorthy', subjects: ['Programming', 'UX Design'], tools: ['C#/.NET', 'Windows Forms', 'NHibernate', 'SQL'], image: 'images/passworthy.PNG', link: 'projects/passworthy.html', description: 'Designing a desktop app to store and generate secure passwords.' },
+                { title: 'TEEMON', subjects: ['Programming', 'Data Analysis', 'UX Design'], tools: ['React Native', 'SQL', 'Communication Tools'], image: 'images/teemon.PNG', link: 'projects/teemon.html', description: 'Designing a mobile app to team on with other league players.' }
             ],
-
-            // Variables and Functions
+            originalProjects: [],
+            selectedProjectIndex: null,
             selectedSubjects: [],
             selectedTools: [],
+
+            initOriginalProjects() {
+                this.originalProjects = this.projects.map(project => project.title);
+                this.selectedProjectIndex = 0;
+            },
+
+            isSelectedSubject(subject){
+                return this.selectedSubjects.includes(subject);
+            },
+
+            isSelectedTool(tool){
+                return this.selectedTools.includes(tool);
+            },
+
             toggleSelectedSubject(subject) {
-                if (this.isSelectedSubject(subject)) {
+                const isSelected = this.isSelectedSubject(subject);
+                if (isSelected) {
                     this.selectedSubjects = this.selectedSubjects.filter(item => item !== subject);
                 } else {
                     this.selectedSubjects.push(subject);
                 }
+                console.log(this.selectedSubjects);
             },
+
             toggleSelectedTool(tool) {
-                if (this.isSelectedTool(tool)) {
+                const isSelected = this.isSelectedTool(tool);
+                if (isSelected) {
                     this.selectedTools = this.selectedTools.filter(item => item !== tool);
                 } else {
                     this.selectedTools.push(tool);
                 }
+                console.log(this.selectedTools);
             },
-            isSelectedSubject(subject) {
-                return this.selectedSubjects.includes(subject);
+
+            moveProject(project) {
+                const projectOriginalIndex = this.originalProjects.findIndex(item => item === project);
+                if (projectOriginalIndex !== this.selectedProjectIndex) {
+                    this.projects.move(0, this.selectedProjectIndex);
+                    this.projects.move(projectOriginalIndex, 0);
+                    this.selectedProjectIndex = projectOriginalIndex;
+                }
             },
-            isSelectedTool(tool) {
-                return this.selectedTools.includes(tool);
+
+            moveProjectExperimental(project) {
+                const projectOriginalIndex = this.originalProjects.findIndex(item => item === project);
+                const projectIndex = this.projects.findIndex (p => p.title === project);
+                if (projectOriginalIndex !== this.selectedProjectIndex) {
+                    if (isOneColumnDisplay() || (this.projectIndex % 2 === 0)) {
+                        this.projects.move(0, this.selectedProjectIndex);
+                        this.projects.move(projectOriginalIndex, 0);
+                    }
+                    else {
+                        this.projects.move(0, this.selectedProjectIndex);
+                        this.projects.move(projectOriginalIndex, 1);
+                    }
+                    this.selectedProjectIndex = projectOriginalIndex;
+                }
             },
+
             matchSelectedCriteria(project) {
                 if (
                     this.selectedSubjects.length === 0 &&
@@ -311,14 +351,8 @@
                 );
                 return hasAllSelectedSubjects && hasAllSelectedTools;
             },
-
-            // 350ms delay to match the transition
-            scrollToProject(project) {
-                setTimeout(() => {
-                    window.location.href = `#${project}`;
-                }, 350);
-            }
             }"
+            x-init="initOriginalProjects()"
             >
             <h2 class="text-3xl font-semibold"><i class="fas fa-briefcase"></i> Portfolio</h2>
             <p class="mt-4 font-semibold">
@@ -342,7 +376,7 @@
                         <div class="relative p-4 border-2 border-gray-200 rounded-lg group hover:border-blue-500 hover:shadow-xl">
                             <a x-bind:href="project.link">
                                 <div class="flex flex-col h-full">
-                                    <img class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-100 lg:group-hover:opacity:80" x-bind:src="project.image" x-bind:alt="project.title + ' project image'">
+                                    <img class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-100 lg:group-hover:opacity-80" x-bind:src="project.image" x-bind:alt="project.title + ' project image'">
                                     <h3 class="mt-2 text-xl font-semibold group-hover:text-blue-500 group-hover:font-bold" x-text="project.title"></h3>
                                     <p class="mt-2" x-text="project.description"></p>
                                 </div>
@@ -352,18 +386,18 @@
                                 <!-- Subject Buttons -->
                                 <template x-for="subject in project.subjects" :key="subject">
                                     <button
-                                        @click="toggleSelectedSubject(subject); scrollToProject(project.title); "
+                                        @click="toggleSelectedSubject(subject); moveProject(project.title); scrollToProject(project.title)"
                                         :class="{
-                                            'bg-violet-500 text-white border-2 border-violet-700 rounded-full mr-2 mt-1 px-2 betterhover:hover:bg-violet-700': isSelectedSubject(subject) && subject === 'UX Research',
-                                            'bg-white text-blue-500 border border-gray-300 rounded-full mr-2 mt-1 px-2 betterhover:hover:bg-violet-500 betterhover:hover:text-white betterhover:hover:border-violet-500': !isSelectedSubject(subject) && subject === 'UX Research',
-                                            'bg-amber-500 text-white border-2 border-amber-700 rounded-full mr-2 mt-1 px-2 betterhover:hover:bg-amber-700': isSelectedSubject(subject) && subject === 'UX Design',
-                                            'bg-white text-blue-500 border border-gray-300 rounded-full mr-2 mt-1 px-2 betterhover:hover:bg-amber-500 betterhover:hover:text-white betterhover:hover:border-amber-500': !isSelectedSubject(subject) && subject === 'UX Design',
-                                            'bg-emerald-500 text-white border-2 border-emerald-700 rounded-full mr-2 mt-1 px-2 betterhover:hover:bg-emerald-700': isSelectedSubject(subject) && subject === 'Data Analysis',
-                                            'bg-white text-blue-500 border border-gray-300 rounded-full mr-2 mt-1 px-2 betterhover:hover:bg-emerald-500 betterhover:hover:text-white betterhover:hover:border-emerald-500': !isSelectedSubject(subject) && subject === 'Data Analysis',
-                                            'bg-pink-500 text-white border-2 border-pink-700 rounded-full mr-2 mt-1 px-2 betterhover:hover:bg-pink-700': isSelectedSubject(subject) && subject === 'AI',
-                                            'bg-white text-blue-500 border border-gray-300 rounded-full mr-2 mt-1 px-2 betterhover:hover:bg-pink-500 betterhover:hover:text-white betterhover:hover:border-pink-500': !isSelectedSubject(subject) && subject === 'AI',
-                                            'bg-red-500 text-white border-2 border-red-700 rounded-full mr-2 mt-1 px-2 betterhover:hover:bg-red-700': isSelectedSubject(subject) && subject === 'Programming',
-                                            'bg-white text-blue-500 border border-gray-300 rounded-full mr-2 mt-1 px-2 betterhover:hover:bg-red-500 betterhover:hover:text-white betterhover:hover:border-red-500': !isSelectedSubject(subject) && subject === 'Programming'
+                                            'bg-violet-500 text-white border-2 border-violet-700 rounded-full mr-2 mt-1 px-2 hover:bg-violet-700': isSelectedSubject(subject) && subject === 'UX Research',
+                                            'bg-white text-blue-500 border border-gray-300 rounded-full mr-2 mt-1 px-2 hover:bg-violet-500 hover:text-white hover:border-violet-500': !isSelectedSubject(subject) && subject === 'UX Research',
+                                            'bg-amber-500 text-white border-2 border-amber-700 rounded-full mr-2 mt-1 px-2 hover:bg-amber-700': isSelectedSubject(subject) && subject === 'UX Design',
+                                            'bg-white text-blue-500 border border-gray-300 rounded-full mr-2 mt-1 px-2 hover:bg-amber-500 hover:text-white hover:border-amber-500': !isSelectedSubject(subject) && subject === 'UX Design',
+                                            'bg-emerald-500 text-white border-2 border-emerald-700 rounded-full mr-2 mt-1 px-2 hover:bg-emerald-700': isSelectedSubject(subject) && subject === 'Data Analysis',
+                                            'bg-white text-blue-500 border border-gray-300 rounded-full mr-2 mt-1 px-2 hover:bg-emerald-500 hover:text-white hover:border-emerald-500': !isSelectedSubject(subject) && subject === 'Data Analysis',
+                                            'bg-pink-500 text-white border-2 border-pink-700 rounded-full mr-2 mt-1 px-2 hover:bg-pink-700': isSelectedSubject(subject) && subject === 'AI',
+                                            'bg-white text-blue-500 border border-gray-300 rounded-full mr-2 mt-1 px-2 hover:bg-pink-500 hover:text-white hover:border-pink-500': !isSelectedSubject(subject) && subject === 'AI',
+                                            'bg-red-500 text-white border-2 border-red-700 rounded-full mr-2 mt-1 px-2 hover:bg-red-700': isSelectedSubject(subject) && subject === 'Programming',
+                                            'bg-white text-blue-500 border border-gray-300 rounded-full mr-2 mt-1 px-2 hover:bg-red-500 hover:text-white hover:border-red-500': !isSelectedSubject(subject) && subject === 'Programming',
                                         }"
                                         x-text="subject"
                                     ></button>
@@ -374,10 +408,10 @@
                                 <!-- Tool Buttons -->
                                 <template x-for="tool in project.tools" :key="tool">
                                     <button
-                                        @click="toggleSelectedTool(tool); scrollToProject(project.title);"
+                                        @click="toggleSelectedTool(tool); moveProject(project.title); scrollToProject(project.title)"
                                         :class="{
-                                            'bg-blue-500 text-white border-2 border-blue-700 rounded-full mr-2 mt-1 px-2 betterhover:hover:bg-blue-700': isSelectedTool(tool),
-                                            'bg-white text-blue-500 border border-gray-300 rounded-full mr-2 mt-1 px-2 betterhover:hover:bg-blue-500 betterhover:hover:text-white betterhover:hover:border-blue-300': !isSelectedTool(tool)
+                                            'bg-blue-500 text-white border-2 border-blue-700 rounded-full mr-2 mt-1 px-2 hover:bg-blue-700': isSelectedTool(tool),
+                                            'bg-white text-blue-500 border border-gray-300 rounded-full mr-2 mt-1 px-2 hover:bg-blue-500 hover:text-white hover:border-blue-300': !isSelectedTool(tool)
                                         }"
                                         x-text="tool"
                                     ></button>
@@ -425,7 +459,7 @@
                 </ul>
                 <br/>
                 <p class="text-sm text-gray-500">
-                    © Sylvain Duhau-Marmon, 2023-
+                    © Sylvain Duhau-Marmon, 2023-2024
                     <br />
                     This work is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="text-blue-500 hover:underline hover:text-blue-700">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
                 </p>

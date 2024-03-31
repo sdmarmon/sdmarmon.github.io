@@ -3,6 +3,7 @@ module.exports = {
   content: [
     './index.html',
     './includes/**/*.{html,js}',
+    './pages/**/*.{html,js}',
     './projects/**/*.{html,js}',
   ],
   theme: {
@@ -13,10 +14,10 @@ module.exports = {
         clamp3to4xl: 'clamp(1.875rem, 1.7045rem + 0.8523vw, 2.25rem)',
         clamp4to6xl: 'clamp(2.25rem, 1.25rem + 1.5625vw, 3.75rem)',
       },
-      screens: {
-        'betterhover': {'raw': '(hover: hover)'},
-      },
     },
+  },
+  future: {
+    hoverOnlyWhenSupported: true,
   },
   plugins: [],
 }
