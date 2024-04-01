@@ -20,9 +20,27 @@ function isOneColumnDisplay() {
     const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
     const breakpoint = 1024; //lg
     return viewportWidth < breakpoint;
-}
+};
 
 document.addEventListener('alpine:init', () => {
+    Alpine.data('heroText', () => ({
+        textOverflowMobile: false,
+        textOverflowDesktop: false,
+        checkOverflow() {
+        if (this.textOverflowMobile === false)
+        {
+            const mobileElement = document.querySelector('.w-1\\/2');
+            const mobileOverflow = (mobileElement.scrollHeight > mobileElement.clientHeight || mobileElement.scrollWidth > mobileElement.clientWidth);
+            this.textOverflowMobile = mobileOverflow;
+        }
+        if (this.textOverflowDesktop === false){
+            const desktopElement = document.querySelector('.w-1\\/3');
+            const desktopOverflow = (desktopElement.scrollHeight > desktopElement.clientHeight || desktopElement.scrollWidth > desktopElement.clientWidth);
+            this.textOverflowDesktop = desktopOverflow;
+        }
+        console.log('test');
+        }
+    })),
     Alpine.data('projectCards', () => ({
         //Could implement a real database with sql.js-httpvfs to scale
         projects: [
@@ -96,7 +114,7 @@ document.addEventListener('alpine:init', () => {
             }
         },
 
-        isProjectOnRightColumn(project) {
+        isProjectSecondColumn(project) {
             if (isOneColumnDisplay()){
                 return false;
             }
@@ -157,7 +175,7 @@ document.addEventListener('alpine:init', () => {
 
         updateIsCol2() {
             this.projects.forEach(project => {
-                project.isCol2 = this.isProjectOnRightColumn(project);
+                project.isCol2 = this.isProjectSecondColumn(project);
             });
         }
     }))
