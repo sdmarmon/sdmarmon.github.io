@@ -27,19 +27,17 @@ document.addEventListener('alpine:init', () => {
         textOverflowMobile: false,
         textOverflowDesktop: false,
         checkOverflow() {
-        if (this.textOverflowMobile === false)
+        if (this.textOverflowMobile !== true)
         {
             const mobileElement = document.querySelector('.w-1\\/2');
             const mobileOverflow = (mobileElement.scrollHeight > mobileElement.clientHeight || mobileElement.scrollWidth > mobileElement.clientWidth);
             this.textOverflowMobile = mobileOverflow;
         }
-        if (this.textOverflowDesktop === false){
+        if (this.textOverflowDesktop !== true){
             const desktopElement = document.querySelector('.w-1\\/3');
             const desktopOverflow = (desktopElement.scrollHeight > desktopElement.clientHeight || desktopElement.scrollWidth > desktopElement.clientWidth);
             this.textOverflowDesktop = desktopOverflow;
-        }
-        console.log('test');
-        }
+        }}
     })),
     Alpine.data('projectCards', () => ({
         //Could implement a real database with sql.js-httpvfs to scale

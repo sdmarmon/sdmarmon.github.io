@@ -221,20 +221,26 @@
         <div class="relative flex h-1/5"></div>
 
         <!-- Central Part (3/5) with Text -->
-        <div class="relative flex text-white h-3/5" x-data="heroText" x-init="$nextTick(() => { checkOverflow() });" @resize.window="checkOverflow()" x-on>
-            <div class="w-1/2 p-4 text-center lg:hidden" x-cloak>
+        <div class="relative flex text-white h-3/5" x-data="heroText" x-init="$nextTick(() => { checkOverflow() });" @resize.window="checkOverflow()">
+            <div class="w-1/2 p-4 text-center lg:hidden">
                 <h1
-                class="mt-0 font-bold text-clamp3to4xl"
+                class="font-bold"
+                :class="textOverflowMobile ? 'text-3xl' : 'text-clamp3to4xl'"
+                x-cloak
                 x-html="textOverflowMobile ? 'Sylvain&lt;br&gt;D-M' : 'Sylvain&lt;br&gt;Duhau-Marmon'"
                 ></h1>
             </div>
-            <div class="hidden w-1/3 p-4 text-center lg:block" x-cloak>
+            <div class="hidden w-1/3 p-4 text-center lg:block">
                 <h1
-                class="font-bold text-clamp4to6xl"
+                class="font-bold"
+                :class="textOverflowDesktop ? 'text-4xl' : 'text-clamp4to6xl'"
+                x-cloak
                 x-html="'Hi! I am Sylvain &lt;span class=&quot;whitespace-nowrap&quot;&gt;Duhau-Marmon.&lt;/span&gt;'"
                 ></h1>
                 <p
-                class="mt-4 font-semibold text-clamp1to2xl"
+                class="mt-4 font-semibold"
+                :class="textOverflowDesktop ? 'text-xl' : 'text-clamp1to2xl'"
+                x-cloak
                 x-html="textOverflowDesktop ? 'UX researcher, data analyst and front-end developer.' : 'I am a passionate and dedicated UX researcher, data analyst, and front-end developer.&lt;br&gt;With a strong background in understanding user behavior and data-driven decision-making, I create intuitive and user-centric experiences.'"
                 ></p>
             </div>
