@@ -287,60 +287,61 @@
                 Explore some of my recent projects:
             </p>
 
-            <div class="grid grid-cols-1 gap-4 mt-4 lg:grid-cols-2">
+            <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
                 <!-- Projects Grid -->
                 <template x-for="project in projects" :key="project.title">
                     <div
-                        class="scroll-mt-16 lg:col-span-1"
+                        class="pt-4 scroll-mt-16 lg:col-span-1"
                         x-bind:id="project.title"
                         x-cloak
                         x-show="matchSelectedCriteria(project)"
                         x-transition:enter="transition ease-in-out duration-200" x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100"
                         x-transition:leave="transition ease-in-out duration-200" x-transition:leave-start="opacity-100 transform scale-100" x-transition:leave-end="opacity-0 transform scale-95"
                         >
-                        <div class="relative p-4 border-2 border-gray-200 rounded-lg group hover:border-blue-500 hover:shadow-xl">
+                        <div class="relative p-4 border-2 border-gray-200 rounded-lg group hover:border-blue-600 hover:shadow-xl">
                             <a x-bind:href="project.link">
                                 <div class="flex flex-col h-full">
                                     <img class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80" x-bind:src="project.image" x-bind:alt="project.title + ' project image'">
-                                    <h3 class="mt-2 text-xl font-semibold group-hover:text-blue-500 group-hover:font-bold" x-text="project.title"></h3>
+                                    <h3 class="mt-2 text-xl font-semibold group-hover:text-blue-600 group-hover:font-bold" x-text="project.title"></h3>
                                     <p class="mt-2" x-text="project.description"></p>
                                 </div>
                             </a>
 
-                            <div class="flex flex-wrap mt-8 space-x-4">
+                            <div class="flex flex-wrap mt-6 space-x-4">
                                 <!-- Subject Buttons -->
                                 <template x-for="subject in project.subjects" :key="subject">
                                     <button
                                         @click="toggleSelectedSubject(subject); moveProjectTwoColumns(project.title); scrollToProject(project.title)"
+                                        class="flex items-center justify-center w-12 h-12 px-4 mt-2 transition duration-300 rounded-full min-w-fit"
                                         :class="{
-                                            'bg-violet-500 text-white border-2 border-violet-700 rounded-full mr-2 mt-1 px-2 hover:bg-violet-700': isSelectedSubject(subject) && subject === 'UX Research',
-                                            'bg-white text-blue-500 border border-gray-300 rounded-full mr-2 mt-1 px-2 hover:bg-violet-500 hover:text-white hover:border-violet-500': !isSelectedSubject(subject) && subject === 'UX Research',
-                                            'bg-amber-500 text-white border-2 border-amber-700 rounded-full mr-2 mt-1 px-2 hover:bg-amber-700': isSelectedSubject(subject) && subject === 'UX Design',
-                                            'bg-white text-blue-500 border border-gray-300 rounded-full mr-2 mt-1 px-2 hover:bg-amber-500 hover:text-white hover:border-amber-500': !isSelectedSubject(subject) && subject === 'UX Design',
-                                            'bg-emerald-500 text-white border-2 border-emerald-700 rounded-full mr-2 mt-1 px-2 hover:bg-emerald-700': isSelectedSubject(subject) && subject === 'Data Analysis',
-                                            'bg-white text-blue-500 border border-gray-300 rounded-full mr-2 mt-1 px-2 hover:bg-emerald-500 hover:text-white hover:border-emerald-500': !isSelectedSubject(subject) && subject === 'Data Analysis',
-                                            'bg-pink-500 text-white border-2 border-pink-700 rounded-full mr-2 mt-1 px-2 hover:bg-pink-700': isSelectedSubject(subject) && subject === 'AI',
-                                            'bg-white text-blue-500 border border-gray-300 rounded-full mr-2 mt-1 px-2 hover:bg-pink-500 hover:text-white hover:border-pink-500': !isSelectedSubject(subject) && subject === 'AI',
-                                            'bg-red-500 text-white border-2 border-red-700 rounded-full mr-2 mt-1 px-2 hover:bg-red-700': isSelectedSubject(subject) && subject === 'Programming',
-                                            'bg-white text-blue-500 border border-gray-300 rounded-full mr-2 mt-1 px-2 hover:bg-red-500 hover:text-white hover:border-red-500': !isSelectedSubject(subject) && subject === 'Programming',
+                                            'bg-violet-600 text-white hover:bg-violet-800': isSelectedSubject(subject) && subject === 'UX Research',
+                                            'bg-white text-blue-600 border border-gray-300 hover:bg-violet-600 hover:text-white hover:border-violet-600': !isSelectedSubject(subject) && subject === 'UX Research',
+                                            'bg-amber-600 text-white hover:bg-amber-800': isSelectedSubject(subject) && subject === 'UX Design',
+                                            'bg-white text-blue-600 border border-gray-300 hover:bg-amber-600 hover:text-white hover:border-amber-600': !isSelectedSubject(subject) && subject === 'UX Design',
+                                            'bg-emerald-600 text-white hover:bg-emerald-800': isSelectedSubject(subject) && subject === 'Data Analysis',
+                                            'bg-white text-blue-600 border border-gray-300 hover:bg-emerald-600 hover:text-white hover:border-emerald-600': !isSelectedSubject(subject) && subject === 'Data Analysis',
+                                            'bg-pink-600 text-white hover:bg-pink-800': isSelectedSubject(subject) && subject === 'AI',
+                                            'bg-white text-blue-600 border border-gray-300 hover:bg-pink-600 hover:text-white hover:border-pink-600': !isSelectedSubject(subject) && subject === 'AI',
+                                            'bg-red-600 text-white hover:bg-red-800': isSelectedSubject(subject) && subject === 'Programming',
+                                            'bg-white text-blue-600 border border-gray-300 hover:bg-red-600 hover:text-white hover:border-red-600': !isSelectedSubject(subject) && subject === 'Programming',
                                         }"
                                         x-text="subject"
                                     ></button>
                                 </template>
                             </div>
 
-                            <div class="flex flex-wrap mt-4 space-x-4">
+                            <div class="flex flex-wrap mt-2 space-x-4">
                                 <!-- Tool Buttons -->
                                 <template x-for="tool in project.tools" :key="tool">
                                     <button
                                         @click="toggleSelectedTool(tool); moveProjectTwoColumns(project.title); scrollToProject(project.title)"
+                                        class="flex items-center justify-center w-12 h-12 px-4 mt-2 transition duration-300 rounded-full min-w-fit"
                                         :class="{
-                                            'bg-blue-500 text-white border-2 border-blue-700 rounded-full mr-2 mt-1 px-2 hover:bg-blue-700': isSelectedTool(tool),
-                                            'bg-white text-blue-500 border border-gray-300 rounded-full mr-2 mt-1 px-2 hover:bg-blue-500 hover:text-white hover:border-blue-300': !isSelectedTool(tool)
+                                            'bg-blue-600 text-white hover:bg-blue-800': isSelectedTool(tool),
+                                            'bg-white text-blue-600 border border-gray-300 hover:bg-blue-600 hover:text-white hover:border-blue-300': !isSelectedTool(tool)
                                         }"
                                         x-text="tool"
                                     ></button>
-                                    </a>
                                 </template>
                             </div>
                         </div>
