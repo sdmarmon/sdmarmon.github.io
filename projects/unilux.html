@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Sylvain Duhau-Marmon">
+    <meta name="description" content="The personal website of Sylvain Duhau-Marmon, this page is about his work for the University of Luxembourg.">
+    <meta name="keywords" content="Academic Research, User Experience Scales, Methodology, UX Research, Data Analysis">
     <title>Unilux</title>
 
     <!-- Favicon Links -->
@@ -21,7 +24,12 @@
     <link href="../style.css" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.7/dist/cdn.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="../includes/script.js"></script>
+    <script>
+        $(function(){
+        $("#header").load("../includes/header.html");
+        $("#footer").load("../includes/footer.html");
+        $("#construction").load("../includes/construction.html");});
+    </script>
 </head>
 
 <!-- Tailwind CSS and Alpine.js -->

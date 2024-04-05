@@ -178,9 +178,3 @@ document.addEventListener('alpine:init', () => {
         }
     }))
 })
-
-$(function(){
-    $("#header").load("../includes/header.html");
-    $("#footer").load("../includes/footer.html");
-    $("#construction").load("../includes/construction.html");
-});
