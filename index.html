@@ -21,8 +21,8 @@
             display: none !important;
         }
     </style>
-    <link defer href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
+    <link href="includes/fontello-da7c40e3/css/fontello.css" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.7/dist/cdn.min.js"></script>
     <script src="includes/script.js"></script>
 </head>
@@ -45,30 +45,36 @@
             <div class="container flex items-center justify-between mx-auto">
                 <h1 class="text-2xl font-bold text-white">
                     <a href="index.html">Sylvain Duhau-Marmon</a></h1>
-                <ul class="hidden space-x-4 lg:flex">
+                <ul class="hidden space-x-4 text-lg lg:flex">
                     <li>
                         <a href="#about" class="hover:font-bold">
-                        <i class="fas fa-user"></i> About Me</a>
+                            <h2><i class="mr-1 icon-user"></i>About me</h2>
+                        </a>
                     </li>
                     <li>
                         <a href="#portfolio" class="hover:font-bold">
-                        <i class="fas fa-briefcase"></i> Portfolio</a>
+                            <h2><i class="mr-1 icon-briefcase"></i>Portfolio</h2>
+                        </a>
                     </li>
                     <li>
                         <a href="#contact" class="hover:font-bold">
-                        <i class="fas fa-envelope"></i> Contact Me</a>
+                            <h2><i class="mr-1 icon-mail-alt"></i>Contact</h2>
+                        </a>
                     </li>
                     <li>
-                        <a href="https://github.com/sdmarmon" target="_blank" rel="noopener noreferrer" class="hover:font-bold">
-                        <i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://github.com/sdmarmon" target="_blank" rel="noopener noreferrer" class="flex items-center hover:font-bold">
+                            <h2><i class="mr-1 icon-github-circled"></i>GitHub</h2>
+                        </a>
                     </li>
                     <li>
-                        <a href="https://www.linkedin.com/in/sylvain-d-marmon" target="_blank" rel="noopener noreferrer" class="hover:font-bold">
-                        <i class="fab fa-linkedin"></i> LinkedIn</a>
+                        <a href="https://www.linkedin.com/in/sylvain-d-marmon" target="_blank" rel="noopener noreferrer" class="flex items-center hover:font-bold">
+                            <h2><i class="mr-1 icon-linkedin-squared"></i>LinkedIn</h2>
+                        </a>
                     </li>
                     <li>
-                        <a href="assets/Resume_Duhau-Marmon.pdf" download target="_blank" rel="noopener noreferrer" class="hover:font-bold">
-                        <i class="fas fa-file-pdf"></i> Resume</a>
+                        <a href="assets/Resume_Duhau-Marmon.pdf" download target="_blank" rel="noopener noreferrer" class="flex items-center hover:font-bold">
+                            <h2><i class="mr-1 icon-file-pdf"></i>Resume</h2>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -102,37 +108,44 @@
                 <ul>
                     <li>
                         <a href="index.html" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
-                            <i class="fas fa-home"></i> Home</a>
+                            <h2><i class="mr-1 icon-home"></i>Home</h2>
+                        </a>
                         <div class="w-full h-px bg-gray-300"></div>
                     </li>
                     <li>
                         <a href="#about" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
-                            <i class="fas fa-user"></i> About Me</a>
+                            <h2><i class="mr-1 icon-user"></i>About me</h2>
+                        </a>
                         <div class="w-full h-px bg-gray-300"></div>
                     </li>
                     <li>
                         <a href="#portfolio" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
-                            <i class="fas fa-briefcase"></i> Portfolio</a>
+                            <h2><i class="mr-1 icon-briefcase"></i>Portfolio</h2>
+                        </a>
                         <div class="w-full h-px bg-gray-300"></div>
                     </li>
                     <li>
                         <a href="#contact" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
-                            <i class="fas fa-envelope"></i> Contact Me</a>
+                            <h2><i class="mr-1 icon-mail-alt"></i>Contact</h2>
+                        </a>
                         <div class="w-full h-px bg-gray-300"></div>
                     </li>
                     <li>
                         <a href="https://github.com/sdmarmon" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">
-                            <i class="fab fa-github"></i> GitHub</a>
+                            <h2><i class="mr-1 icon-github-circled"></i>GitHub</h2>
+                        </a>
                         <div class="w-full h-px bg-gray-300"></div>
                     </li>
                     <li>
                         <a href="https://www.linkedin.com/in/sylvain-d-marmon" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">
-                            <i class="fab fa-linkedin"></i> LinkedIn</a>
+                            <h2><i class="mr-1 icon-linkedin-squared"></i>LinkedIn</h2>
+                        </a>
                         <div class="w-full h-px bg-gray-300"></div>
                     </li>
                     <li>
                         <a href="assets/Resume_Duhau-Marmon.pdf" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" download target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">
-                            <i class="fas fa-file-pdf"></i> Resume</a>
+                            <h2><i class="mr-1 icon-file-pdf"></i>Resume</h2>
+                        </a>
                         <div class="w-full h-px bg-gray-300"></div>
                     </li>
                 </ul>
@@ -266,7 +279,7 @@
 
     <!-- About Me Section -->
     <section id="about" class="container pt-8 mx-auto mb-8 scroll-mt-16">
-        <h2 class="text-3xl font-semibold"><i class="fas fa-user"></i> About Me</h2>
+        <h2 class="text-3xl font-semibold"><i class="mr-1 icon-user"></i>About me</h2>
         <p class="mt-4 font-semibold">
             Under construction!
         </p>
@@ -279,7 +292,7 @@
     <!-- Portfolio Section -->
     <section id="portfolio" class="container pt-8 mx-auto mb-8 scroll-mt-16">
         <div x-data="projectCards" x-init="initOriginalProjects(); updateIsCol2()" @resize.window="updateIsCol2()">
-            <h2 class="text-3xl font-semibold"><i class="fas fa-briefcase"></i> Portfolio</h2>
+            <h2 class="text-3xl font-semibold"><i class="mr-1 icon-briefcase"></i>Portfolio</h2>
             <p class="mt-4 font-semibold">
                 Under construction!
             </p>
@@ -353,7 +366,7 @@
 
     <!-- Contact Section -->
     <section id="contact" class="container pt-8 mx-auto mb-8 scroll-mt-16">
-        <h2 class="text-3xl font-semibold"><i class="fas fa-envelope"></i> Contact Me</h2>
+        <h2 class="text-3xl font-semibold"><i class="mr-1 icon-mail-alt"></i>Contact</h2>
         <p class="mt-4">
             Feel free to get in touch with me at <a href="mailto:sylvain.duhau.marmon@gmail.com" class="text-blue-600 hover:underline hover:text-blue-800">sylvain.duhau.marmon@gmail.com</a>.
         </p>
@@ -369,17 +382,17 @@
                 <ul class="flex justify-center space-x-4">
                     <li>
                         <a href="/pages/accessibility.html" class="text-blue-600 hover:underline hover:text-blue-800">
-                            <i class="fas fa-universal-access"></i> Accessibility
+                            <h2><i class="mr-1 icon-universal-access"></i>Accessibility</h2>
                         </a>
                     </li>
                     <li>
                         <a href="/pages/privacy.html" class="text-blue-600 hover:underline hover:text-blue-800">
-                            <i class="fas fa-lock"></i> Privacy
+                            <h2><i class="mr-1 icon-lock"></i>Privacy</h2>
                         </a>
                     </li>
                     <li>
                         <a href="https://github.com/sdmarmon/sdmarmon.github.io" class="text-blue-600 hover:underline hover:text-blue-800">
-                            <i class="fab fa-github"></i> Source Code
+                            <h2><i class="mr-1 icon-github-circled"></i>Source Code</h2>
                         </a>
                     </li>
                 </ul>
