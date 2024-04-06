@@ -4,30 +4,36 @@
         <div class="container flex items-center justify-between mx-auto">
             <h1 class="text-2xl font-bold text-white">
                 <a href="../index.html">Sylvain Duhau-Marmon</a></h1>
-            <ul class="hidden space-x-4 lg:flex">
+            <ul class="hidden space-x-4 text-lg lg:flex">
                 <li>
-                    <a href="../index.html#about">
-                    <i class="fas fa-user"></i> About Me</a>
+                    <a href="../index.html#about" class="hover:font-bold">
+                        <h2><i class="mr-1 icon-user"></i>About me</h2>
+                    </a>
                 </li>
                 <li>
-                    <a href="../index.html#portfolio">
-                    <i class="fas fa-briefcase"></i> Portfolio</a>
+                    <a href="../index.html#portfolio" class="hover:font-bold">
+                        <h2><i class="mr-1 icon-briefcase"></i>Portfolio</h2>
+                    </a>
                 </li>
                 <li>
-                    <a href="../index.html#contact">
-                    <i class="fas fa-envelope"></i> Contact Me</a>
+                    <a href="../index.html#contact" class="hover:font-bold">
+                        <h2><i class="mr-1 icon-envelope"></i>Contact</h2>
+                    </a>
                 </li>
                 <li>
-                    <a href="https://github.com/sdmarmon" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-github"></i> GitHub</a>
+                    <a href="https://github.com/sdmarmon" target="_blank" rel="noopener noreferrer" class="hover:font-bold">
+                        <h2><i class="mr-1 icon-github-circled"></i>GitHub</h2>
+                    </a>
                 </li>
                 <li>
-                    <a href="https://www.linkedin.com/in/sylvain-d-marmon" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/sylvain-d-marmon" target="_blank" rel="noopener noreferrer" class="hover:font-bold">
+                        <h2><i class="mr-1 icon-linkedin-squared"></i>LinkedIn</h2>
+                    </a>
                 </li>
                 <li>
-                    <a href="../assets/Resume_Duhau-Marmon.pdf" download target="_blank" rel="noopener noreferrer">
-                    <i class="fas fa-file-pdf"></i> Resume</a>
+                    <a href="../assets/Resume_Duhau-Marmon.pdf" download target="_blank" rel="noopener noreferrer" class="hover:font-bold">
+                        <h2><i class="mr-1 icon-file-pdf"></i>Resume</h2>
+                    </a>
                 </li>
             </ul>
         </div>
@@ -47,7 +53,7 @@
 
     <!-- Mobile Navigation Overlay (Left Sidebar) -->
     <div
-        class="fixed left-0 z-10 w-4/5 h-full shadow-lg top-16 lg:hidden"
+        class="fixed left-0 z-10 w-3/4 h-full shadow-lg top-16 lg:hidden"
         x-cloak
         x-show="showMobileNavOverlay"
         @click.away="showMobileNavOverlay = false"
@@ -57,38 +63,45 @@
         <div class="h-full bg-white">
             <ul>
                 <li>
-                    <a href="../index.html" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white" @click="showMobileNavOverlay = false">
-                        <i class="fas fa-home"></i> Home</a>
+                    <a href="../index.html" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
+                        <h2><i class="mr-1 icon-home"></i>Home</h2>
+                    </a>
                     <div class="w-full h-px bg-gray-300"></div>
                 </li>
                 <li>
-                    <a href="../index.html#about" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white" @click="showMobileNavOverlay = false">
-                        <i class="fas fa-user"></i> About Me</a>
+                    <a href="../index.html#about" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
+                        <h2><i class="mr-1 icon-user"></i>About me</h2>
+                    </a>
                     <div class="w-full h-px bg-gray-300"></div>
                 </li>
                 <li>
-                    <a href="../index.html#portfolio" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white" @click="showMobileNavOverlay = false">
-                        <i class="fas fa-briefcase"></i> Portfolio</a>
+                    <a href="../index.html#portfolio" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
+                        <h2><i class="mr-1 icon-briefcase"></i>Portfolio</h2>
+                    </a>
                     <div class="w-full h-px bg-gray-300"></div>
                 </li>
                 <li>
-                    <a href="../index.html#contact" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white" @click="showMobileNavOverlay = false">
-                        <i class="fas fa-envelope"></i> Contact Me</a>
+                    <a href="../index.html#contact" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
+                        <h2><i class="mr-1 icon-mail-alt"></i>Contact</h2>
+                    </a>
                     <div class="w-full h-px bg-gray-300"></div>
                 </li>
                 <li>
-                    <a href="https://github.com/sdmarmon" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white" target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">
-                        <i class="fab fa-github"></i> GitHub</a>
+                    <a href="https://github.com/sdmarmon" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">
+                        <h2><i class="mr-1 icon-github-circled"></i>GitHub</h2>
+                    </a>
                     <div class="w-full h-px bg-gray-300"></div>
                 </li>
                 <li>
-                    <a href="https://www.linkedin.com/in/sylvain-d-marmon" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white" target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">
-                        <i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/sylvain-d-marmon" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">
+                        <h2><i class="mr-1 icon-linkedin-squared"></i>LinkedIn</h2>
+                    </a>
                     <div class="w-full h-px bg-gray-300"></div>
                 </li>
                 <li>
-                    <a href="../assets/Resume_Duhau-Marmon.pdf" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white" download target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">
-                        <i class="fas fa-file-pdf"></i> Resume</a>
+                    <a href="../assets/Resume_Duhau-Marmon.pdf" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" download target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">
+                        <h2><i class="mr-1 icon-file-pdf"></i>Resume</h2>
+                    </a>
                     <div class="w-full h-px bg-gray-300"></div>
                 </li>
             </ul>
