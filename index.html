@@ -35,7 +35,7 @@
     >
     <header>
         <!-- Hidden Navigation Bar -->
-        <div
+        <nav
             class="fixed top-0 left-0 right-0 z-10 hidden p-4 text-white bg-indigo-600 shadow-xl lg:block"
             x-cloak
             x-show="showNavBar"
@@ -78,7 +78,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </nav>
 
         <!-- Mobile Navigation Menu (Hamburger Menu or X Button) -->
         <div x-cloak x-show="showMobileNavMenu"
@@ -96,7 +96,7 @@
         </div>
 
         <!-- Mobile Navigation Overlay (Left Sidebar) -->
-        <div
+        <nav
             class="fixed left-0 z-10 w-3/4 h-full shadow-lg top-16 lg:hidden"
             x-cloak
             x-show="showMobileNavOverlay"
@@ -150,14 +150,14 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </nav>
     </header>
 
     <!-- Apply Navigation Settings -->
-    <div x-bind:class="showMobileNavOverlay ? 'opacity-50 pointer-events-none' : 'opacity-100 pointer-events-auto'" @resize.window="showMobileNavOverlay = window.innerWidth < 1024 ? showMobileNavOverlay : false;">
+    <main x-bind:class="showMobileNavOverlay ? 'opacity-50 pointer-events-none' : 'opacity-100 pointer-events-auto'" @resize.window="showMobileNavOverlay = window.innerWidth < 1024 ? showMobileNavOverlay : false;">
 
     <!-- Hero Banner (Divided into Three Parts) -->
-    <div class="relative flex flex-col h-screen bg-gradient-to-r from-slate-700 via-neutral-500 to-orange-200">
+    <figure class="relative flex flex-col h-screen bg-gradient-to-r from-slate-700 via-neutral-500 to-orange-200">
         <!-- Responsive Background Image -->
         <picture>
             <source
@@ -271,7 +271,7 @@
             <a href="#about" class="px-8 py-2 mx-2 mb-16 text-indigo-600 bg-white rounded-full sm:mx-4 lg:mx-8 xl:mx-12 xl:px-18 lg:px-16 sm:px-12 sm:mb-8 lg:mb-4 xl:mb-2 hover:bg-indigo-600 hover:text-white hover:font-black hover:border-4 hover:border-white hover:shadow-xl focus:bg-indigo-600 focus:text-white focus:font-black focus:border-4 focus:border-white focus:shadow-xl">ABOUT ME</a>
             <a href="#portfolio" class="px-8 py-2 mx-2 mb-16 text-indigo-600 bg-white rounded-full sm:mx-4 lg:mx-8 xl:mx-12 xl:px-18 lg:px-16 sm:px-12 sm:mb-8 lg:mb-4 xl:mb-2 hover:bg-indigo-600 hover:text-white hover:font-black hover:border-4 hover:border-white hover:shadow-xl focus:bg-indigo-600 focus:text-white focus:font-black focus:border-4 focus:border-white focus:shadow-xl">PORTFOLIO</a>
         </div>
-    </div>
+    </figure>
 
     <!-- Container Wrap -->
     <div class="container p-4 mx-auto">
@@ -280,7 +280,7 @@
         x-transition:enter="transition duration-500 ease-out" x-transition:enter-start="opacity-0 transform -translate-y-full" x-transition:enter-end="opacity-100 transform translate-y-0"
         x-transition:leave="transition duration-300 ease-in" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform -translate-y-full"
         >
-    </div>
+        </div>
 
     <!-- About Me Section -->
     <section id="about" class="container pt-8 mx-auto mb-8 scroll-mt-16">
@@ -308,7 +308,7 @@
             <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
                 <!-- Projects Grid -->
                 <template x-for="project in projects" :key="project.title">
-                    <div
+                    <article
                         class="pt-4 scroll-mt-16 lg:col-span-1"
                         x-bind:id="project.title"
                         x-cloak
@@ -363,7 +363,7 @@
                                 </template>
                             </div>
                         </div>
-                    </div>
+                    </article>
                 </template>
             </div>
         </div>
@@ -377,7 +377,7 @@
         </p>
     </section>
     </div> <!-- Container Wrap-->
-    </div> <!-- Navigation Settings-->
+    </main> <!-- Navigation Settings-->
 
     <!-- Footer -->
     <footer>

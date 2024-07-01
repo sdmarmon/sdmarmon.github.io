@@ -1,5 +1,5 @@
 <!-- Apply Navigation Settings -->
-<div x-bind:style="{ 'opacity': showMobileNavOverlay ? '0.5' : '1' , 'pointer-events': showMobileNavOverlay ? 'none' : 'auto' }" @resize.window="showMobileNavOverlay = window.innerWidth < 1024 ? showMobileNavOverlay : false;">
+<main x-bind:style="{ 'opacity': showMobileNavOverlay ? '0.5' : '1' , 'pointer-events': showMobileNavOverlay ? 'none' : 'auto' }" @resize.window="showMobileNavOverlay = window.innerWidth < 1024 ? showMobileNavOverlay : false;">
     <!-- Container Wrap -->
     <div class="container p-4 mx-auto mt-16">
         <div
@@ -12,4 +12,4 @@
         <p class="mt-4 text-center">
             Feel free to contact me at <a href="mailto:sylvain.duhau.marmon@gmail.com" class="text-blue-600 hover:underline hover:text-blue-800">sylvain.duhau.marmon@gmail.com</a> if you have any questions.</p>
     </div>
-</div>
+</main>

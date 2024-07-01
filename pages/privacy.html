@@ -36,12 +36,12 @@
     class="flex flex-col min-h-screen scroll-pt-16"
     x-data="{ showMobileNavOverlay: false }"
     >
-    <main class="flex-grow">
+    <div class="flex-grow">
     <!-- Header -->
     <div id="header"></div>
 
     <!-- Apply Navigation Settings -->
-    <div x-bind:style="{ 'opacity': showMobileNavOverlay ? '0.5' : '1' , 'pointer-events': showMobileNavOverlay ? 'none' : 'auto' }" @resize.window="showMobileNavOverlay = window.innerWidth < 1024 ? showMobileNavOverlay : false;">
+    <main x-bind:style="{ 'opacity': showMobileNavOverlay ? '0.5' : '1' , 'pointer-events': showMobileNavOverlay ? 'none' : 'auto' }" @resize.window="showMobileNavOverlay = window.innerWidth < 1024 ? showMobileNavOverlay : false;">
     <!-- Container Wrap -->
     <div class="container p-4 mx-auto mt-16">
         <!-- Privacy Section -->
@@ -55,8 +55,8 @@
             </p>
         </div>
     </div>
-    </div>
     </main>
+    </div>
 
     <!-- Footer -->
     <div id="footer"></div>
