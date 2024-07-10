@@ -10,10 +10,10 @@
     <title>Sylvain Duhau-Marmon</title>
 
     <!-- Favicon Links -->
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="assets/.ico" type="image/x-icon">
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicons/favicon-16x16.png">
 
     <!-- Stylesheets and Scripts -->
     <style>
@@ -187,7 +187,7 @@
                     images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1534.jpg 1534w">
             <source
                 class="absolute object-cover w-full h-full mix-blend-darken"
-                media="(min-width: 768px) and (max-width: 991px)"
+                media="(min-width: 768px) and (max-width: 1023px)"
                 sizes="100vw"
                 srcset="
                     images/herochess_agurta/herochess_agurta_c_scale,w_768.jpg 768w,
@@ -211,7 +211,7 @@
                 class="absolute object-cover w-full h-full mix-blend-darken"
                 sizes="100vw"
                 srcset="
-                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_992.jpg 992w,
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_992.jpg 1024w,
                     images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1130.jpg 1130w,
                     images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1214.jpg 1214w,
                     images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1348.jpg 1348w,
@@ -302,7 +302,7 @@
                 Under construction!
             </p>
             <p class="mt-4">
-                Explore some of my recent projects:
+                Explore some of my projects:
             </p>
 
             <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
@@ -319,7 +319,52 @@
                         <div class="relative p-4 border-2 border-gray-200 rounded-lg group hover:border-blue-600 hover:shadow-xl">
                             <a x-bind:href="project.link">
                                 <div class="flex flex-col h-full">
-                                    <img class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80" x-bind:src="project.image" x-bind:alt="project.title + ' project image'">
+                                    <div x-data="{loading: true, error: false}" class="relative w-full h-64">
+                                        <!-- Spinner -->
+                                        <div x-show="loading" class="absolute inset-0 flex items-center justify-center">
+                                            <svg class="w-12 h-12 text-gray-600 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                                            </svg>
+                                        </div>
+                                        <!-- Error Message -->
+                                        <div x-show="error" class="absolute inset-0 flex items-center justify-center">
+                                            <p class="font-semibold">
+                                                There was an error loading this image.
+                                                <br/>
+                                                Contact me if you have trouble accessing this content.
+                                            </p>
+                                        </div>
+                                        <!-- Image -->
+                                        <picture x-show="!loading && !error">
+                                            <source class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80"
+                                            type="image/webp"
+                                            media="screen and (max-width: 767px)"
+                                            :srcset="await(await fetch('images/projects/'+project.title+'_sm.jpg')).url"
+                                            :alt="project.title + ' project image'">
+                                            <source class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80"
+                                            type="image/webp"
+                                            media="screen and (min-width: 768px) and (max-width: 1023px)"
+                                            :srcset="await(await fetch('images/projects/'+project.title+'_md.webp')).url"
+                                            :alt="project.title + ' project image'">
+                                            <source class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80"
+                                            type="image/webp"
+                                            media="screen and (min-width: 1024px) and (max-width: 1535px)"
+                                            :srcset="await(await fetch('images/projects/'+project.title+'_sm.jpg')).url"
+                                            :alt="project.title + ' project image'">
+                                            <source class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80"
+                                            type="image/webp"
+                                            media="screen and (min-width: 1536px)"
+                                            :srcset="await(await fetch('images/projects/'+project.title+'_md.webp')).url"
+                                            :alt="project.title + ' project image'">
+                                            <img class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80"
+                                            :src="'images/projects/'+project.title+'_sm.jpg'"
+                                            :alt="project.title + ' project image'"
+                                            @load="loading = false"
+                                            @error="loading = false; error = true">
+                                        </picture>
+                                    </div>
+                                    <!-- Description -->
                                     <h3 class="mt-2 text-xl font-semibold group-hover:text-blue-600 group-hover:font-bold" x-text="project.title"></h3>
                                     <p class="mt-2" x-text="project.description"></p>
                                 </div>
