@@ -340,7 +340,7 @@
                                             <source class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80"
                                             type="image/webp"
                                             media="screen and (max-width: 767px)"
-                                            :srcset="await(await fetch('images/projects/'+project.title+'_sm.jpg')).url"
+                                            :srcset="await(await fetch('images/projects/'+project.title+'_sm.webp')).url"
                                             :alt="project.title + ' project image'">
                                             <source class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80"
                                             type="image/webp"
@@ -350,7 +350,7 @@
                                             <source class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80"
                                             type="image/webp"
                                             media="screen and (min-width: 1024px) and (max-width: 1535px)"
-                                            :srcset="await(await fetch('images/projects/'+project.title+'_sm.jpg')).url"
+                                            :srcset="await(await fetch('images/projects/'+project.title+'_sm.webp')).url"
                                             :alt="project.title + ' project image'">
                                             <source class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80"
                                             type="image/webp"
@@ -358,7 +358,7 @@
                                             :srcset="await(await fetch('images/projects/'+project.title+'_md.webp')).url"
                                             :alt="project.title + ' project image'">
                                             <img class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80"
-                                            :src="'images/projects/'+project.title+'_sm.jpg'"
+                                            :src="await(await fetch('images/projects/'+project.title+'.jpg')).url"
                                             :alt="project.title + ' project image'"
                                             @load="loading = false"
                                             @error="loading = false; error = true">
