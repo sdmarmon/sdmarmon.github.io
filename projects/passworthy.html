@@ -8,10 +8,6 @@
     <meta name="keywords" content="Passwords, C#/.NET, Windows Forms, Programming, UX Design">
     <title>PassWorthy</title>
 
-    <!-- DNS preconnect -->
-    <link rel="preconnect" href="cdn.jsdelivr.net" crossorigin />
-    <link rel="dns-prefetch" href="cdn.jsdelivr.net" crossorigin />
-
     <!-- Favicon Links -->
     <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
@@ -27,14 +23,7 @@
     <link href="../style.css" rel="stylesheet">
     <link rel="preload" href="../includes/fontello-da7c40e3/css/fontello.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="../includes/fontello-da7c40e3/css/fontello.css"></noscript>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.7/dist/cdn.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script>
-        $(function(){
-        $("#header").load("../includes/header.html");
-        $("#footer").load("../includes/footer.html");
-        $("#construction").load("../includes/construction.html");});
-    </script>
+    <script defer src="../script.js"></script>
 </head>
 
 <!-- Tailwind CSS and Alpine.js -->
@@ -43,12 +32,162 @@
     x-data="{ showMobileNavOverlay: false }"
     >
     <!-- Header -->
-    <div id="header"></div>
+    <header>
+        <!-- Navigation Bar -->
+        <nav class="fixed top-0 left-0 right-0 z-10 hidden p-4 text-white bg-indigo-600 shadow-xl lg:block" x-cloak>
+            <div class="container flex items-center justify-between mx-auto">
+                <h1 class="text-2xl font-bold text-white">
+                    <a href="../index.html">Sylvain Duhau-Marmon</a></h1>
+                <ul class="hidden space-x-4 text-lg lg:flex">
+                    <li>
+                        <a href="../index.html#about" class="hover:font-bold">
+                            <h2><i class="mr-1 icon-user"></i>About me</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../index.html#portfolio" class="hover:font-bold">
+                            <h2><i class="mr-1 icon-briefcase"></i>Portfolio</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../index.html#contact" class="hover:font-bold">
+                            <h2><i class="mr-1 icon-mail-alt"></i>Contact</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/sdmarmon" target="_blank" rel="noopener noreferrer" class="hover:font-bold">
+                            <h2><i class="mr-1 icon-github-circled"></i>GitHub</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/sylvain-d-marmon" target="_blank" rel="noopener noreferrer" class="hover:font-bold">
+                            <h2><i class="mr-1 icon-linkedin-squared"></i>LinkedIn</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../assets/Resume_Duhau-Marmon.pdf" download target="_blank" rel="noopener noreferrer" class="hover:font-bold">
+                            <h2><i class="mr-1 icon-file-pdf"></i>Resume</h2>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
-    <!-- Under Construction -->
-    <div id="construction" class="flex-grow"></div>
+        <!-- Mobile Navigation Menu (Hamburger Menu or X Button) -->
+        <div x-cloak>
+            <!-- Hamburger Menu Button -->
+            <button class="fixed z-20 text-indigo-600 lg:hidden top-2 left-2" @click="showMobileNavOverlay = !showMobileNavOverlay">
+                <svg class="transition-all duration-200 transform w-14 h-14" :class="{ 'rotate-90': showMobileNavOverlay }" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path x-show="!showMobileNavOverlay" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    <!-- X Button Icon -->
+                    <path x-show="showMobileNavOverlay" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Overlay (Left Sidebar) -->
+        <nav
+            class="fixed left-0 z-10 w-3/4 h-full shadow-lg top-16 lg:hidden"
+            x-cloak
+            x-show="showMobileNavOverlay"
+            @click.away="showMobileNavOverlay = false"
+            x-transition:enter="transition duration-200 ease-out" x-transition:enter-start="opacity-0 transform -translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0"
+            x-transition:leave="transition duration-200 ease-in" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform -translate-x-full"
+            >
+            <div class="h-full bg-white">
+                <ul>
+                    <li>
+                        <a href="../index.html" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
+                            <h2><i class="mr-1 icon-home"></i>Home</h2>
+                        </a>
+                        <div class="w-full h-px bg-gray-300"></div>
+                    </li>
+                    <li>
+                        <a href="../index.html#about" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
+                            <h2><i class="mr-1 icon-user"></i>About me</h2>
+                        </a>
+                        <div class="w-full h-px bg-gray-300"></div>
+                    </li>
+                    <li>
+                        <a href="../index.html#portfolio" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
+                            <h2><i class="mr-1 icon-briefcase"></i>Portfolio</h2>
+                        </a>
+                        <div class="w-full h-px bg-gray-300"></div>
+                    </li>
+                    <li>
+                        <a href="../index.html#contact" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
+                            <h2><i class="mr-1 icon-mail-alt"></i>Contact</h2>
+                        </a>
+                        <div class="w-full h-px bg-gray-300"></div>
+                    </li>
+                    <li>
+                        <a href="https://github.com/sdmarmon" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">
+                            <h2><i class="mr-1 icon-github-circled"></i>GitHub</h2>
+                        </a>
+                        <div class="w-full h-px bg-gray-300"></div>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/sylvain-d-marmon" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">
+                            <h2><i class="mr-1 icon-linkedin-squared"></i>LinkedIn</h2>
+                        </a>
+                        <div class="w-full h-px bg-gray-300"></div>
+                    </li>
+                    <li>
+                        <a href="../assets/Resume_Duhau-Marmon.pdf" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" download target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">
+                            <h2><i class="mr-1 icon-file-pdf"></i>Resume</h2>
+                        </a>
+                        <div class="w-full h-px bg-gray-300"></div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="flex-grow">
+    <!-- Apply Navigation Settings -->
+    <main x-bind:style="{ 'opacity': showMobileNavOverlay ? '0.5' : '1' , 'pointer-events': showMobileNavOverlay ? 'none' : 'auto' }" @resize.window="showMobileNavOverlay = window.innerWidth < 1024 ? showMobileNavOverlay : false;">
+    <!-- Container Wrap -->
+    <div class="container p-4 mx-auto mt-16">
+        <!-- Under Construction Section -->
+        <section id="construction" class="container pt-8 mx-auto scroll-mt-16">
+            <h1 class="pt-8 text-4xl font-bold text-center">Under construction!</h1>
+            <p class="mt-4 text-center">
+                Feel free to contact me at <a href="mailto:sylvain.duhau.marmon@gmail.com" class="text-blue-600 hover:underline hover:text-blue-800">sylvain.duhau.marmon@gmail.com</a> if you have any questions.</p>
+        </section>
+    </div>
+    </main>
+    </div>
 
     <!-- Footer -->
-    <div id="footer"></div>
+    <footer>
+        <div class="w-full h-px mt-16 bg-gray-300"></div>
+        <div class="py-4 text-center bg-gray-100">
+            <div class="container mx-auto">
+                <ul class="flex justify-center space-x-4">
+                    <li>
+                        <a href="../pages/accessibility.html" class="text-blue-600 hover:underline hover:text-blue-800">
+                            <h2><i class="mr-1 icon-universal-access"></i>Accessibility</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../pages/privacy.html" class="text-blue-600 hover:underline hover:text-blue-800">
+                            <h2><i class="mr-1 icon-lock"></i>Privacy</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/sdmarmon/sdmarmon.github.io" class="text-blue-600 hover:underline hover:text-blue-800">
+                            <h2><i class="mr-1 icon-github-circled"></i>Source Code</h2>
+                        </a>
+                    </li>
+                </ul>
+                <br/>
+                <p class="text-sm text-gray-600">
+                    © Sylvain Duhau-Marmon, 2023-2024
+                    <br />
+                    This work is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="text-blue-600 hover:underline hover:text-blue-800">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+                </p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
