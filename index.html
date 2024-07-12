@@ -24,7 +24,7 @@
     <link href="style.css" rel="stylesheet">
     <link rel="preload" href="includes/fontello-da7c40e3/css/fontello.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="includes/fontello-da7c40e3/css/fontello.css"></noscript>
-    <script defer src="includes/index.js"></script>
+    <script src="includes/index.js"></script>
     <script defer src="script.js"></script>
 </head>
 
@@ -237,7 +237,7 @@
         <div class="relative flex h-1/5"></div>
 
         <!-- Central Part (3/5) with Text -->
-        <div class="relative flex text-white h-3/5" x-data="heroText" x-init="$nextTick(() => { checkOverflow() });" @resize.window="checkOverflow()">
+        <!--<div class="relative flex text-white h-3/5" x-data="heroText" x-init="$nextTick(() => { checkOverflow() });" @resize.window="checkOverflow()">
             <div class="w-1/2 p-4 text-center lg:hidden">
                 <h1
                 class="font-bold"
@@ -264,7 +264,7 @@
                 x-cloak
                 x-html="textOverflowDesktop ? 'Cognitive Engineer, UX Specialist.' : 'Cognitive Engineer, UX Specialist.&lt;br&gt;&lt;span class=&quot;font-normal&quot;&gt;Rigorous methods and reliable measures are key to designing beautiful interfaces and intuitive features.&lt;/span&gt;'"
                 ></p>
-            </div>
+            </div>-->
         </div>
 
         <!-- Bottom Part (1/5) with CTA Buttons -->
