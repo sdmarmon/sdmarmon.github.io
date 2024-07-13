@@ -45,36 +45,36 @@
             >
             <div class="container flex items-center justify-between mx-auto">
                 <h1 class="text-2xl font-bold text-white">
-                    <a href="index.html">Sylvain Duhau-Marmon</a></h1>
+                    <a href="index.html" aria-label="Home page">Sylvain Duhau-Marmon</a></h1>
                 <ul class="hidden space-x-4 text-lg lg:flex">
                     <li>
                         <a href="#about" class="hover:font-bold">
-                            <h2><i class="mr-1 icon-user"></i>About me</h2>
+                            <h2><i class="mr-1 icon-user" aria-hidden="true"></i>About me</h2>
                         </a>
                     </li>
                     <li>
                         <a href="#portfolio" class="hover:font-bold">
-                            <h2><i class="mr-1 icon-briefcase"></i>Portfolio</h2>
+                            <h2><i class="mr-1 icon-briefcase" aria-hidden="true"></i>Portfolio</h2>
                         </a>
                     </li>
                     <li>
                         <a href="#contact" class="hover:font-bold">
-                            <h2><i class="mr-1 icon-mail-alt"></i>Contact</h2>
+                            <h2><i class="mr-1 icon-mail-alt" aria-hidden="true"></i>Contact</h2>
                         </a>
                     </li>
                     <li>
                         <a href="https://github.com/sdmarmon" target="_blank" rel="noopener noreferrer" class="flex items-center hover:font-bold">
-                            <h2><i class="mr-1 icon-github-circled"></i>GitHub</h2>
+                            <h2><i class="mr-1 icon-github-circled" aria-hidden="true"></i>GitHub</h2>
                         </a>
                     </li>
                     <li>
                         <a href="https://www.linkedin.com/in/sylvain-d-marmon" target="_blank" rel="noopener noreferrer" class="flex items-center hover:font-bold">
-                            <h2><i class="mr-1 icon-linkedin-squared"></i>LinkedIn</h2>
+                            <h2><i class="mr-1 icon-linkedin-squared" aria-hidden="true"></i>LinkedIn</h2>
                         </a>
                     </li>
                     <li>
-                        <a href="assets/Resume_Duhau-Marmon.pdf" download target="_blank" rel="noopener noreferrer" class="flex items-center hover:font-bold">
-                            <h2><i class="mr-1 icon-file-pdf"></i>Resume</h2>
+                        <a href="assets/Resume_Duhau-Marmon.pdf" download target="_blank" rel="noopener noreferrer" class="flex items-center hover:font-bold" aria-label="Download my resume">
+                            <h2><i class="mr-1 icon-file-pdf" aria-hidden="true"></i>Resume</h2>
                         </a>
                     </li>
                 </ul>
@@ -88,7 +88,8 @@
             >
             <!-- Hamburger Menu Button -->
             <button class="fixed z-20 text-indigo-600 lg:hidden top-2 left-2" @click="showMobileNavOverlay = !showMobileNavOverlay; showMobileNavMenu = (window.scrollY > innerHeight-64)">
-                <svg class="transition-all duration-200 transform w-14 h-14" :class="{ 'rotate-90': showMobileNavOverlay }" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg role="img" class="transition-all duration-200 transform w-14 h-14" :class="{ 'rotate-90': showMobileNavOverlay }" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <title x-text="showMobileNavOverlay ? 'Close Mobile Navigation Menu' : 'Open Mobile Navigation Menu'"></title>
                     <path x-show="!showMobileNavOverlay" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     <!-- X Button Icon -->
                     <path x-show="showMobileNavOverlay" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -97,6 +98,7 @@
         </div>
 
         <!-- Mobile Navigation Overlay (Left Sidebar) -->
+        <!-- TODO: Tab out and keyboard interaction inside the menu -->
         <nav
             class="fixed left-0 z-10 w-3/4 h-full shadow-lg top-16 lg:hidden"
             x-cloak
@@ -109,43 +111,43 @@
                 <ul>
                     <li>
                         <a href="index.html" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
-                            <h2><i class="mr-1 icon-home"></i>Home</h2>
+                            <h2><i class="mr-1 icon-home" aria-hidden="true"></i>Home</h2>
                         </a>
                         <div class="w-full h-px bg-gray-300"></div>
                     </li>
                     <li>
                         <a href="#about" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
-                            <h2><i class="mr-1 icon-user"></i>About me</h2>
+                            <h2><i class="mr-1 icon-user" aria-hidden="true"></i>About me</h2>
                         </a>
                         <div class="w-full h-px bg-gray-300"></div>
                     </li>
                     <li>
                         <a href="#portfolio" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
-                            <h2><i class="mr-1 icon-briefcase"></i>Portfolio</h2>
+                            <h2><i class="mr-1 icon-briefcase" aria-hidden="true"></i>Portfolio</h2>
                         </a>
                         <div class="w-full h-px bg-gray-300"></div>
                     </li>
                     <li>
                         <a href="#contact" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
-                            <h2><i class="mr-1 icon-mail-alt"></i>Contact</h2>
+                            <h2><i class="mr-1 icon-mail-alt" aria-hidden="true"></i>Contact</h2>
                         </a>
                         <div class="w-full h-px bg-gray-300"></div>
                     </li>
                     <li>
                         <a href="https://github.com/sdmarmon" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">
-                            <h2><i class="mr-1 icon-github-circled"></i>GitHub</h2>
+                            <h2><i class="mr-1 icon-github-circled" aria-hidden="true"></i>GitHub</h2>
                         </a>
                         <div class="w-full h-px bg-gray-300"></div>
                     </li>
                     <li>
                         <a href="https://www.linkedin.com/in/sylvain-d-marmon" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">
-                            <h2><i class="mr-1 icon-linkedin-squared"></i>LinkedIn</h2>
+                            <h2><i class="mr-1 icon-linkedin-squared" aria-hidden="true"></i>LinkedIn</h2>
                         </a>
                         <div class="w-full h-px bg-gray-300"></div>
                     </li>
                     <li>
-                        <a href="assets/Resume_Duhau-Marmon.pdf" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" download target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">
-                            <h2><i class="mr-1 icon-file-pdf"></i>Resume</h2>
+                        <a href="assets/Resume_Duhau-Marmon.pdf" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" download target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false" aria-label="Download my resume">
+                            <h2><i class="mr-1 icon-file-pdf" aria-hidden="true"></i>Resume</h2>
                         </a>
                         <div class="w-full h-px bg-gray-300"></div>
                     </li>
@@ -155,10 +157,10 @@
     </header>
 
     <!-- Apply Navigation Settings -->
-    <main x-bind:class="showMobileNavOverlay ? 'opacity-50 pointer-events-none' : 'opacity-100 pointer-events-auto'" @resize.window="showMobileNavOverlay = window.innerWidth < 1024 ? showMobileNavOverlay : false;">
+    <main :class="showMobileNavOverlay ? 'opacity-50 pointer-events-none' : 'opacity-100 pointer-events-auto'" @resize.window="showMobileNavOverlay = window.innerWidth < 1024 ? showMobileNavOverlay : false;">
 
     <!-- Hero Banner (Divided into Three Parts) -->
-    <figure class="relative flex flex-col h-screen bg-gradient-to-r from-slate-700 via-neutral-500 to-orange-200">
+    <figure class="relative flex flex-col h-screen bg-gradient-to-r from-slate-700 via-neutral-500 to-orange-200" aria-label="Hero banner">
         <!-- Responsive Background Image -->
         <picture>
             <source
@@ -281,20 +283,26 @@
 
     <!-- About Me Section -->
     <section id="about" class="container pt-8 mx-auto mb-8 scroll-mt-16">
-        <h2 class="text-3xl font-semibold"><i class="mr-1 icon-user"></i>About me</h2>
+        <h2 class="text-3xl font-semibold"><i class="mr-1 icon-user" aria-hidden="true"></i>About me</h2>
         <p class="mt-4 font-semibold">
             Under construction!
         </p>
         <p class="mt-4">
-            I am a passionate and dedicated UX researcher, data analyst, and front-end developer. With a strong background in understanding user behavior and data-driven decision-making, I create intuitive and user-centric experiences.
+            I am a passionate and dedicated UX researcher, data analyst, and front-end developer.
+            <br/>With a strong background in user-centered design and data-driven decision making, I create impactful and befitting experiences.
         </p>
-        <p class="mt-4"><a href="assets/Resume_Duhau-Marmon.pdf" class="text-blue-600 hover:underline hover:text-blue-800 download" target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">Download my resume.</a></p>
+        <p class="mt-4 font-semibold">
+            <a href="assets/Resume_Duhau-Marmon.pdf" class="text-blue-600 hover:underline hover:text-blue-800 download" download target="_blank" rel="noopener noreferrer">Download my resume.</a>
+        </p>
+        <p class="mt-4">
+            For all the chess enthusiasts looking at <a href="https://lichess.org/analysis/standard/3rkb1r/pQpq1ppp/2n1p3/8/8/P1N5/RPnP1PPP/2BK2NR_w_k_-_4_13" class="text-blue-600 hover:underline hover:text-blue-800 download" target="_blank" rel="noopener noreferrer" aria-label="My chess postion">my position</a>: can you find the mate in 8 after Kxc2?
+        </p>
     </section>
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="container pt-8 mx-auto mb-8 scroll-mt-16">
         <div x-data="projectCards" x-init="initOriginalProjects(); updateIsCol2()" @resize.window="updateIsCol2()">
-            <h2 class="text-3xl font-semibold"><i class="mr-1 icon-briefcase"></i>Portfolio</h2>
+            <h2 class="text-3xl font-semibold"><i class="mr-1 icon-briefcase" aria-hidden="true"></i>Portfolio</h2>
             <p class="mt-4 font-semibold">
                 Under construction!
             </p>
@@ -314,7 +322,7 @@
                         x-transition:leave="transition ease-in-out duration-200" x-transition:leave-start="opacity-100 transform scale-100" x-transition:leave-end="opacity-0 transform scale-95"
                         >
                         <div class="relative p-4 border-2 border-gray-200 rounded-lg group hover:border-blue-600 hover:shadow-xl">
-                            <a x-bind:href="project.link">
+                            <a :href="project.link" :aria-label="project.title">
                                 <div class="flex flex-col h-full">
                                     <div x-data="{loading: true, error: false}" class="relative w-full h-64">
                                         <!-- Spinner -->
@@ -337,23 +345,19 @@
                                             <source class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80"
                                             type="image/webp"
                                             media="screen and (max-width: 767px)"
-                                            :srcset="await(await fetch('images/projects/'+project.title+'_sm.webp')).url"
-                                            :alt="project.title + ' project image'">
+                                            :srcset="await(await fetch('images/projects/'+project.title+'_sm.webp')).url">
                                             <source class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80"
                                             type="image/webp"
                                             media="screen and (min-width: 768px) and (max-width: 1023px)"
-                                            :srcset="await(await fetch('images/projects/'+project.title+'_md.webp')).url"
-                                            :alt="project.title + ' project image'">
+                                            :srcset="await(await fetch('images/projects/'+project.title+'_md.webp')).url">
                                             <source class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80"
                                             type="image/webp"
                                             media="screen and (min-width: 1024px) and (max-width: 1535px)"
-                                            :srcset="await(await fetch('images/projects/'+project.title+'_sm.webp')).url"
-                                            :alt="project.title + ' project image'">
+                                            :srcset="await(await fetch('images/projects/'+project.title+'_sm.webp')).url">
                                             <source class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80"
                                             type="image/webp"
                                             media="screen and (min-width: 1536px)"
-                                            :srcset="await(await fetch('images/projects/'+project.title+'_md.webp')).url"
-                                            :alt="project.title + ' project image'">
+                                            :srcset="await(await fetch('images/projects/'+project.title+'_md.webp')).url">
                                             <img class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80"
                                             :src="await(await fetch('images/projects/'+project.title+'.jpg')).url"
                                             :alt="project.title + ' project image'"
@@ -385,6 +389,7 @@
                                             'bg-red-600 text-white hover:bg-red-800': isSelectedSubject(subject) && subject === 'Programming',
                                             'bg-white text-blue-600 border border-gray-300 hover:bg-red-600 hover:text-white hover:border-red-600': !isSelectedSubject(subject) && subject === 'Programming',
                                         }"
+                                        :aria-pressed="isSelectedSubject(subject) ? 'true' : 'false'"
                                         x-text="subject"
                                     ></button>
                                 </template>
@@ -413,9 +418,12 @@
 
     <!-- Contact Section -->
     <section id="contact" class="container pt-8 mx-auto mb-8 scroll-mt-16">
-        <h2 class="text-3xl font-semibold"><i class="mr-1 icon-mail-alt"></i>Contact</h2>
+        <h2 class="text-3xl font-semibold"><i class="mr-1 icon-mail-alt" aria-hidden="true"></i>Contact</h2>
         <p class="mt-4">
-            Feel free to get in touch with me at <a href="mailto:sylvain.duhau.marmon@gmail.com" class="text-blue-600 hover:underline hover:text-blue-800">sylvain.duhau.marmon@gmail.com</a>.
+            Feel free to get in touch with me at sylvain.duhau.marmon@gmail.com.
+        </p>
+        <p class="mt-4 font-semibold">
+            <a href="mailto:sylvain.duhau.marmon@gmail.com" class="text-blue-600 hover:underline hover:text-blue-800">Send me an e-mail.</a>
         </p>
     </section>
     </div> <!-- Container Wrap-->
@@ -429,17 +437,17 @@
                 <ul class="flex justify-center space-x-4">
                     <li>
                         <a href="/pages/accessibility.html" class="text-blue-600 hover:underline hover:text-blue-800">
-                            <h2><i class="mr-1 icon-universal-access"></i>Accessibility</h2>
+                            <h2><i class="mr-1 icon-universal-access" aria-hidden="true"></i>Accessibility</h2>
                         </a>
                     </li>
                     <li>
                         <a href="/pages/privacy.html" class="text-blue-600 hover:underline hover:text-blue-800">
-                            <h2><i class="mr-1 icon-lock"></i>Privacy</h2>
+                            <h2><i class="mr-1 icon-lock" aria-hidden="true"></i>Privacy</h2>
                         </a>
                     </li>
                     <li>
                         <a href="https://github.com/sdmarmon/sdmarmon.github.io" class="text-blue-600 hover:underline hover:text-blue-800">
-                            <h2><i class="mr-1 font-normal icon-github-circled whitespace-nowrap"></i>Source Code</h2>
+                            <h2><i class="mr-1 font-normal icon-github-circled whitespace-nowrap" aria-hidden="true"></i>Source Code</h2>
                         </a>
                     </li>
                 </ul>
