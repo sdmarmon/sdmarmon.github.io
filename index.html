@@ -109,23 +109,76 @@
     <main :class="showMobileNavOverlay ? 'opacity-50 pointer-events-none' : 'opacity-100 pointer-events-auto'" @resize.window="showMobileNavOverlay = window.innerWidth < 1024 ? showMobileNavOverlay : false;">
 
     <!-- Hero Banner (Divided into Three Parts) -->
-    <figure class="relative flex flex-col h-screen bg-gradient-to-r from-slate-700 via-neutral-500 to-orange-200" x-data="heroImage" aria-label="Hero banner">
+    <figure class="relative flex flex-col h-screen bg-gradient-to-r from-slate-700 via-neutral-500 to-orange-200" aria-label="Hero banner">
         <!-- Responsive Background Image -->
         <picture>
             <source
                 class="absolute object-cover w-full h-full mix-blend-darken"
                 media="(max-width: 767px)"
                 sizes="100vw"
-                :srcset="mobileImages">
+                :srcset="
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_480.jpg 480w,
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_547.jpg 547w,
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_610.jpg 610w,
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_666.jpg 666w,
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_724.jpg 724w,
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_776.jpg 776w,
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_796.jpg 796w,
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_915.jpg 915w,
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_925.jpg 925w,
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1000.jpg 1000w,
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1065.jpg 1065w,
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1095.jpg 1095w,
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1092.jpg 1092w,
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1332.jpg 1332w,
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1384.jpg 1384w,
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1431.jpg 1431w,
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1475.jpg 1475w,
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1516.jpg 1516w,
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1533.jpg 1533w,
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1534.jpg 1534w">
             <source
                 class="absolute object-cover w-full h-full mix-blend-darken"
                 media="(min-width: 768px) and (max-width: 1023px)"
                 sizes="100vw"
-                :srcset="tabletImages">
+                :srcset="
+                    images/herochess_agurta/herochess_agurta_c_scale,w_768.jpg 768w,
+                    images/herochess_agurta/herochess_agurta_c_scale,w_872.jpg 872w,
+                    images/herochess_agurta/herochess_agurta_c_scale,w_967.jpg 967w,
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1101.jpg 1101w,
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1187.jpg 1187w,
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1268.jpg 1268w,
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1348.jpg 1348w,
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1426.jpg 1426w,
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1500.jpg 1500w,
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1573.jpg 1573w,
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1642.jpg 1642w,
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1708.jpg 1708w,
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1777.jpg 1777w,
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1842.jpg 1842w,
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1908.jpg 1908w,
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1979.jpg 1979w,
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1982.jpg 1982w">
             <img
                 class="absolute object-cover w-full h-full mix-blend-darken"
                 sizes="100vw"
-                :srcset="desktopImages"
+                :srcset="
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_992.jpg 1024w,
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1130.jpg 1130w,
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1214.jpg 1214w,
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1348.jpg 1348w,
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1433.jpg 1433w,
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1518.jpg 1518w,
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1591.jpg 1591w,
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1665.jpg 1665w,
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1738.jpg 1738w,
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1811.jpg 1811w,
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1880.jpg 1880w,
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1947.jpg 1947w,
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_2018.jpg 2018w,
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_2085.jpg 2085w,
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_2153.jpg 2153w,
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_2160.jpg 2160w"
                 src="images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_2160.jpg"
                 alt="Sylvain Duhau-Marmon playing chess">
         </picture>
