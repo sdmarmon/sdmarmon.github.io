@@ -23,18 +23,92 @@ function isOneColumnDisplay() {
 };
 
 document.addEventListener('alpine:init', () => {
+    Alpine.data('navigationMenu', () => ({
+        menus: [
+            {title: 'About me', icon: 'icon-user', link: '#about', newTab: false},
+            {title: 'Portfolio', icon: 'icon-briefcase', link: '#portfolio', newTab: false},
+            {title: 'Contact', icon: 'icon-mail-alt', link: '#contact', newTab: false},
+            {title: 'GitHub', icon: 'icon-github-circled', link: 'https://github.com/sdmarmon', newTab: true},
+            {title: 'LinkedIn', icon: 'icon-linkedin-squared', link: 'https://www.linkedin.com/in/sylvain-d-marmon', newTab: true},
+            {title: 'Resume', icon: 'icon-file-pdf', link: 'assets/Resume_Duhau-Marmon.pdf', newTab: true}
+        ],
+        textOverflowMobile: false,
+        textOverflowDesktop: false,
+    })),
+    Alpine.data('heroImage', () => ({
+        mobileImages: "\
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_480.jpg 480w\,\
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_547.jpg 547w\,\
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_610.jpg 610w\,\
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_666.jpg 666w\,\
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_724.jpg 724w\,\
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_776.jpg 776w\,\
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_796.jpg 796w\,\
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_915.jpg 915w\,\
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_925.jpg 925w\,\
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1000.jpg 1000w\,\
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1065.jpg 1065w\,\
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1095.jpg 1095w\,\
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1092.jpg 1092w\,\
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1332.jpg 1332w\,\
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1384.jpg 1384w\,\
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1431.jpg 1431w\,\
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1475.jpg 1475w\,\
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1516.jpg 1516w\,\
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1533.jpg 1533w\,\
+                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1534.jpg 1534w",
+        tabletImages: "\
+                    images/herochess_agurta/herochess_agurta_c_scale,w_768.jpg 768w\,\
+                    images/herochess_agurta/herochess_agurta_c_scale,w_872.jpg 872w\,\
+                    images/herochess_agurta/herochess_agurta_c_scale,w_967.jpg 967w\,\
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1101.jpg 1101w\,\
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1187.jpg 1187w\,\
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1268.jpg 1268w\,\
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1348.jpg 1348w\,\
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1426.jpg 1426w\,\
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1500.jpg 1500w\,\
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1573.jpg 1573w\,\
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1642.jpg 1642w\,\
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1708.jpg 1708w\,\
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1777.jpg 1777w\,\
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1842.jpg 1842w\,\
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1908.jpg 1908w\,\
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1979.jpg 1979w\,\
+                    images/herochess_agurta/herochess_agurta_c_scale,w_1982.jpg 1982w",
+        desktopImages: "\
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_992.jpg 1024w\,\
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1130.jpg 1130w\,\
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1214.jpg 1214w\,\
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1348.jpg 1348w\,\
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1433.jpg 1433w\,\
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1518.jpg 1518w\,\
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1591.jpg 1591w\,\
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1665.jpg 1665w\,\
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1738.jpg 1738w\,\
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1811.jpg 1811w\,\
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1880.jpg 1880w\,\
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1947.jpg 1947w\,\
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_2018.jpg 2018w\,\
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_2085.jpg 2085w\,\
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_2153.jpg 2153w\,\
+                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_2160.jpg 2160w"
+    })),
     Alpine.data('heroText', () => ({
+        shortIntro: 'Sylvain<br>Duhau-Marmon',
+        longIntro: 'Hi! I am Sylvain <span class="whitespace-nowrap">Duhau-Marmon.<span>',
+        shortCatchPhrase: "Cognitive Engineer, UX Specialist.",
+        longCatchPhrase: 'Cognitive Engineer, UX Specialist.<br><span class="font-normal">Rigorous methods and reliable measures are key to designing beautiful interfaces and intuitive features.<span>',
         textOverflowMobile: false,
         textOverflowDesktop: false,
         checkOverflow() {
         if (this.textOverflowMobile !== true)
         {
-            const mobileElement = document.querySelector('.w-1\\/2');
+            const mobileElement = document.getElementById('tabletText');
             const mobileOverflow = (mobileElement.scrollHeight > mobileElement.clientHeight || mobileElement.scrollWidth > mobileElement.clientWidth);
             this.textOverflowMobile = mobileOverflow;
         }
         if (this.textOverflowDesktop !== true){
-            const desktopElement = document.querySelector('.w-1\\/3');
+            const desktopElement = document.getElementById('desktopText');
             const desktopOverflow = (desktopElement.scrollHeight > desktopElement.clientHeight || desktopElement.scrollWidth > desktopElement.clientWidth);
             this.textOverflowDesktop = desktopOverflow;
         }}

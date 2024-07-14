@@ -43,40 +43,17 @@
             x-transition:enter="transition duration-500 ease-out" x-transition:enter-start="opacity-0 transform -translate-y-full" x-transition:enter-end="opacity-100 transform translate-y-0"
             x-transition:leave="transition duration-300 ease-in" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform -translate-y-full"
             >
-            <div class="container flex items-center justify-between mx-auto">
+            <div class="container flex items-center justify-between mx-auto" x-data="navigationMenu">
                 <h1 class="text-2xl font-bold text-white">
                     <a href="index.html" aria-label="Home page">Sylvain Duhau-Marmon</a></h1>
                 <ul class="hidden space-x-4 text-lg lg:flex">
-                    <li>
-                        <a href="#about" class="hover:font-bold">
-                            <h2><i class="mr-1 icon-user" aria-hidden="true"></i>About me</h2>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#portfolio" class="hover:font-bold">
-                            <h2><i class="mr-1 icon-briefcase" aria-hidden="true"></i>Portfolio</h2>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#contact" class="hover:font-bold">
-                            <h2><i class="mr-1 icon-mail-alt" aria-hidden="true"></i>Contact</h2>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/sdmarmon" target="_blank" rel="noopener noreferrer" class="flex items-center hover:font-bold">
-                            <h2><i class="mr-1 icon-github-circled" aria-hidden="true"></i>GitHub</h2>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.linkedin.com/in/sylvain-d-marmon" target="_blank" rel="noopener noreferrer" class="flex items-center hover:font-bold">
-                            <h2><i class="mr-1 icon-linkedin-squared" aria-hidden="true"></i>LinkedIn</h2>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="assets/Resume_Duhau-Marmon.pdf" download target="_blank" rel="noopener noreferrer" class="flex items-center hover:font-bold" aria-label="Download my resume">
-                            <h2><i class="mr-1 icon-file-pdf" aria-hidden="true"></i>Resume</h2>
-                        </a>
-                    </li>
+                    <template x-for="menu in menus" :key="menu.title">
+                        <li>
+                            <a :href="menu.link" class="hover:font-bold" :target="menu.newTab ? '_blank' : ''" :rel="menu.newTab ? 'noopener noreferrer' : ''">
+                                <h2><i class="mr-1" :class="menu.icon" aria-hidden="true"></i><span x-text="menu.title"></span></h2>
+                            </a>
+                        </li>
+                    </template>
                 </ul>
             </div>
         </nav>
@@ -107,7 +84,7 @@
             x-transition:enter="transition duration-200 ease-out" x-transition:enter-start="opacity-0 transform -translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0"
             x-transition:leave="transition duration-200 ease-in" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform -translate-x-full"
             >
-            <div class="h-full bg-white">
+            <div class="h-full bg-white" x-data="navigationMenu">
                 <ul>
                     <li>
                         <a href="index.html" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
@@ -115,42 +92,14 @@
                         </a>
                         <div class="w-full h-px bg-gray-300"></div>
                     </li>
+                    <template x-for="menu in menus" :key="menu.title">
                     <li>
-                        <a href="#about" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
-                            <h2><i class="mr-1 icon-user" aria-hidden="true"></i>About me</h2>
+                        <a :href="menu.link" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" :target="menu.newTab ? '_blank' : ''" :rel="menu.newTab ? 'noopener noreferrer' : ''" @click="showMobileNavOverlay = false">
+                            <h2><i class="mr-1" :class="menu.icon" aria-hidden="true"></i><span x-text="menu.title"></span></h2>
                         </a>
                         <div class="w-full h-px bg-gray-300"></div>
                     </li>
-                    <li>
-                        <a href="#portfolio" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
-                            <h2><i class="mr-1 icon-briefcase" aria-hidden="true"></i>Portfolio</h2>
-                        </a>
-                        <div class="w-full h-px bg-gray-300"></div>
-                    </li>
-                    <li>
-                        <a href="#contact" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
-                            <h2><i class="mr-1 icon-mail-alt" aria-hidden="true"></i>Contact</h2>
-                        </a>
-                        <div class="w-full h-px bg-gray-300"></div>
-                    </li>
-                    <li>
-                        <a href="https://github.com/sdmarmon" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">
-                            <h2><i class="mr-1 icon-github-circled" aria-hidden="true"></i>GitHub</h2>
-                        </a>
-                        <div class="w-full h-px bg-gray-300"></div>
-                    </li>
-                    <li>
-                        <a href="https://www.linkedin.com/in/sylvain-d-marmon" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">
-                            <h2><i class="mr-1 icon-linkedin-squared" aria-hidden="true"></i>LinkedIn</h2>
-                        </a>
-                        <div class="w-full h-px bg-gray-300"></div>
-                    </li>
-                    <li>
-                        <a href="assets/Resume_Duhau-Marmon.pdf" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" download target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false" aria-label="Download my resume">
-                            <h2><i class="mr-1 icon-file-pdf" aria-hidden="true"></i>Resume</h2>
-                        </a>
-                        <div class="w-full h-px bg-gray-300"></div>
-                    </li>
+                    </template>
                 </ul>
             </div>
         </nav>
@@ -160,77 +109,23 @@
     <main :class="showMobileNavOverlay ? 'opacity-50 pointer-events-none' : 'opacity-100 pointer-events-auto'" @resize.window="showMobileNavOverlay = window.innerWidth < 1024 ? showMobileNavOverlay : false;">
 
     <!-- Hero Banner (Divided into Three Parts) -->
-    <figure class="relative flex flex-col h-screen bg-gradient-to-r from-slate-700 via-neutral-500 to-orange-200" aria-label="Hero banner">
+    <figure class="relative flex flex-col h-screen bg-gradient-to-r from-slate-700 via-neutral-500 to-orange-200" x-data="heroImage" aria-label="Hero banner">
         <!-- Responsive Background Image -->
         <picture>
             <source
                 class="absolute object-cover w-full h-full mix-blend-darken"
                 media="(max-width: 767px)"
                 sizes="100vw"
-                srcset="
-                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_480.jpg 480w,
-                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_547.jpg 547w,
-                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_610.jpg 610w,
-                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_666.jpg 666w,
-                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_724.jpg 724w,
-                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_776.jpg 776w,
-                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_796.jpg 796w,
-                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_915.jpg 915w,
-                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_925.jpg 925w,
-                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1000.jpg 1000w,
-                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1065.jpg 1065w,
-                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1095.jpg 1095w,
-                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1092.jpg 1092w,
-                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1332.jpg 1332w,
-                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1384.jpg 1384w,
-                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1431.jpg 1431w,
-                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1475.jpg 1475w,
-                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1516.jpg 1516w,
-                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1533.jpg 1533w,
-                    images/herochess_agurta/herochess_agurta_ar_9_16,c_fill,g_auto__c_scale,w_1534.jpg 1534w">
+                :srcset="mobileImages">
             <source
                 class="absolute object-cover w-full h-full mix-blend-darken"
                 media="(min-width: 768px) and (max-width: 1023px)"
                 sizes="100vw"
-                srcset="
-                    images/herochess_agurta/herochess_agurta_c_scale,w_768.jpg 768w,
-                    images/herochess_agurta/herochess_agurta_c_scale,w_872.jpg 872w,
-                    images/herochess_agurta/herochess_agurta_c_scale,w_967.jpg 967w,
-                    images/herochess_agurta/herochess_agurta_c_scale,w_1101.jpg 1101w,
-                    images/herochess_agurta/herochess_agurta_c_scale,w_1187.jpg 1187w,
-                    images/herochess_agurta/herochess_agurta_c_scale,w_1268.jpg 1268w,
-                    images/herochess_agurta/herochess_agurta_c_scale,w_1348.jpg 1348w,
-                    images/herochess_agurta/herochess_agurta_c_scale,w_1426.jpg 1426w,
-                    images/herochess_agurta/herochess_agurta_c_scale,w_1500.jpg 1500w,
-                    images/herochess_agurta/herochess_agurta_c_scale,w_1573.jpg 1573w,
-                    images/herochess_agurta/herochess_agurta_c_scale,w_1642.jpg 1642w,
-                    images/herochess_agurta/herochess_agurta_c_scale,w_1708.jpg 1708w,
-                    images/herochess_agurta/herochess_agurta_c_scale,w_1777.jpg 1777w,
-                    images/herochess_agurta/herochess_agurta_c_scale,w_1842.jpg 1842w,
-                    images/herochess_agurta/herochess_agurta_c_scale,w_1908.jpg 1908w,
-                    images/herochess_agurta/herochess_agurta_c_scale,w_1979.jpg 1979w,
-                    images/herochess_agurta/herochess_agurta_c_scale,w_1982.jpg 1982w">
+                :srcset="tabletImages">
             <img
                 class="absolute object-cover w-full h-full mix-blend-darken"
                 sizes="100vw"
-                srcset="
-                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_992.jpg 1024w,
-                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1130.jpg 1130w,
-                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1214.jpg 1214w,
-                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1348.jpg 1348w,
-                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1433.jpg 1433w,
-                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1518.jpg 1518w,
-                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1591.jpg 1591w,
-                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1665.jpg 1665w,
-                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1738.jpg 1738w,
-                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1811.jpg 1811w,
-                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1880.jpg 1880w,
-                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_1947.jpg 1947w,
-                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_2018.jpg 2018w,
-                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_2085.jpg 2085w,
-                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_2153.jpg 2153w,
-                    images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_2160.jpg 2160w
-                    "
+                :srcset="desktopImages"
                 src="images/herochess_agurta/herochess_agurta_ar_16_9,c_fill,g_auto__c_scale,w_2160.jpg"
                 alt="Sylvain Duhau-Marmon playing chess">
         </picture>
@@ -239,28 +134,31 @@
         <div class="relative flex h-1/5"></div>
 
         <!-- Central Part (3/5) with Text -->
-        <div class="relative flex text-white h-3/5" x-data="heroText" x-init="$nextTick(() => { checkOverflow() });" @resize.window="checkOverflow()">
-            <div class="w-1/2 p-4 text-center lg:hidden">
+        <div class="relative flex text-white h-3/5">
+            <div class="w-1/2 p-4 text-center md:hidden">
+                <h1 class="text-3xl font-bold">Sylvain<br>Duhau-Marmon</h1>
+            </div>
+            <div id="tabletText" class="hidden w-1/2 p-4 text-center md:block lg:hidden" x-data="heroText" x-init="$nextTick(() => { checkOverflow() });" @resize.window="checkOverflow()">
                 <h1
                 class="font-bold"
                 :class="textOverflowMobile ? 'text-3xl' : 'text-clamp3to4xl'"
-                x-html="textOverflowMobile ? 'Sylvain&lt;br&gt;D-M' : 'Sylvain&lt;br&gt;Duhau-Marmon'"
+                x-html="shortIntro"
                 ></h1>
                 <p
-                class="hidden mt-8 text-xl font-bold md:block"
-                x-html="textOverflowMobile ? 'Cognitive Engineer, UX Specialist.' : 'Cognitive Engineer, UX Specialist.&lt;br&gt;&lt;span class=&quot;font-normal&quot;&gt;Rigorous methods and reliable measures are key to designing beautiful interfaces and intuitive functionalities.&lt;/span&gt;'"
+                class="mt-8 text-xl font-bold"
+                x-html="textOverflowMobile ? '' : shortCatchPhrase"
                 ></p>
             </div>
-            <div class="hidden w-1/3 p-4 text-center lg:block">
+            <div id="desktopText" class="hidden w-1/3 p-4 text-center lg:block" x-data="heroText" x-init="$nextTick(() => { checkOverflow() });" @resize.window="checkOverflow()">
                 <h1
                 class="font-bold"
                 :class="textOverflowDesktop ? 'text-4xl' : 'text-clamp4to6xl'"
-                x-html="'Hi! I am Sylvain &lt;span class=&quot;whitespace-nowrap&quot;&gt;Duhau-Marmon.&lt;/span&gt;'"
+                x-html="textOverflowDesktop ? shortIntro : longIntro"
                 ></h1>
                 <p
                 class="mt-8 font-bold"
                 :class="textOverflowDesktop ? 'text-xl' : 'text-clamp1to2xl'"
-                x-html="textOverflowDesktop ? 'Cognitive Engineer, UX Specialist.' : 'Cognitive Engineer, UX Specialist.&lt;br&gt;&lt;span class=&quot;font-normal&quot;&gt;Rigorous methods and reliable measures are key to designing beautiful interfaces and intuitive features.&lt;/span&gt;'"
+                x-html="textOverflowDesktop ? shortCatchPhrase : longCatchPhrase"
                 ></p>
             </div>
         </div>
@@ -289,7 +187,7 @@
         </p>
         <p class="mt-4">
             I am a passionate and dedicated UX researcher, data analyst, and front-end developer.
-            <br/>With a strong background in user-centered design and data-driven decision making, I create impactful and befitting experiences.
+            <br>With a strong background in user-centered design and data-driven decision making, I create impactful and befitting experiences.
         </p>
         <p class="mt-4 font-semibold">
             <a href="assets/Resume_Duhau-Marmon.pdf" class="text-blue-600 hover:underline hover:text-blue-800 download" download target="_blank" rel="noopener noreferrer">Download my resume.</a>
@@ -336,7 +234,7 @@
                                         <div x-show="error" class="absolute inset-0 flex items-center justify-center">
                                             <p class="font-semibold">
                                                 There was an error loading this image.
-                                                <br/>
+                                                <br>
                                                 Contact me if you have trouble accessing this content.
                                             </p>
                                         </div>
@@ -405,6 +303,7 @@
                                             'bg-blue-600 text-white hover:bg-blue-800': isSelectedTool(tool),
                                             'bg-white text-blue-600 border border-gray-300 hover:bg-blue-600 hover:text-white hover:border-blue-300': !isSelectedTool(tool)
                                         }"
+                                        :aria-pressed="isSelectedTool(tool) ? 'true' : 'false'"
                                         x-text="tool"
                                     ></button>
                                 </template>
@@ -451,7 +350,7 @@
                         </a>
                     </li>
                 </ul>
-                <br/>
+                <br>
                 <p class="text-sm text-gray-600">
                     © Sylvain Duhau-Marmon, 2023-2024
                     <br />
