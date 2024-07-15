@@ -46,7 +46,7 @@
                 <ul class="hidden space-x-4 text-lg lg:flex">
                     <template x-for="menu in menus" :key="menu.title">
                         <li>
-                            <a :href="menu.link" class="hover:font-bold" :target="menu.newTab ? '_blank' : ''" :rel="menu.newTab ? 'noopener noreferrer' : ''">
+                            <a :href="menu.link" class="hover:font-bold focus:font-bold" :target="menu.newTab ? '_blank' : ''" :rel="menu.newTab ? 'noopener noreferrer' : ''">
                                 <h2><i class="mr-1" :class="menu.icon" aria-hidden="true"></i><span x-text="menu.title"></span></h2>
                             </a>
                         </li>
@@ -90,14 +90,14 @@
                 >
                 <ul>
                     <li>
-                        <a id="navHome" href="index.html" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false" tabindex="0">
+                        <a id="navHome" href="index.html" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white focus:bg-indigo-600 focus:text-white" @click="showMobileNavOverlay = false" tabindex="0">
                             <h2><i class="mr-1 icon-home" aria-hidden="true"></i>Home</h2>
                         </a>
                         <div class="w-full h-px bg-gray-300"></div>
                     </li>
                     <template x-for="menu in menus" :key="menu.title">
                     <li>
-                        <a :href="menu.link" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" :target="menu.newTab ? '_blank' : ''" :rel="menu.newTab ? 'noopener noreferrer' : ''" @click="showMobileNavOverlay = false" tabindex="0">
+                        <a :href="menu.link" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white focus:bg-indigo-600 focus:text-white" :target="menu.newTab ? '_blank' : ''" :rel="menu.newTab ? 'noopener noreferrer' : ''" @click="showMobileNavOverlay = false" tabindex="0">
                             <h2><i class="mr-1" :class="menu.icon" aria-hidden="true"></i><span x-text="menu.title"></span></h2>
                         </a>
                         <div class="w-full h-px bg-gray-300"></div>
