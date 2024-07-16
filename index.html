@@ -35,18 +35,18 @@
     >
     <header x-trap.inert.noscroll.noreturn="showMobileNavOverlay">
         <!-- Hidden Navigation Bar -->
-        <nav class="fixed top-0 left-0 right-0 z-10 hidden p-4 text-white bg-indigo-600 shadow-xl lg:block"
+        <nav class="fixed top-0 left-0 right-0 z-10 hidden p-4 text-white bg-indigo-600 [&_*]:text-inherit [&_*]:bg-inherit shadow-xl lg:block"
             x-cloak x-show="showNavBar"
             x-transition:enter="transition duration-500 ease-out" x-transition:enter-start="opacity-0 transform -translate-y-full" x-transition:enter-end="opacity-100 transform translate-y-0"
             x-transition:leave="transition duration-300 ease-in" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform -translate-y-full"
             >
             <div class="container flex items-center justify-between mx-auto" x-data="navigationMenu">
-                <h1 class="text-2xl font-bold text-white">
+                <h1 class="text-2xl font-bold">
                     <a href="index.html" aria-label="Home page">Sylvain Duhau-Marmon</a></h1>
                 <ul class="hidden space-x-4 text-lg lg:flex">
                     <template x-for="menu in menus" :key="menu.title">
                         <li>
-                            <a :href="menu.link" class="hover:font-bold focus:font-bold" :target="menu.newTab ? '_blank' : ''" :rel="menu.newTab ? 'noopener noreferrer' : ''">
+                            <a :href="menu.link" class="hover:font-bold" :target="menu.newTab ? '_blank' : ''" :rel="menu.newTab ? 'noopener noreferrer' : ''">
                                 <h2><i class="mr-1" :class="menu.icon" aria-hidden="true"></i><span x-text="menu.title"></span></h2>
                             </a>
                         </li>
@@ -61,14 +61,14 @@
             x-transition:leave="transition duration-300 ease-in" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform -translate-y-full"
             >
             <!-- Hamburger Menu Button -->
-            <button id="mobileNavigationButton" class="fixed z-20 text-indigo-600 lg:hidden top-2 left-2"
+            <button id="mobileNavigationButton" class="fixed z-20 text-indigo-600 bg-white [&_*]:text-inherit [&_*]:bg-inherit lg:hidden top-2 left-2"
                 aria-controls="mobileNavigationMenu" :aria-expanded="showMobileNavOverlay ? 'true' : 'false'"
                 @click.throttle="showMobileNavOverlay = !showMobileNavOverlay; showMobileNavMenu = (window.scrollY > innerHeight-64);"
                 @keydown.enter="showMobileNavOverlay ? '' : setTimeout(() => {document.getElementById(&quot;navHome&quot;).focus({ focusVisible: true });}, 200)"
                 @keydown.space="showMobileNavOverlay ? '' : setTimeout(() => {document.getElementById(&quot;navHome&quot;).focus({ focusVisible: true });}, 200)"
                 @keydown.window.escape="showMobileNavOverlay = false; showMobileNavMenu = (window.scrollY > innerHeight-64);"
                 >
-                <svg role="img" class="transition-all duration-200 transform w-14 h-14" :class="{ 'rotate-90': showMobileNavOverlay }" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg role="img" class="transition-all duration-200 transform w-14 h-14" :class="{ 'rotate-90': showMobileNavOverlay }" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" :aria-label="showMobileNavOverlay ? 'Close Mobile Navigation Menu' : 'Open Mobile Navigation Menu'">
                     <title x-text="showMobileNavOverlay ? 'Close Mobile Navigation Menu' : 'Open Mobile Navigation Menu'"></title>
                     <path x-show="!showMobileNavOverlay" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     <!-- X Button Icon -->
@@ -78,7 +78,7 @@
         </div>
 
         <!-- Mobile Navigation Overlay (Left Sidebar) -->
-        <nav id="mobileNavigationMenu" class="fixed left-0 z-10 w-3/4 h-full shadow-lg top-16 lg:hidden"
+        <nav id="mobileNavigationMenu" class="fixed left-0 z-10 w-3/4 h-full overflow-y-auto shadow-lg top-16 lg:hidden"
             x-cloak x-show="showMobileNavOverlay"
             @click.outside="showMobileNavOverlay = false; showMobileNavMenu = (window.scrollY > innerHeight-64);"
             x-transition:enter="transition duration-200 ease-out" x-transition:enter-start="opacity-0 transform -translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0"
@@ -90,15 +90,15 @@
                 >
                 <ul>
                     <li>
-                        <a id="navHome" href="index.html" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white focus:bg-indigo-600 focus:text-white" @click="showMobileNavOverlay = false" tabindex="0">
-                            <h2><i class="mr-1 icon-home" aria-hidden="true"></i>Home</h2>
+                        <a id="navHome" href="index.html" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white hover:font-bold" @click="showMobileNavOverlay = false" tabindex="0">
+                            <h2 class="text-inherit bg-inherit"><i class="mr-1 icon-home" aria-hidden="true"></i>Home</h2>
                         </a>
                         <div class="w-full h-px bg-gray-300"></div>
                     </li>
                     <template x-for="menu in menus" :key="menu.title">
                     <li>
-                        <a :href="menu.link" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white focus:bg-indigo-600 focus:text-white" :target="menu.newTab ? '_blank' : ''" :rel="menu.newTab ? 'noopener noreferrer' : ''" @click="showMobileNavOverlay = false" tabindex="0">
-                            <h2><i class="mr-1" :class="menu.icon" aria-hidden="true"></i><span x-text="menu.title"></span></h2>
+                        <a :href="menu.link" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white hover:font-bold" :target="menu.newTab ? '_blank' : ''" :rel="menu.newTab ? 'noopener noreferrer' : ''" @click="showMobileNavOverlay = false" tabindex="0">
+                            <h2 class="text-inherit bg-inherit"><i class="mr-1" :class="menu.icon" aria-hidden="true"></i><span x-text="menu.title"></span></h2>
                         </a>
                         <div class="w-full h-px bg-gray-300"></div>
                     </li>
@@ -215,9 +215,10 @@
         </div>
 
         <!-- Bottom Part (1/5) with CTA Buttons -->
-        <div class="relative flex items-center justify-center p-4 font-mono font-semibold text-center text-white text-clamp0to3xl h-1/5">
+        <div class="relative flex items-center justify-center p-4 font-mono font-semibold text-center text-clamp0to3xl h-1/5">
             <a href="#about" class="px-8 py-2 mx-2 mb-16 text-indigo-600 bg-white rounded-full sm:mx-4 lg:mx-8 xl:mx-12 xl:px-18 lg:px-16 sm:px-12 sm:mb-8 lg:mb-4 xl:mb-2 hover:bg-indigo-600 hover:text-white hover:font-black hover:border-4 hover:border-white hover:shadow-xl focus:bg-indigo-600 focus:text-white focus:font-black focus:border-4 focus:border-white focus:shadow-xl">
-                ABOUT ME</a>
+                <span class="whitespace-nowrap text-inherit bg-inherit">ABOUT ME</span>
+            </a>
             <a href="#portfolio" class="px-8 py-2 mx-2 mb-16 text-indigo-600 bg-white rounded-full sm:mx-4 lg:mx-8 xl:mx-12 xl:px-18 lg:px-16 sm:px-12 sm:mb-8 lg:mb-4 xl:mb-2 hover:bg-indigo-600 hover:text-white hover:font-black hover:border-4 hover:border-white hover:shadow-xl focus:bg-indigo-600 focus:text-white focus:font-black focus:border-4 focus:border-white focus:shadow-xl">
                 PORTFOLIO</a>
         </div>
@@ -233,7 +234,7 @@
         </div>
 
     <!-- About Me Section -->
-    <section id="about" class="container pt-8 mx-auto mb-8 scroll-mt-16">
+    <section id="about" class="container pt-8 mx-auto mb-8 scroll-mt-16 [&_a]:text-blue-600 [&_a]:bg-white">
         <h2 class="text-3xl font-semibold"><i class="mr-1 icon-user" aria-hidden="true"></i>About me</h2>
         <p class="mt-4 font-semibold">
             Under construction!
@@ -243,11 +244,11 @@
             <br>With a strong background in user-centered design and data-driven decision making, I create impactful and befitting experiences.
         </p>
         <p class="mt-4 font-semibold">
-            <a href="assets/Resume_Duhau-Marmon.pdf" class="text-blue-600 hover:underline hover:text-blue-800 download" download target="_blank" rel="noopener noreferrer">
+            <a href="assets/Resume_Duhau-Marmon.pdf" class="hover:text-blue-800 hover:underline" download target="_blank" rel="noopener noreferrer">
                 Download my resume.</a>
         </p>
         <p class="mt-4">
-            For all the chess enthusiasts looking at <a href="https://lichess.org/analysis/standard/3rkb1r/pQpq1ppp/2n1p3/8/8/P1N5/RPnP1PPP/2BK2NR_w_k_-_4_13" class="text-blue-600 hover:underline hover:text-blue-800 download" target="_blank" rel="noopener noreferrer" aria-label="My chess postion">
+            For all the chess enthusiasts looking at <a href="https://lichess.org/analysis/standard/3rkb1r/pQpq1ppp/2n1p3/8/8/P1N5/RPnP1PPP/2BK2NR_w_k_-_4_13" class="hover:text-blue-800 hover:underline" target="_blank" rel="noopener noreferrer" aria-label="My chess postion">
             my position</a>: can you find the mate in 8 after Kxc2?
         </p>
     </section>
@@ -312,7 +313,7 @@
                                         </picture>
                                     </div>
                                     <!-- Description -->
-                                    <h3 class="mt-2 text-xl font-semibold group-hover:text-blue-600 group-hover:font-bold" x-text="project.title"></h3>
+                                    <h3 class="mt-2 text-xl font-semibold group-hover:text-blue-600 group-hover:font-bold group-hover:bg-white" x-text="project.title"></h3>
                                     <p class="mt-2" x-text="project.description"></p>
                                 </div>
                             </a>
@@ -321,21 +322,23 @@
                                 <!-- Subject Buttons -->
                                 <template x-for="subject in project.subjects" :key="subject">
                                     <button
-                                        @click.throttle="toggleSelectedSubject(subject); moveProjectTwoColumns(project.title); scrollToProject(project.title)"
                                         class="flex items-center justify-center w-12 h-12 px-4 mt-2 transition duration-300 rounded-full min-w-fit"
                                         :class="{
-                                            'bg-violet-600 text-white hover:bg-violet-800': isSelectedSubject(subject) && subject === 'UX Research',
-                                            'bg-white text-blue-600 border border-gray-300 hover:bg-violet-600 hover:text-white hover:border-violet-600': !isSelectedSubject(subject) && subject === 'UX Research',
-                                            'bg-amber-600 text-white hover:bg-amber-800': isSelectedSubject(subject) && subject === 'UX Design',
-                                            'bg-white text-blue-600 border border-gray-300 hover:bg-amber-600 hover:text-white hover:border-amber-600': !isSelectedSubject(subject) && subject === 'UX Design',
-                                            'bg-emerald-600 text-white hover:bg-emerald-800': isSelectedSubject(subject) && subject === 'Data Analysis',
-                                            'bg-white text-blue-600 border border-gray-300 hover:bg-emerald-600 hover:text-white hover:border-emerald-600': !isSelectedSubject(subject) && subject === 'Data Analysis',
-                                            'bg-pink-600 text-white hover:bg-pink-800': isSelectedSubject(subject) && subject === 'AI',
-                                            'bg-white text-blue-600 border border-gray-300 hover:bg-pink-600 hover:text-white hover:border-pink-600': !isSelectedSubject(subject) && subject === 'AI',
-                                            'bg-red-600 text-white hover:bg-red-800': isSelectedSubject(subject) && subject === 'Programming',
-                                            'bg-white text-blue-600 border border-gray-300 hover:bg-red-600 hover:text-white hover:border-red-600': !isSelectedSubject(subject) && subject === 'Programming',
+                                            'bg-violet-600 text-white font-bold hover:bg-violet-800': isSelectedSubject(subject) && subject === 'UX Research',
+                                            'bg-white text-blue-600 border border-gray-300 hover:bg-violet-600 hover:text-white hover:font-bold hover:border-violet-600': !isSelectedSubject(subject) && subject === 'UX Research',
+                                            'bg-amber-600 text-white font-bold hover:bg-amber-800': isSelectedSubject(subject) && subject === 'UX Design',
+                                            'bg-white text-blue-600 border border-gray-300 hover:bg-amber-600 hover:text-white hover:font-bold hover:border-amber-600': !isSelectedSubject(subject) && subject === 'UX Design',
+                                            'bg-emerald-600 text-white font-bold hover:bg-emerald-800': isSelectedSubject(subject) && subject === 'Data Analysis',
+                                            'bg-white text-blue-600 border border-gray-300 hover:bg-emerald-600 hover:text-white hover:font-bold hover:border-emerald-600': !isSelectedSubject(subject) && subject === 'Data Analysis',
+                                            'bg-pink-600 text-white font-bold hover:bg-pink-800': isSelectedSubject(subject) && subject === 'AI',
+                                            'bg-white text-blue-600 border border-gray-300 hover:bg-pink-600 hover:text-white hover:font-bold hover:border-pink-600': !isSelectedSubject(subject) && subject === 'AI',
+                                            'bg-red-600 text-white font-bold hover:bg-red-800': isSelectedSubject(subject) && subject === 'Programming',
+                                            'bg-white text-blue-600 border border-gray-300 hover:bg-red-600 hover:text-white hover:font-bold hover:border-red-600': !isSelectedSubject(subject) && subject === 'Programming',
                                         }"
+                                        :title="isSelectedSubject(subject) ? 'Unfilter by '+subject+'' : 'Filter by '+subject+''"
+                                        :aria-label="isSelectedSubject(subject) ? 'Unfilter by '+subject+'' : 'Filter by '+subject+''"
                                         :aria-pressed="isSelectedSubject(subject) ? 'true' : 'false'"
+                                        @click.throttle="toggleSelectedSubject(subject); moveProjectTwoColumns(project.title); scrollToProject(project.title)"
                                         x-text="subject"
                                     ></button>
                                 </template>
@@ -345,13 +348,13 @@
                                 <!-- Tool Buttons -->
                                 <template x-for="tool in project.tools" :key="tool">
                                     <button
-                                        @click.throttle="toggleSelectedTool(tool); moveProjectTwoColumns(project.title); scrollToProject(project.title)"
                                         class="flex items-center justify-center w-12 h-12 px-4 mt-2 transition duration-300 rounded-full min-w-fit"
                                         :class="{
-                                            'bg-blue-600 text-white hover:bg-blue-800': isSelectedTool(tool),
-                                            'bg-white text-blue-600 border border-gray-300 hover:bg-blue-600 hover:text-white hover:border-blue-300': !isSelectedTool(tool)
+                                            'bg-blue-600 text-white font-bold hover:bg-blue-800': isSelectedTool(tool),
+                                            'bg-white text-blue-600 border border-gray-300 hover:bg-blue-600 hover:text-white hover:font-bold hover:border-blue-300': !isSelectedTool(tool)
                                         }"
                                         :aria-pressed="isSelectedTool(tool) ? 'true' : 'false'"
+                                        @click.throttle="toggleSelectedTool(tool); moveProjectTwoColumns(project.title); scrollToProject(project.title)"
                                         x-text="tool"
                                     ></button>
                                 </template>
@@ -364,13 +367,13 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="container pt-8 mx-auto mb-8 scroll-mt-16">
+    <section id="contact" class="container pt-8 mx-auto mb-8 scroll-mt-16 [&_a]:text-blue-600 [&_a]:bg-white">
         <h2 class="text-3xl font-semibold"><i class="mr-1 icon-mail-alt" aria-hidden="true"></i>Contact</h2>
         <p class="mt-4">
             Feel free to get in touch with me at sylvain.duhau.marmon@gmail.com.
         </p>
         <p class="mt-4 font-semibold">
-            <a href="mailto:sylvain.duhau.marmon@gmail.com" class="text-blue-600 hover:underline hover:text-blue-800">
+            <a href="mailto:sylvain.duhau.marmon@gmail.com" class="hover:text-blue-800 hover:underline">
                 Send me an e-mail.</a>
         </p>
     </section>
@@ -380,22 +383,22 @@
     <!-- Footer -->
     <footer>
         <div class="w-full h-px mt-16 bg-gray-300"></div>
-        <div class="py-4 text-center bg-gray-100">
+        <div class="py-4 text-center bg-gray-100 [&_a]:text-blue-600 [&_*]:bg-inherit">
             <div class="container mx-auto">
                 <ul class="flex justify-center space-x-4">
                     <li>
-                        <a href="/pages/accessibility.html" class="text-blue-600 hover:underline hover:text-blue-800">
-                            <h2><i class="mr-1 icon-universal-access" aria-hidden="true"></i>Accessibility</h2>
+                        <a href="/pages/accessibility.html" class="hover:text-blue-800 hover:underline">
+                            <h4><i class="mr-1 icon-universal-access" aria-hidden="true"></i>Accessibility</h4>
                         </a>
                     </li>
                     <li>
-                        <a href="/pages/privacy.html" class="text-blue-600 hover:underline hover:text-blue-800">
-                            <h2><i class="mr-1 icon-lock" aria-hidden="true"></i>Privacy</h2>
+                        <a href="/pages/privacy.html" class="hover:text-blue-800 hover:underline">
+                            <h4><i class="mr-1 icon-lock" aria-hidden="true"></i>Privacy</h4>
                         </a>
                     </li>
                     <li>
-                        <a href="https://github.com/sdmarmon/sdmarmon.github.io" class="text-blue-600 hover:underline hover:text-blue-800">
-                            <h2><i class="mr-1 font-normal icon-github-circled whitespace-nowrap" aria-hidden="true"></i>Source Code</h2>
+                        <a href="https://github.com/sdmarmon/sdmarmon.github.io" class="hover:text-blue-800 hover:underline">
+                            <h4><i class="mr-1 font-normal icon-github-circled whitespace-nowrap" aria-hidden="true"></i>Source Code</h4>
                         </a>
                     </li>
                 </ul>
@@ -403,7 +406,7 @@
                 <p class="text-sm text-gray-600">
                     © Sylvain Duhau-Marmon, 2023-2024
                     <br />
-                    This work is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="text-blue-600 hover:underline hover:text-blue-800">
+                    This work is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="hover:underline hover:text-blue-800">
                         Creative Commons Attribution-ShareAlike 4.0 International License</a>.
                 </p>
             </div>
