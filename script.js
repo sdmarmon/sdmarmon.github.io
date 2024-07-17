@@ -4395,10 +4395,66 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
   }
   var module_default2 = src_default2;
 
+  // node_modules/@alpinejs/intersect/dist/module.esm.js
+  function src_default3(Alpine2) {
+    Alpine2.directive("intersect", Alpine2.skipDuringClone((el, { value, expression, modifiers }, { evaluateLater: evaluateLater2, cleanup: cleanup2 }) => {
+      let evaluate2 = evaluateLater2(expression);
+      let options = {
+        rootMargin: getRootMargin(modifiers),
+        threshold: getThreshold(modifiers)
+      };
+      let observer2 = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting === (value === "leave"))
+            return;
+          evaluate2();
+          modifiers.includes("once") && observer2.disconnect();
+        });
+      }, options);
+      observer2.observe(el);
+      cleanup2(() => {
+        observer2.disconnect();
+      });
+    }));
+  }
+  function getThreshold(modifiers) {
+    if (modifiers.includes("full"))
+      return 0.99;
+    if (modifiers.includes("half"))
+      return 0.5;
+    if (!modifiers.includes("threshold"))
+      return 0;
+    let threshold = modifiers[modifiers.indexOf("threshold") + 1];
+    if (threshold === "100")
+      return 1;
+    if (threshold === "0")
+      return 0;
+    return Number(`.${threshold}`);
+  }
+  function getLengthValue(rawValue) {
+    let match = rawValue.match(/^(-?[0-9]+)(px|%)?$/);
+    return match ? match[1] + (match[2] || "px") : void 0;
+  }
+  function getRootMargin(modifiers) {
+    const key = "margin";
+    const fallback = "0px 0px 0px 0px";
+    const index = modifiers.indexOf(key);
+    if (index === -1)
+      return fallback;
+    let values = [];
+    for (let i = 1; i < 5; i++) {
+      values.push(getLengthValue(modifiers[index + i] || ""));
+    }
+    values = values.filter((v) => v !== void 0);
+    return values.length ? values.join(" ").trim() : fallback;
+  }
+  var module_default3 = src_default3;
+
   // includes/input.js
   module_default.data("navigationMenu", navigationMenu_default);
   module_default.data("projectCards", projectCards_default);
   module_default.plugin(module_default2);
+  module_default.plugin(module_default3);
   window.Alpine = module_default;
   module_default.start();
 })();
