@@ -576,10 +576,6 @@ video {
   pointer-events: auto;
 }
 
-.visible {
-  visibility: visible;
-}
-
 .fixed {
   position: fixed;
 }
@@ -820,6 +816,14 @@ video {
 
 .scroll-pt-16 {
   scroll-padding-top: 4rem;
+}
+
+.list-inside {
+  list-style-position: inside;
+}
+
+.list-disc {
+  list-style-type: disc;
 }
 
 .grid-cols-1 {
@@ -1063,6 +1067,10 @@ video {
 
 .pt-8 {
   padding-top: 2rem;
+}
+
+.pl-4 {
+  padding-left: 1rem;
 }
 
 .text-center {

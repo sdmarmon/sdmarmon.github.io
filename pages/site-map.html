@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Sylvain Duhau-Marmon">
+    <meta name="description" content="Site map of the personal website of Sylvain Duhau-Marmon.">
+    <meta name="keywords" content="Site map, Accessibility, Links">
+    <title>Site Map</title>
+
+    <!-- Favicon Links -->
+    <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicons/favicon-16x16.png">
+
+    <!-- Stylesheets and Scripts -->
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
+    <link href="../style.css" rel="stylesheet">
+    <link rel="preload" href="../includes/fontello-da7c40e3/css/fontello.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="../includes/fontello-da7c40e3/css/fontello.css"></noscript>
+    <script defer src="../script.js"></script>
+</head>
+
+<!-- Tailwind CSS and Alpine.js -->
+<body
+    class="flex flex-col min-h-screen scroll-pt-16"
+    x-data="{ showMobileNavOverlay: false }"
+    >
+    <!-- Header -->
+    <header x-trap.inert.noscroll.noreturn="showMobileNavOverlay">
+        <!-- Navigation Bar -->
+        <nav class="fixed top-0 left-0 right-0 z-10 hidden p-4 text-white bg-indigo-600 [&_*]:text-inherit [&_*]:bg-inherit shadow-xl lg:block" x-cloak>
+            <div class="container flex items-center justify-between mx-auto" x-data="navigationMenu">
+                <h1 class="text-2xl font-bold">
+                    <a href="../index.html" aria-label="Home page">Sylvain Duhau-Marmon</a></h1>
+                <ul class="hidden space-x-4 text-lg lg:flex">
+                    <template x-for="menu in menus" :key="menu.title">
+                        <li>
+                            <a :href="menu.ext ? menu.link : '../'+menu.link" class="hover:font-bold" :target="menu.newTab ? '_blank' : ''" :rel="menu.newTab ? 'noopener noreferrer' : ''">
+                                <h2><i class="mr-1" :class="menu.icon" aria-hidden="true"></i><span x-text="menu.title"></span></h2>
+                            </a>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Mobile Navigation Menu (Hamburger Menu or X Button) -->
+        <div x-cloak>
+            <!-- Hamburger Menu Button -->
+            <button id="mobileNavigationButton" class="fixed z-20 text-indigo-600 bg-white [&_*]:text-inherit [&_*]:bg-inherit lg:hidden top-2 left-2"
+                aria-controls="mobileNavigationMenu" :aria-expanded="showMobileNavOverlay ? 'true' : 'false'"
+                @click.throttle="showMobileNavOverlay = !showMobileNavOverlay;"
+                @keydown.enter="showMobileNavOverlay ? '' : setTimeout(() => {document.getElementById(&quot;navHome&quot;).focus({ focusVisible: true });}, 200)"
+                @keydown.space="showMobileNavOverlay ? '' : setTimeout(() => {document.getElementById(&quot;navHome&quot;).focus({ focusVisible: true });}, 200)"
+                @keydown.window.escape="showMobileNavOverlay = false"
+                >
+                <svg role="img" class="transition-all duration-200 transform w-14 h-14" :class="{ 'rotate-90': showMobileNavOverlay }" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" :aria-label="showMobileNavOverlay ? 'Close Mobile Navigation Menu' : 'Open Mobile Navigation Menu'">
+                    <title x-text="showMobileNavOverlay ? 'Close Mobile Navigation Menu' : 'Open Mobile Navigation Menu'"></title>
+                    <path x-show="!showMobileNavOverlay" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    <!-- X Button Icon -->
+                    <path x-show="showMobileNavOverlay" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Overlay (Left Sidebar) -->
+        <nav id="mobileNavigationMenu" class="fixed left-0 z-10 w-3/4 h-full overflow-y-auto shadow-lg top-16 lg:hidden"
+            x-cloak x-show="showMobileNavOverlay"
+            @click.away="showMobileNavOverlay = false"
+            x-transition:enter="transition duration-200 ease-out" x-transition:enter-start="opacity-0 transform -translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0"
+            x-transition:leave="transition duration-200 ease-in" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform -translate-x-full"
+            >
+            <div class="h-full bg-white" x-data="navigationMenu"
+                @keydown.arrow-up.prevent="$focus.wrap().previous()"
+                @keydown.arrow-down.prevent="$focus.wrap().next()">
+                <ul>
+                    <li>
+                        <a href="../index.html" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false" tabindex="0">
+                            <h2 class="text-inherit bg-inherit"><i class="mr-1 icon-home" aria-hidden="true"></i>Home</h2>
+                        </a>
+                        <div class="w-full h-px bg-gray-300"></div>
+                    </li>
+                    <template x-for="menu in menus" :key="menu.title">
+                    <li>
+                        <a :href="menu.ext ? menu.link : '../'+menu.link" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white hover:font-bold" :target="menu.newTab ? '_blank' : ''" :rel="menu.newTab ? 'noopener noreferrer' : ''" @click="showMobileNavOverlay = false" tabindex="0">
+                            <h2 class="text-inherit bg-inherit"><i class="mr-1" :class="menu.icon" aria-hidden="true"></i><span x-text="menu.title"></span></h2>
+                        </a>
+                        <div class="w-full h-px bg-gray-300"></div>
+                    </li>
+                    </template>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="flex-grow">
+    <!-- Apply Navigation Settings -->
+    <main :class="showMobileNavOverlay ? 'opacity-50 pointer-events-none' : 'opacity-100 pointer-events-auto'" @resize.window="showMobileNavOverlay = window.innerWidth < 1024 ? showMobileNavOverlay : false;">
+    <!-- Container Wrap -->
+    <div class="container p-4 mx-auto mt-16">
+        <div class="fixed top-0 left-0 right-0 z-10 block w-full h-16 bg-white shadow-lg lg:hidden"></div>
+        <!-- Site Map Section -->
+        <section id="sitemap" class="container pt-8 mx-auto mb-8 scroll-mt-16 [&_a]:text-blue-600 [&_a]:bg-white">
+            <h2 class="text-3xl font-semibold">Site Map</h2>
+            <p class="mt-4">Internal links
+                <ul class="list-disc list-inside">
+                    <li><a href="../index.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Home</a>
+                        <ul class="pl-4 list-disc list-inside">
+                            <li><a href="../index.html#about" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">About Me</a></li>
+                            <li><a href="../index.html#portfolio" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Portfolio</a>
+                                <ul class="pl-4 list-disc list-inside">
+                                    <li><a href="../projects/ocus.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">OCUS</a></li>
+                                    <li><a href="../projects/unilux.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Unilux</a></li>
+                                    <li><a href="../projects/gameloft.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Gameloft</a></li>
+                                    <li><a href="../projects/teemon.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">TEEMON</a></li>
+                                    <li><a href="../projects/rush-hour.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Rush-hour</a></li>
+                                    <li><a href="../projects/passworthy.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">PassWorthy</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="../index.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Contact</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="accessibility.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Accessibility</a></li>
+                    <li><a href="privacy.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Privacy</a></li>
+                    <li><a href="site-map.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Site Map</a></li>
+                </ul>
+            </p>
+            <p class="mt-4">Documents
+                <ul class="list-disc list-inside">
+                    <li><a href="../assets/Resume_Duhau-Marmon.pdf" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline" target="_blank" ref="noopener noreferrer">Resume</a></li>
+                </ul>
+            </p>
+            <p class="mt-4">External links
+                <ul class="list-disc list-inside">
+                    <li><a href="https://github.com/sdmarmon" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline" target="_blank" ref="noopener noreferrer">GitHub</a>
+                        <ul class="pl-4 list-disc list-inside">
+                            <li><a href="https://github.com/sdmarmon/sdmarmon.github.io" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline" target="_blank" rel="noopener noreferrer">Source Code</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="https://www.linkedin.com/in/sylvain-d-marmon" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline" target="_blank" ref="noopener noreferrer">LinkedIn</a></li>
+                </ul>
+            </p>
+        </section>
+    </div> <!-- Container Wrap-->
+    </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="w-full h-px mt-16 bg-gray-300"></div>
+        <div class="py-4 text-center bg-gray-100 [&_a]:text-blue-600 [&_*]:bg-inherit">
+            <div class="container mx-auto">
+                <ul class="flex justify-center space-x-4">
+                    <li>
+                        <a href="accessibility.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">
+                            <h4><i class="mr-1 icon-universal-access" aria-hidden="true"></i>Accessibility</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="privacy.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">
+                            <h4><i class="mr-1 icon-lock" aria-hidden="true"></i>Privacy</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/sdmarmon/sdmarmon.github.io" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline" target="_blank" rel="noopener noreferrer">
+                            <h4><i class="mr-1 font-normal icon-github-circled whitespace-nowrap" aria-hidden="true"></i>Source Code</h4>
+                        </a>
+                    </li>
+                </ul>
+                <p class="mt-4"><ul><li><a href="site-map.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline"><h5 class="text-sm">Site Map</h5></a></li></ul></p>
+                <p class="text-sm text-gray-600">
+                    © Sylvain Duhau-Marmon, 2023-2024
+                    <br>
+                    This work is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="hover:underline hover:text-blue-800" target="_blank" rel="noopener noreferrer">
+                        Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
