@@ -272,10 +272,11 @@
                         x-transition:enter="transition ease-in-out duration-200" x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100"
                         x-transition:leave="transition ease-in-out duration-200" x-transition:leave-start="opacity-100 transform scale-100" x-transition:leave-end="opacity-0 transform scale-95"
                         >
-                        <div class="relative p-4 border-2 border-gray-200 rounded-lg group hover:border-blue-600 hover:shadow-xl">
+                        <div class="relative p-4 border-2 border-gray-200 rounded-lg group hover:border-blue-600 hover:shadow-xl"
+                            x-data="{shown: false}" x-intersect.once.threshold.05="shown = true">
                             <a :href="project.link" :aria-label="project.title">
                                 <div class="flex flex-col h-full">
-                                    <div class="relative w-full h-64" x-data="{loading: true, error: false}">
+                                    <div class="relative w-full h-64" x-data="{ loading: true, error: false }">
                                         <!-- Spinner -->
                                         <div class="absolute inset-0 flex items-center justify-center" x-show="loading">
                                             <svg class="w-12 h-12 text-gray-600 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -292,25 +293,49 @@
                                             </p>
                                         </div>
                                         <!-- Image -->
-                                        <picture x-show="!loading && !error">
-                                            <source class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80" type="image/webp"
-                                            media="screen and (max-width: 767px)"
-                                            :srcset="await(await fetch('images/projects/'+project.title+'_sm.webp')).url">
-                                            <source class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80" type="image/webp"
-                                            media="screen and (min-width: 768px) and (max-width: 1023px)"
-                                            :srcset="await(await fetch('images/projects/'+project.title+'_md.webp')).url">
-                                            <source class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80" type="image/webp"
-                                            media="screen and (min-width: 1024px) and (max-width: 1535px)"
-                                            :srcset="await(await fetch('images/projects/'+project.title+'_sm.webp')).url">
-                                            <source class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80" type="image/webp"
-                                            media="screen and (min-width: 1536px)"
-                                            :srcset="await(await fetch('images/projects/'+project.title+'_md.webp')).url">
-                                            <img class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80"
-                                            :src="await(await fetch('images/projects/'+project.title+'.jpg')).url"
-                                            :alt="project.title + ' project image'"
-                                            @load="loading = false"
-                                            @error="loading = false; error = true">
-                                        </picture>
+                                        <template x-if="!project.lazy">
+                                            <picture x-show="!loading && !error">
+                                                <source class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80" type="image/webp"
+                                                media="screen and (max-width: 767px)"
+                                                :srcset="await(await fetch('images/projects/'+project.title+'_sm.webp')).url">
+                                                <source class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80" type="image/webp"
+                                                media="screen and (min-width: 768px) and (max-width: 1023px)"
+                                                :srcset="await(await fetch('images/projects/'+project.title+'_md.webp')).url">
+                                                <source class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80" type="image/webp"
+                                                media="screen and (min-width: 1024px) and (max-width: 1535px)"
+                                                :srcset="await(await fetch('images/projects/'+project.title+'_sm.webp')).url">
+                                                <source class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80" type="image/webp"
+                                                media="screen and (min-width: 1536px)"
+                                                :srcset="await(await fetch('images/projects/'+project.title+'_md.webp')).url">
+                                                <img class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80"
+                                                :src="await(await fetch('images/projects/'+project.title+'.jpg')).url"
+                                                :alt="project.title + ' project image'"
+                                                @load="loading = false"
+                                                @error="loading = false; error = true">
+                                            </picture>
+                                        </template>
+                                        <!-- Lazy Loaded Image -->
+                                        <template x-if="project.lazy && shown">
+                                            <picture x-show="!loading && !error">
+                                                <source class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80" type="image/webp"
+                                                media="screen and (max-width: 767px)"
+                                                :srcset="await(await fetch('images/projects/'+project.title+'_sm.webp')).url">
+                                                <source class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80" type="image/webp"
+                                                media="screen and (min-width: 768px) and (max-width: 1023px)"
+                                                :srcset="await(await fetch('images/projects/'+project.title+'_md.webp')).url">
+                                                <source class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80" type="image/webp"
+                                                media="screen and (min-width: 1024px) and (max-width: 1535px)"
+                                                :srcset="await(await fetch('images/projects/'+project.title+'_sm.webp')).url">
+                                                <source class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80" type="image/webp"
+                                                media="screen and (min-width: 1536px)"
+                                                :srcset="await(await fetch('images/projects/'+project.title+'_md.webp')).url">
+                                                <img class="object-cover w-full h-64 rounded-t-lg group-hover:opacity-80"
+                                                :src="await(await fetch('images/projects/'+project.title+'.jpg')).url"
+                                                :alt="project.title + ' project image'"
+                                                @load="loading = false"
+                                                @error="loading = false; error = true">
+                                            </picture>
+                                        </template>
                                     </div>
                                     <!-- Description -->
                                     <h3 class="mt-2 text-xl font-semibold group-hover:text-blue-600 group-hover:font-bold group-hover:bg-white" x-text="project.title"></h3>

@@ -2,12 +2,12 @@ export default () => ({
     open: false,
 
     projects: [
-        { title: 'OCUS', subjects: ['UX Research', 'UX Design', 'Data Analysis'], tools: ['R', 'Hotjar', 'Figma', 'Google Analytics', 'Looker', 'Typeform', 'Communication Tools'], link: 'projects/ocus.html', description: 'Summarizing my work as an UX Researcher at OCUS.', isCol2: false },
-        { title: 'Unilux', subjects: ['UX Research', 'Data Analysis'], tools: ['R', 'Python', 'SQL', 'SPSS', 'Communication Tools'], link: 'projects/unilux.html', description: 'Studying the applicability and validity of generic user experience scales.', isCol2: false },
-        { title: 'Gameloft', subjects: ['UX Research'], tools: ['Communication Tools'], link: 'projects/gameloft.html', description: 'Presenting a usability assessment of the FTUE of the mobile game Asphalt 9: Legends.', isCol2: false },
-        { title: 'TEEMON', subjects: ['Programming', 'Data Analysis', 'UX Design'], tools: ['React Native', 'SQL', 'Axure', 'Communication Tools'], link: 'projects/teemon.html', description: 'Designing a mobile app to team on with other league players.', isCol2: false },
-        { title: 'Rush-hour', subjects: ['AI', 'Programming'], tools: ['Prolog'], link: 'projects/rush-hour.html', description: 'Coding a GUI and AI to play rush hour.', isCol2: false },
-        { title: 'PassWorthy', subjects: ['Programming', 'UX Design'], tools: ['C#/.NET', 'SQL', 'Windows Forms', 'NHibernate'], link: 'projects/passworthy.html', description: 'Designing a desktop app to store and generate secure passwords.', isCol2: false },
+        { title: 'OCUS', subjects: ['UX Research', 'UX Design', 'Data Analysis'], tools: ['R', 'Hotjar', 'Figma', 'Google Analytics', 'Looker', 'Typeform', 'Communication Tools'], link: 'projects/ocus.html', description: 'Summarizing my work as an UX Researcher at OCUS.', lazy: false, isCol2: false },
+        { title: 'Unilux', subjects: ['UX Research', 'Data Analysis'], tools: ['R', 'Python', 'SQL', 'SPSS', 'Communication Tools'], link: 'projects/unilux.html', description: 'Studying the applicability and validity of generic user experience scales.', lazy: false, isCol2: false },
+        { title: 'Gameloft', subjects: ['UX Research'], tools: ['Communication Tools'], link: 'projects/gameloft.html', description: 'Presenting a usability assessment of the FTUE of the mobile game Asphalt 9: Legends.', lazy: true, isCol2: false },
+        { title: 'TEEMON', subjects: ['Programming', 'Data Analysis', 'UX Design'], tools: ['React Native', 'SQL', 'Axure', 'Communication Tools'], link: 'projects/teemon.html', description: 'Designing a mobile app to team on with other league players.', lazy: true, isCol2: false },
+        { title: 'Rush-hour', subjects: ['AI', 'Programming'], tools: ['Prolog'], link: 'projects/rush-hour.html', description: 'Coding a GUI and AI to play rush hour.', lazy: true, isCol2: false },
+        { title: 'PassWorthy', subjects: ['Programming', 'UX Design'], tools: ['C#/.NET', 'SQL', 'Windows Forms', 'NHibernate'], link: 'projects/passworthy.html', description: 'Designing a desktop app to store and generate secure passwords.', lazy: true, isCol2: false },
     ],
     originalProjects: [],
     selectedProjectOriginalIndex: 0,
