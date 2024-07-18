@@ -1,110 +1,66 @@
-<header>
-    <!-- Navigation Bar -->
-    <nav class="fixed top-0 left-0 right-0 z-10 hidden p-4 text-white bg-indigo-600 shadow-xl lg:block" x-cloak>
-        <div class="container flex items-center justify-between mx-auto">
-            <h1 class="text-2xl font-bold text-white">
-                <a href="../index.html">Sylvain Duhau-Marmon</a></h1>
-            <ul class="hidden space-x-4 text-lg lg:flex">
-                <li>
-                    <a href="../index.html#about" class="hover:font-bold">
-                        <h2><i class="mr-1 icon-user" aria-hidden="true"></i>About me</h2>
-                    </a>
-                </li>
-                <li>
-                    <a href="../index.html#portfolio" class="hover:font-bold">
-                        <h2><i class="mr-1 icon-briefcase" aria-hidden="true"></i>Portfolio</h2>
-                    </a>
-                </li>
-                <li>
-                    <a href="../index.html#contact" class="hover:font-bold">
-                        <h2><i class="mr-1 icon-mail-alt" aria-hidden="true"></i>Contact</h2>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://github.com/sdmarmon" target="_blank" rel="noopener noreferrer" class="hover:font-bold">
-                        <h2><i class="mr-1 icon-github-circled" aria-hidden="true"></i>GitHub</h2>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.linkedin.com/in/sylvain-d-marmon" target="_blank" rel="noopener noreferrer" class="hover:font-bold">
-                        <h2><i class="mr-1 icon-linkedin-squared" aria-hidden="true"></i>LinkedIn</h2>
-                    </a>
-                </li>
-                <li>
-                    <a href="../assets/Resume_Duhau-Marmon.pdf" download target="_blank" rel="noopener noreferrer" class="hover:font-bold">
-                        <h2><i class="mr-1 icon-file-pdf" aria-hidden="true"></i>Resume</h2>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <header x-trap.inert.noscroll.noreturn="showMobileNavOverlay">
+        <!-- Navigation Bar -->
+        <nav class="fixed top-0 left-0 right-0 z-10 hidden p-4 text-white bg-indigo-600 [&_*]:text-inherit [&_*]:bg-inherit shadow-xl lg:block" x-cloak>
+            <div class="container flex items-center justify-between mx-auto" x-data="navigationMenu">
+                <h1 class="text-2xl font-bold">
+                    <a href="../index.html" aria-label="Home page">Sylvain Duhau-Marmon</a></h1>
+                <ul class="hidden space-x-4 text-lg lg:flex">
+                    <template x-for="menu in menus" :key="menu.title">
+                        <li>
+                            <a :href="menu.ext ? menu.link : '../'+menu.link" class="hover:font-bold" :target="menu.newTab ? '_blank' : ''" :rel="menu.newTab ? 'noopener noreferrer' : ''">
+                                <h2><i class="mr-1" :class="menu.icon" aria-hidden="true"></i><span x-text="menu.title"></span></h2>
+                            </a>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </nav>
 
-    <!-- Mobile Navigation Menu (Hamburger Menu or X Button) -->
-    <div x-cloak>
-        <!-- Hamburger Menu Button -->
-        <button class="fixed z-20 text-indigo-600 lg:hidden top-2 left-2" @click="showMobileNavOverlay = !showMobileNavOverlay">
-            <svg class="transition-all duration-200 transform w-14 h-14" :class="{ 'rotate-90': showMobileNavOverlay }" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path x-show="!showMobileNavOverlay" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                <!-- X Button Icon -->
-                <path x-show="showMobileNavOverlay" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-        </button>
-    </div>
-
-    <!-- Mobile Navigation Overlay (Left Sidebar) -->
-    <nav
-        class="fixed left-0 z-10 w-3/4 h-full shadow-lg top-16 lg:hidden"
-        x-cloak
-        x-show="showMobileNavOverlay"
-        @click.away="showMobileNavOverlay = false"
-        x-transition:enter="transition duration-200 ease-out" x-transition:enter-start="opacity-0 transform -translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0"
-        x-transition:leave="transition duration-200 ease-in" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform -translate-x-full"
-        >
-        <div class="h-full bg-white">
-            <ul>
-                <li>
-                    <a href="../index.html" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
-                        <h2><i class="mr-1 icon-home" aria-hidden="true"></i>Home</h2>
-                    </a>
-                    <div class="w-full h-px bg-gray-300"></div>
-                </li>
-                <li>
-                    <a href="../index.html#about" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
-                        <h2><i class="mr-1 icon-user" aria-hidden="true"></i>About me</h2>
-                    </a>
-                    <div class="w-full h-px bg-gray-300"></div>
-                </li>
-                <li>
-                    <a href="../index.html#portfolio" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
-                        <h2><i class="mr-1 icon-briefcase" aria-hidden="true"></i>Portfolio</h2>
-                    </a>
-                    <div class="w-full h-px bg-gray-300"></div>
-                </li>
-                <li>
-                    <a href="../index.html#contact" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false">
-                        <h2><i class="mr-1 icon-mail-alt" aria-hidden="true"></i>Contact</h2>
-                    </a>
-                    <div class="w-full h-px bg-gray-300"></div>
-                </li>
-                <li>
-                    <a href="https://github.com/sdmarmon" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">
-                        <h2><i class="mr-1 icon-github-circled" aria-hidden="true"></i>GitHub</h2>
-                    </a>
-                    <div class="w-full h-px bg-gray-300"></div>
-                </li>
-                <li>
-                    <a href="https://www.linkedin.com/in/sylvain-d-marmon" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">
-                        <h2><i class="mr-1 icon-linkedin-squared" aria-hidden="true"></i>LinkedIn</h2>
-                    </a>
-                    <div class="w-full h-px bg-gray-300"></div>
-                </li>
-                <li>
-                    <a href="../assets/Resume_Duhau-Marmon.pdf" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" download target="_blank" rel="noopener noreferrer" @click="showMobileNavOverlay = false">
-                        <h2><i class="mr-1 icon-file-pdf" aria-hidden="true"></i>Resume</h2>
-                    </a>
-                    <div class="w-full h-px bg-gray-300"></div>
-                </li>
-            </ul>
+        <!-- Mobile Navigation Menu (Hamburger Menu or X Button) -->
+        <div x-cloak>
+            <!-- Hamburger Menu Button -->
+            <button id="mobileNavigationButton" class="fixed z-20 text-indigo-600 bg-white [&_*]:text-inherit [&_*]:bg-inherit lg:hidden top-2 left-2"
+                aria-controls="mobileNavigationMenu" :aria-expanded="showMobileNavOverlay ? 'true' : 'false'"
+                @click.throttle="showMobileNavOverlay = !showMobileNavOverlay;"
+                @keydown.enter="showMobileNavOverlay ? '' : setTimeout(() => {document.getElementById(&quot;navHome&quot;).focus({ focusVisible: true });}, 200)"
+                @keydown.space="showMobileNavOverlay ? '' : setTimeout(() => {document.getElementById(&quot;navHome&quot;).focus({ focusVisible: true });}, 200)"
+                @keydown.window.escape="showMobileNavOverlay = false"
+                >
+                <svg role="img" class="transition-all duration-200 transform w-14 h-14" :class="{ 'rotate-90': showMobileNavOverlay }" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" :aria-label="showMobileNavOverlay ? 'Close Mobile Navigation Menu' : 'Open Mobile Navigation Menu'">
+                    <title x-text="showMobileNavOverlay ? 'Close Mobile Navigation Menu' : 'Open Mobile Navigation Menu'"></title>
+                    <path x-show="!showMobileNavOverlay" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    <!-- X Button Icon -->
+                    <path x-show="showMobileNavOverlay" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
         </div>
-    </nav>
-</header>
+
+        <!-- Mobile Navigation Overlay (Left Sidebar) -->
+        <nav id="mobileNavigationMenu" class="fixed left-0 z-10 w-3/4 h-full overflow-y-auto shadow-lg top-16 lg:hidden"
+            x-cloak x-show="showMobileNavOverlay"
+            @click.away="showMobileNavOverlay = false"
+            x-transition:enter="transition duration-200 ease-out" x-transition:enter-start="opacity-0 transform -translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0"
+            x-transition:leave="transition duration-200 ease-in" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform -translate-x-full"
+            >
+            <div class="h-full bg-white" x-data="navigationMenu"
+                @keydown.arrow-up.prevent="$focus.wrap().previous()"
+                @keydown.arrow-down.prevent="$focus.wrap().next()">
+                <ul>
+                    <li>
+                        <a href="../index.html" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false" tabindex="0">
+                            <h2 class="text-inherit bg-inherit"><i class="mr-1 icon-home" aria-hidden="true"></i>Home</h2>
+                        </a>
+                        <div class="w-full h-px bg-gray-300"></div>
+                    </li>
+                    <template x-for="menu in menus" :key="menu.title">
+                    <li>
+                        <a :href="menu.ext ? menu.link : '../'+menu.link" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white hover:font-bold" :target="menu.newTab ? '_blank' : ''" :rel="menu.newTab ? 'noopener noreferrer' : ''" @click="showMobileNavOverlay = false" tabindex="0">
+                            <h2 class="text-inherit bg-inherit"><i class="mr-1" :class="menu.icon" aria-hidden="true"></i><span x-text="menu.title"></span></h2>
+                        </a>
+                        <div class="w-full h-px bg-gray-300"></div>
+                    </li>
+                    </template>
+                </ul>
+            </div>
+        </nav>
+    </header>

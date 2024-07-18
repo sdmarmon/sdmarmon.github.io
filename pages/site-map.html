@@ -100,55 +100,55 @@
     </header>
 
     <div class="flex-grow">
-    <!-- Apply Navigation Settings -->
-    <main :class="showMobileNavOverlay ? 'opacity-50 pointer-events-none' : 'opacity-100 pointer-events-auto'" @resize.window="showMobileNavOverlay = window.innerWidth < 1024 ? showMobileNavOverlay : false;">
-    <!-- Container Wrap -->
-    <div class="container p-4 mx-auto mt-16">
-        <div class="fixed top-0 left-0 right-0 z-10 block w-full h-16 bg-white shadow-lg lg:hidden"></div>
-        <!-- Site Map Section -->
-        <section id="sitemap" class="container pt-8 mx-auto mb-8 scroll-mt-16 [&_a]:text-blue-600 [&_a]:bg-white">
-            <h2 class="text-3xl font-semibold">Site Map</h2>
-            <p class="mt-4">Internal links
-                <ul class="list-disc list-inside">
-                    <li><a href="../index.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Home</a>
-                        <ul class="pl-4 list-disc list-inside">
-                            <li><a href="../index.html#about" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">About Me</a></li>
-                            <li><a href="../index.html#portfolio" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Portfolio</a>
-                                <ul class="pl-4 list-disc list-inside">
-                                    <li><a href="../projects/ocus.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">OCUS</a></li>
-                                    <li><a href="../projects/unilux.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Unilux</a></li>
-                                    <li><a href="../projects/gameloft.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Gameloft</a></li>
-                                    <li><a href="../projects/teemon.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">TEEMON</a></li>
-                                    <li><a href="../projects/rush-hour.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Rush-hour</a></li>
-                                    <li><a href="../projects/passworthy.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">PassWorthy</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="../index.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Contact</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="accessibility.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Accessibility</a></li>
-                    <li><a href="privacy.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Privacy</a></li>
-                    <li><a href="site-map.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Site Map</a></li>
-                </ul>
-            </p>
-            <p class="mt-4">Documents
-                <ul class="list-disc list-inside">
-                    <li><a href="../assets/Resume_Duhau-Marmon.pdf" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline" target="_blank" ref="noopener noreferrer">Resume</a></li>
-                </ul>
-            </p>
-            <p class="mt-4">External links
-                <ul class="list-disc list-inside">
-                    <li><a href="https://github.com/sdmarmon" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline" target="_blank" ref="noopener noreferrer">GitHub</a>
-                        <ul class="pl-4 list-disc list-inside">
-                            <li><a href="https://github.com/sdmarmon/sdmarmon.github.io" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline" target="_blank" rel="noopener noreferrer">Source Code</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="https://www.linkedin.com/in/sylvain-d-marmon" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline" target="_blank" ref="noopener noreferrer">LinkedIn</a></li>
-                </ul>
-            </p>
-        </section>
-    </div> <!-- Container Wrap-->
-    </main>
+        <!-- Apply Navigation Settings -->
+        <main :class="showMobileNavOverlay ? 'opacity-50 pointer-events-none' : 'opacity-100 pointer-events-auto'" @resize.window="showMobileNavOverlay = window.innerWidth < 1024 ? showMobileNavOverlay : false;">
+        <!-- Container Wrap -->
+        <div class="container p-4 mx-auto mt-16">
+            <div class="fixed top-0 left-0 right-0 z-10 block w-full h-16 bg-white shadow-lg lg:hidden"></div>
+            <!-- Site Map Section -->
+            <section id="sitemap" class="container pt-8 mx-auto mb-8 scroll-mt-16 [&_a]:text-blue-600 [&_a]:bg-white">
+                <h2 class="text-3xl font-semibold">Site Map</h2>
+                <p class="mt-4">Internal links
+                    <ul class="list-disc list-inside">
+                        <li><a href="../index.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Home</a>
+                            <ul class="pl-4 list-disc list-inside">
+                                <li><a href="../index.html#about" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">About Me</a></li>
+                                <li><a href="../index.html#portfolio" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Portfolio</a>
+                                    <ul class="pl-4 list-disc list-inside">
+                                        <li><a href="../projects/ocus.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">OCUS</a></li>
+                                        <li><a href="../projects/unilux.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Unilux</a></li>
+                                        <li><a href="../projects/gameloft.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Gameloft</a></li>
+                                        <li><a href="../projects/teemon.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">TEEMON</a></li>
+                                        <li><a href="../projects/rush-hour.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Rush-hour</a></li>
+                                        <li><a href="../projects/passworthy.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">PassWorthy</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="../index.html#contact" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Contact</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="accessibility.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Accessibility</a></li>
+                        <li><a href="privacy.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Privacy</a></li>
+                        <li><a href="site-map.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">Site Map</a></li>
+                    </ul>
+                </p>
+                <p class="mt-4">Documents
+                    <ul class="list-disc list-inside">
+                        <li><a href="../assets/Resume_Duhau-Marmon.pdf" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline" target="_blank" ref="noopener noreferrer">Resume</a></li>
+                    </ul>
+                </p>
+                <p class="mt-4">External links
+                    <ul class="list-disc list-inside">
+                        <li><a href="https://github.com/sdmarmon" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline" target="_blank" ref="noopener noreferrer">GitHub</a>
+                            <ul class="pl-4 list-disc list-inside">
+                                <li><a href="https://github.com/sdmarmon/sdmarmon.github.io" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline" target="_blank" rel="noopener noreferrer">Source Code</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="https://www.linkedin.com/in/sylvain-d-marmon" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline" target="_blank" ref="noopener noreferrer">LinkedIn</a></li>
+                    </ul>
+                </p>
+            </section>
+        </div> <!-- Container Wrap-->
+        </main>
     </div>
 
     <!-- Footer -->
@@ -159,21 +159,21 @@
                 <ul class="flex justify-center space-x-4">
                     <li>
                         <a href="accessibility.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">
-                            <h4><i class="mr-1 icon-universal-access" aria-hidden="true"></i>Accessibility</h4>
+                            <h2><i class="mr-1 icon-universal-access" aria-hidden="true"></i>Accessibility</h2>
                         </a>
                     </li>
                     <li>
                         <a href="privacy.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">
-                            <h4><i class="mr-1 icon-lock" aria-hidden="true"></i>Privacy</h4>
+                            <h2><i class="mr-1 icon-lock" aria-hidden="true"></i>Privacy</h2>
                         </a>
                     </li>
                     <li>
                         <a href="https://github.com/sdmarmon/sdmarmon.github.io" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline" target="_blank" rel="noopener noreferrer">
-                            <h4><i class="mr-1 font-normal icon-github-circled whitespace-nowrap" aria-hidden="true"></i>Source Code</h4>
+                            <h2><i class="mr-1 font-normal icon-github-circled whitespace-nowrap" aria-hidden="true"></i>Source Code</h2>
                         </a>
                     </li>
                 </ul>
-                <p class="mt-4"><ul><li><a href="site-map.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline"><h5 class="text-sm">Site Map</h5></a></li></ul></p>
+                <p class="mt-4"><ul><li><a href="site-map.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline"><h4 class="text-sm">Site Map</h4></a></li></ul></p>
                 <p class="text-sm text-gray-600">
                     © Sylvain Duhau-Marmon, 2023-2024
                     <br>
