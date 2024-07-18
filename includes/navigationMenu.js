@@ -1,6 +1,4 @@
 export default () => ({
-    open: false,
-
     menus: [
         {title: 'About me', icon: 'icon-user', link: '#about', newTab: false},
         {title: 'Portfolio', icon: 'icon-briefcase', link: '#portfolio', newTab: false},

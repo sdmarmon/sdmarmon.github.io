@@ -1,27 +1,3 @@
-Array.prototype.move = function (from, to) {
-    this.splice(to, 0, this.splice(from, 1)[0]);
-};
-
-function scrollToElement(id) {
-    const element = document.getElementById(id);
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-    }
-};
-
-function scrollToProject(project) {
-    setTimeout(() => {
-        // window.location.href = `#${project}`;
-        scrollToElement(project);
-    }, 250);
-};
-
-function isOneColumnDisplay() {
-    const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-    const breakpoint = 1024; //lg
-    return viewportWidth < breakpoint;
-};
-
 document.addEventListener('alpine:init', () => {
     Alpine.data('heroText', () => ({
         shortIntro: 'Sylvain<br>Duhau-Marmon',

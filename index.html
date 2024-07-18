@@ -24,8 +24,8 @@
     <link href="style.css" rel="stylesheet">
     <link rel="preload" href="includes/fontello-da7c40e3/css/fontello.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="includes/fontello-da7c40e3/css/fontello.css"></noscript>
-    <script src="includes/index.js"></script>
     <script defer src="script.js"></script>
+    <script src="includes/heroText.js"></script>
 </head>
 
 <!-- Tailwind CSS and Alpine.js -->
@@ -255,7 +255,7 @@
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="container pt-8 mx-auto mb-8 scroll-mt-16">
-        <div x-data="projectCards" x-init="initOriginalProjects(); updateIsCol2()" @resize.window="updateIsCol2()">
+        <div x-data="projectCards" x-init="updateIsCol2()" @resize.window="updateIsCol2()">
             <h2 class="text-3xl font-semibold"><i class="mr-1 icon-briefcase" aria-hidden="true"></i>Portfolio</h2>
             <p class="mt-4 font-semibold">
                 Under construction!
@@ -422,7 +422,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://github.com/sdmarmon/sdmarmon.github.io" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">
+                        <a href="https://github.com/sdmarmon/sdmarmon.github.io" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline" target="_blank" rel="noopener noreferrer">
                             <h2><i class="mr-1 font-normal icon-github-circled whitespace-nowrap" aria-hidden="true"></i>Source Code</h2>
                         </a>
                     </li>
@@ -431,7 +431,7 @@
                 <p class="text-sm text-gray-600">
                     © Sylvain Duhau-Marmon, 2023-2024
                     <br />
-                    This work is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="hover:underline hover:text-blue-800">
+                    This work is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="hover:underline hover:text-blue-800" target="_blank" rel="noopener noreferrer">
                         Creative Commons Attribution-ShareAlike 4.0 International License</a>.
                 </p>
             </div>
