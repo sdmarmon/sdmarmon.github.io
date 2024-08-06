@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Sylvain Duhau-Marmon">
+    <meta name="description" content="HTML Resume of Sylvain Duhau-Marmon.">
+    <meta name="keywords" content="Resume, HTML, Accessibility">
+    <title>HTML Resume</title>
+
+    <!-- Favicon Links -->
+    <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicons/favicon-16x16.png">
+
+    <!-- Stylesheets and Scripts -->
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
+    <link href="../style.css" rel="stylesheet">
+    <link rel="preload" href="../includes/fontello-da7c40e3/css/fontello.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="../includes/fontello-da7c40e3/css/fontello.css"></noscript>
+    <script defer src="../script.js"></script>
+</head>
+
+<!-- Tailwind CSS and Alpine.js -->
+<body
+    class="flex flex-col min-h-screen scroll-pt-16"
+    x-data="{ showMobileNavOverlay: false }"
+    >
+    <!-- Header -->
+    <header x-trap.inert.noscroll.noreturn="showMobileNavOverlay">
+        <!-- Navigation Bar -->
+        <nav class="fixed top-0 left-0 right-0 z-10 hidden p-4 text-white bg-indigo-600 [&_*]:text-inherit [&_*]:bg-inherit shadow-xl lg:block" x-cloak>
+            <div class="container flex items-center justify-between mx-auto" x-data="navigationMenu">
+                <h1 class="text-2xl font-bold">
+                    <a href="../index.html" aria-label="Home page">Sylvain Duhau-Marmon</a></h1>
+                <ul class="hidden space-x-4 text-lg lg:flex">
+                    <template x-for="menu in menus" :key="menu.title">
+                        <li>
+                            <a :href="menu.ext ? menu.link : '../'+menu.link" class="hover:font-bold" :target="menu.newTab ? '_blank' : ''" :rel="menu.newTab ? 'noopener noreferrer' : ''">
+                                <h2><i class="mr-1" :class="menu.icon" aria-hidden="true"></i><span x-text="menu.title"></span></h2>
+                            </a>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Mobile Navigation Menu (Hamburger Menu or X Button) -->
+        <div x-cloak>
+            <!-- Hamburger Menu Button -->
+            <button id="mobileNavigationButton" class="fixed z-20 text-indigo-600 bg-white [&_*]:text-inherit [&_*]:bg-inherit lg:hidden top-2 left-2"
+                aria-controls="mobileNavigationMenu" :aria-expanded="showMobileNavOverlay ? 'true' : 'false'"
+                @click.throttle="showMobileNavOverlay = !showMobileNavOverlay;"
+                @keydown.enter="showMobileNavOverlay ? '' : setTimeout(() => {document.getElementById(&quot;navHome&quot;).focus({ focusVisible: true });}, 200)"
+                @keydown.space="showMobileNavOverlay ? '' : setTimeout(() => {document.getElementById(&quot;navHome&quot;).focus({ focusVisible: true });}, 200)"
+                @keydown.window.escape="showMobileNavOverlay = false"
+                >
+                <svg role="img" class="transition-all duration-200 transform w-14 h-14" :class="{ 'rotate-90': showMobileNavOverlay }" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" :aria-label="showMobileNavOverlay ? 'Close Mobile Navigation Menu' : 'Open Mobile Navigation Menu'">
+                    <title x-text="showMobileNavOverlay ? 'Close Mobile Navigation Menu' : 'Open Mobile Navigation Menu'"></title>
+                    <path x-show="!showMobileNavOverlay" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    <!-- X Button Icon -->
+                    <path x-show="showMobileNavOverlay" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Overlay (Left Sidebar) -->
+        <nav id="mobileNavigationMenu" class="fixed left-0 z-10 w-3/4 h-full overflow-y-auto shadow-lg top-16 lg:hidden"
+            x-cloak x-show="showMobileNavOverlay"
+            @click.away="showMobileNavOverlay = false"
+            x-transition:enter="transition duration-200 ease-out" x-transition:enter-start="opacity-0 transform -translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0"
+            x-transition:leave="transition duration-200 ease-in" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform -translate-x-full"
+            >
+            <div class="h-full bg-white" x-data="navigationMenu"
+                @keydown.arrow-up.prevent="$focus.wrap().previous()"
+                @keydown.arrow-down.prevent="$focus.wrap().next()">
+                <ul>
+                    <li>
+                        <a href="../index.html" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white" @click="showMobileNavOverlay = false" tabindex="0">
+                            <h2 class="text-inherit bg-inherit"><i class="mr-1 icon-home" aria-hidden="true"></i>Home</h2>
+                        </a>
+                        <div class="w-full h-px bg-gray-300"></div>
+                    </li>
+                    <template x-for="menu in menus" :key="menu.title">
+                    <li>
+                        <a :href="menu.ext ? menu.link : '../'+menu.link" class="block w-full px-4 py-4 text-2xl text-indigo-600 bg-white hover:bg-indigo-600 hover:text-white hover:font-bold" :target="menu.newTab ? '_blank' : ''" :rel="menu.newTab ? 'noopener noreferrer' : ''" @click="showMobileNavOverlay = false" tabindex="0">
+                            <h2 class="text-inherit bg-inherit"><i class="mr-1" :class="menu.icon" aria-hidden="true"></i><span x-text="menu.title"></span></h2>
+                        </a>
+                        <div class="w-full h-px bg-gray-300"></div>
+                    </li>
+                    </template>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="flex-grow">
+        <!-- Apply Navigation Settings -->
+        <main :class="showMobileNavOverlay ? 'opacity-50 pointer-events-none' : 'opacity-100 pointer-events-auto'" @resize.window="showMobileNavOverlay = window.innerWidth < 1024 ? showMobileNavOverlay : false;">
+        <!-- Container Wrap -->
+        <div class="container p-4 mx-auto mt-16">
+            <div class="fixed top-0 left-0 right-0 z-10 block w-full h-16 bg-white shadow-lg lg:hidden"></div>
+            <!-- Site Map Section -->
+            <section id="resume" class="container pt-8 mx-auto mb-8 scroll-mt-16">
+                <h2 class="text-3xl font-bold">Sylvain Duhau-Marmon
+                    <br>Cognitive Engineer, UX Specialist
+                </h2>
+                <q>Rigorous methods and reliable measures are key to designing beautiful interfaces and intuitive features</q>
+                <p class="mt-4"><h3 class="text-xl font-semibold">Experience</h3>
+                    <ul class="list-disc list-inside">
+                        <li>UX Researcher
+                            <ul class="pl-4 list-disc list-inside">
+                                <li>BlueKanGo, Research & Development template
+                                    <br>January, 2024 - Present  |  Rennes, France
+                                    <ul class="pl-4 list-disc list-inside">
+                                        <li>From zero to one: Pioneering a user research repository, user-centered design processes and methods, as the very first UX Researcher at BlueKanGo. Recruiting a broad range of participants to form a voluntary user panel. Conducting remote and in-person studies with end users and high-profile clients. Carrying out competitor benchmarks on crucial features with the Product Marketing team. Collaborating with a UX Designer and Front-End Developers to create a design system, documenting an exhaustive inventory of components and interaction patterns.</li>
+                                        <li>Metrics for a code rewrite: Investigating user needs and pain points for the latest code rewrite. Planning long-term UX goals and establishing relevant metrics to measure incremental progress.</li>
+                                        <li>Multi-platform accessibility: Animating workshops to educate internal teams on best practices for accessibility design. Auditing both the desktop and mobile apps with the RGAA method (compliant with the WCAG 2.1 at Level AA).</li>
+                                    </ul>
+                                </li>
+                                <li>OCUS, Product teams
+                                    <br>November, 2021 - September, 2022 | Paris, France
+                                    <ul class="pl-4 list-disc list-inside">
+                                        <li>Built a systemic framework for user research by implementing continuous data collection on three separate web-based platforms. Laid out the foundation for consistent and reliable user insights.</li>
+                                        <li>Analyzed the photographer onboarding journey, from registration to completing their first shoot, taking into account cultural differences in 120+ different countries. Conducted a cross-analysis of web analytics data and interviews with local photographers and Operations Managers. Produced a comprehensive statistical report for the project stakeholders.</li>
+                                        <li>Enabled cross-functional squads comprised of Product Managers, Designers and Developers to make strategic decisions during six-week design sprints.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>UX Research Trainee
+                            <ul class="pl-4 list-disc list-inside">
+                                <li>University of Luxembourg, Human-Computer Interaction group
+                                    <br>April, 2019 - October, 2019 | Esch-sur-Alzette, Luxembourg
+                                    <ul class="pl-4 list-disc list-inside">
+                                        <li>Led a study from end to end about the applicability and validity of generic user experience scales (AtrrakDiff, UEQ, meCUE). Conducted 30+ cognitive interviews in 3 weeks and evaluated the psychometric properties of these scales in different contexts of use.</li>
+                                        <li>Supported research initiatives on user experience challenges related to computer-based assessment, collaborative learning spaces, security & privacy, concept mapping, and digital cultural heritage.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </p>
+                <p class="mt-4"><h3 class="text-xl font-semibold">Education</h3>
+                    <ul class="list-disc list-inside">
+                        <li>Master of Science in Cognitive Engineering
+                            <ul class="pl-4 list-disc list-inside">
+                                <li>Bordeaux Institute of Technology, École Nationale Supérieure de Cognitique
+                                    <br>2019 | Bordeaux, France
+                                    <ul class="pl-4 list-disc list-inside">
+                                        <li>Multidisciplinary degree at the crossroad of Cognitive Sciences, Human Factors, Human-Computer Interaction, and Software Engineering.</li>
+                                        <li>Graduated with honors as salutatorian, out of 76 students.</li>
+                                        <li>Studied abroad at the University of California, Merced, in Fall 2018, with a 4.00 GPA.</li>
+                                        <li>Completed the two-year preparatory program in Mathematics and Physics in 2016.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </p>
+                <p class="mt-4"><h3 class="text-xl font-semibold">Skills</h3>
+                    <ul class="list-disc list-inside">
+                        <li>Research
+                            <ul class="pl-4 list-disc list-inside">
+                                <li>Scales</li>
+                                <li>Surveys</li>
+                                <li>Interviews</li>
+                                <li>Statistical analysis and reporting</li>
+                                <li>UX strategy and metrics</li>
+                                <li>User testing and observation</li>
+                                <li>A/B Testing</li>
+                                <li>Personas</li>
+                                <li>Focus groups</li>
+                                <li>Card Sorting</li>
+                                <li>Information architecture</li>
+                                <li>Competitor analysis</li>
+                            </ul>
+                        </li>
+                        <ul class="list-disc list-inside">
+                            <li>Design
+                                <ul class="pl-4 list-disc list-inside">
+                                    <li>Interaction design</li>
+                                    <li>Human factors</li>
+                                    <li>Ergonomics</li>
+                                    <li>Experience mapping</li>
+                                    <li>User flows</li>
+                                    <li>Design systems</li>
+                                    <li>Prototypes</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="list-disc list-inside">
+                            <li>Programming
+                                <ul class="pl-4 list-disc list-inside">
+                                    <li>Object-Oriented</li>
+                                    <li>Web</li>
+                                    <li>Event-driven</li>
+                                    <li>Database management</li>
+                                    <li>AI</li>
+                                    <li>Mobile</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </ul>
+                </p>
+                <p class="mt-4"><h3 class="text-xl font-semibold">Tools</h3>
+                    <ul class="list-disc list-inside">
+                        <li>Research
+                            <ul class="pl-4 list-disc list-inside">
+                                <li>Hotjar</li>
+                                <li>Google Analytics</li>
+                                <li>Mixpanel</li>
+                                <li>R</li>
+                                <li>SPSS</li>
+                                <li>Python (Pandas, NumPy, Scikit-learn)</li>
+                                <li>Google Apps Script</li>
+                                <li>SAS</li>
+                                <li>Typeform</li>
+                                <li>Tally</li>
+                            </ul>
+                        </li>
+                        <ul class="list-disc list-inside">
+                            <li>Design
+                                <ul class="pl-4 list-disc list-inside">
+                                    <li>Figma</li>
+                                    <li>Axure</li>
+                                    <li>Miro</li>
+                                    <li>Balsamiq</li>
+                                    <li>Canva</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="list-disc list-inside">
+                            <li>Product Management
+                                <ul class="pl-4 list-disc list-inside">
+                                    <li>Notion</li>
+                                    <li>Airtable</li>
+                                    <li>Jira</li>
+                                    <li>Salesforce</li>
+                                    <li>G Suite</li>
+                                    <li>Office</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </ul>
+                    <p class="mt-4"><h3 class="text-xl font-semibold">Others</h3>
+                        <ul class="list-disc list-inside">
+                            <li>Awards
+                                <ul class="pl-4 list-disc list-inside">
+                                    <li>IdEx Academic Scholarship, 2018</li>
+                                    <li>NATO Science and Technology Organization medal recipient for IST-157 & 160 “Human considerations in AI for C2” & “Big Data and AI for Military Decision Making”, 2017</li>
+                                    <li>Athlete of the year, Anglet, France, 2013</li>
+                                </ul>
+                            </li>
+                            <ul class="list-disc list-inside">
+                                <li>Interests
+                                    <ul class="pl-4 list-disc list-inside">
+                                        <li>Worked as a Chess Educator, 2023</li>
+                                        <li>Applied Monte-Carlo Tree Search algorithms on board games during an Internship at the LAMSADE, Paris, France, 2016</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="list-disc list-inside">
+                                <li>Languages
+                                    <ul class="pl-4 list-disc list-inside">
+                                        <li>Fluent in English and French</li>
+                                        <li>Conversational in Japanese and Spanish</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </ul>
+                    </p>
+                </p>
+            </section>
+        </div> <!-- Container Wrap-->
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="w-full h-px mt-16 bg-gray-300"></div>
+        <div class="py-4 text-center bg-gray-100 [&_a]:text-blue-600 [&_*]:bg-inherit">
+            <div class="container mx-auto">
+                <ul class="flex justify-center space-x-4">
+                    <li>
+                        <a href="accessibility.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">
+                            <h2><i class="mr-1 icon-universal-access" aria-hidden="true"></i>Accessibility</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="privacy.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline">
+                            <h2><i class="mr-1 icon-lock" aria-hidden="true"></i>Privacy</h2>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/sdmarmon/sdmarmon.github.io" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline" target="_blank" rel="noopener noreferrer">
+                            <h2><i class="mr-1 font-normal icon-github-circled whitespace-nowrap" aria-hidden="true"></i>Source Code</h2>
+                        </a>
+                    </li>
+                </ul>
+                <p class="mt-4"><ul><li><a href="site-map.html" class="hover:text-blue-800 hover:underline focus:text-blue-800 focus:underline"><h2 class="text-sm">Site Map</h2></a></li></ul></p>
+                <p class="text-sm text-gray-600">
+                    © Sylvain Duhau-Marmon, 2023-2024
+                    <br>
+                    This work is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="hover:underline hover:text-blue-800" target="_blank" rel="noopener noreferrer">
+                        Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
