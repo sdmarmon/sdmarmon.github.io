@@ -1,5 +1,6 @@
 import Alpine from 'alpinejs'
 import navigationMenu from './navigationMenu.js'
+import mobileFunctions from './mobileFunctions.js'
 import focus from '@alpinejs/focus'
 import intersect from '@alpinejs/intersect'
 import persist from '@alpinejs/persist'
@@ -8,6 +9,7 @@ Array.prototype.move = function (from, to) {
     this.splice(to, 0, this.splice(from, 1)[0]);
 }
 Alpine.data('navigationMenu', navigationMenu)
+Alpine.data('mobileFunctions', mobileFunctions)
 Alpine.data('projectCards', function () {
     return{
         projects: this.$persist([

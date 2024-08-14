@@ -3271,6 +3271,58 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     ]
   });
 
+  // includes/mobileFunctions.js
+  var mobileFunctions_default = () => ({
+    showNavBar: false,
+    showMobileNavMenu: false,
+    showMobileNavOverlay: false,
+    titleMobileNavMenu: "",
+    bottomReached: false,
+    sectionTitles: {
+      "about": "About me",
+      "portfolio": "Portfolio",
+      "contact": "Contact"
+    },
+    observers: [],
+    init() {
+      this.createObservers();
+      window.addEventListener("resize", this.handleResize.bind(this));
+    },
+    createObservers() {
+      const sections = document.querySelectorAll("section");
+      const viewportHeight = 64 - window.innerHeight;
+      sections.forEach((section) => {
+        const observer2 = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const sectionId = entry.target.id;
+                this.titleMobileNavMenu = this.sectionTitles[sectionId] || sectionId;
+                window.history.replaceState(null, null, `#${sectionId}`);
+              }
+            });
+          },
+          {
+            root: null,
+            rootMargin: `-64px 0px ${viewportHeight}px 0px`,
+            threshold: 0
+          }
+        );
+        observer2.observe(section);
+        this.observers.push(observer2);
+      });
+    },
+    handleResize() {
+      this.observers.forEach((observer2) => observer2.disconnect());
+      this.observers = [];
+      this.createObservers();
+    },
+    destroy() {
+      this.observers.forEach((observer2) => observer2.disconnect());
+      window.removeEventListener("resize", this.handleResize.bind(this));
+    }
+  });
+
   // node_modules/@alpinejs/focus/dist/module.esm.js
   var candidateSelectors = ["input", "select", "textarea", "a[href]", "button", "[tabindex]:not(slot)", "audio[controls]", "video[controls]", '[contenteditable]:not([contenteditable="false"])', "details>summary:first-of-type", "details"];
   var candidateSelector = /* @__PURE__ */ candidateSelectors.join(",");
@@ -4395,6 +4447,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     this.splice(to, 0, this.splice(from, 1)[0]);
   };
   module_default.data("navigationMenu", navigationMenu_default);
+  module_default.data("mobileFunctions", mobileFunctions_default);
   module_default.data("projectCards", function() {
     return {
       projects: this.$persist([
