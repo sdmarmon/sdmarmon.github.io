@@ -16,12 +16,13 @@ export default () => ({
     },
     createObservers() {
         const sections = document.querySelectorAll('section');
-        const viewportHeight = 64 - window.innerHeight;
+        const viewportHeight = 68 - window.innerHeight;
         sections.forEach(section => {
             const observer = new IntersectionObserver(
                 (entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
+                            this.bottomReached = false;
                             const sectionId = entry.target.id;
                             this.titleMobileNavMenu = this.sectionTitles[sectionId] || sectionId;
                             window.history.replaceState(null, null, `#${sectionId}`);
@@ -30,7 +31,7 @@ export default () => ({
                 },
                 {
                     root: null,
-                    rootMargin: `-64px 0px ${viewportHeight}px 0px`,
+                    rootMargin: `-68px 0px ${viewportHeight}px 0px`,
                     threshold: 0
                 }
             );
