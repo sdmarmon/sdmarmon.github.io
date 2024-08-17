@@ -3278,15 +3278,14 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     showMobileNavOverlay: false,
     titleMobileNavMenu: "",
     bottomReached: false,
-    observers: [],
     sectionTitles: {
       "about": "About me",
       "portfolio": "Portfolio",
       "contact": "Contact"
     },
+    observers: [],
     init() {
       this.createObservers();
-      window.addEventListener("resize", this.throttle(this.handleResize.bind(this), 200));
     },
     createObservers() {
       const sections = document.querySelectorAll("section");
@@ -3296,7 +3295,6 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
           (entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
-                this.bottomReached = false;
                 const sectionId = entry.target.id;
                 this.titleMobileNavMenu = this.sectionTitles[sectionId] || sectionId;
                 window.history.replaceState(null, null, `#${sectionId}`);
@@ -3317,29 +3315,6 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       this.observers.forEach((observer2) => observer2.disconnect());
       this.observers = [];
       this.createObservers();
-    },
-    throttle(func, limit) {
-      let lastFunc;
-      let lastRan;
-      let trailingFunc;
-      return function() {
-        const context = this;
-        const args = arguments;
-        if (!lastRan) {
-          func.apply(context, args);
-          lastRan = Date.now();
-        } else {
-          clearTimeout(lastFunc);
-          lastFunc = setTimeout(function() {
-            if (Date.now() - lastRan >= limit) {
-              func.apply(context, args);
-              lastRan = Date.now();
-            }
-            trailingFunc = null;
-          }, limit);
-          trailingFunc = { func, context, args };
-        }
-      };
     }
   });
 
