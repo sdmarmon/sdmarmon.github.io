@@ -82,8 +82,8 @@
         <nav id="mobileNavigationMenu" class="fixed left-0 z-10 w-3/4 h-full overflow-y-auto shadow-lg top-16 lg:hidden"
             x-cloak x-show="showMobileNavOverlay"
             @click.outside="showMobileNavOverlay = false; showMobileNavMenu = (window.scrollY > innerHeight-64);"
-            x-transition:enter="transition duration-200 ease-out" x-transition:enter-start="opacity-0 transform -translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0"
-            x-transition:leave="transition duration-200 ease-in" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform -translate-x-full"
+            x-transition:enter="transition duration-500 ease-out" x-transition:enter-start="opacity-0 transform -translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0"
+            x-transition:leave="transition duration-300 ease-in" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform -translate-x-full"
             >
             <div class="h-full bg-white" x-data="navigationMenu"
                 @keydown.arrow-up.prevent="$focus.wrap().previous()"

@@ -3278,15 +3278,15 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     showMobileNavOverlay: false,
     titleMobileNavMenu: "",
     bottomReached: false,
+    observers: [],
     sectionTitles: {
       "about": "About me",
       "portfolio": "Portfolio",
       "contact": "Contact"
     },
-    observers: [],
     init() {
       this.createObservers();
-      window.addEventListener("resize", this.handleResize.bind(this));
+      window.addEventListener("resize", this.throttle(this.handleResize.bind(this), 200));
     },
     createObservers() {
       const sections = document.querySelectorAll("section");
@@ -3317,9 +3317,28 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
       this.observers = [];
       this.createObservers();
     },
-    destroy() {
-      this.observers.forEach((observer2) => observer2.disconnect());
-      window.removeEventListener("resize", this.handleResize.bind(this));
+    throttle(func, limit) {
+      let lastFunc;
+      let lastRan;
+      let trailingFunc;
+      return function() {
+        const context = this;
+        const args = arguments;
+        if (!lastRan) {
+          func.apply(context, args);
+          lastRan = Date.now();
+        } else {
+          clearTimeout(lastFunc);
+          lastFunc = setTimeout(function() {
+            if (Date.now() - lastRan >= limit) {
+              func.apply(context, args);
+              lastRan = Date.now();
+            }
+            trailingFunc = null;
+          }, limit);
+          trailingFunc = { func, context, args };
+        }
+      };
     }
   });
 
