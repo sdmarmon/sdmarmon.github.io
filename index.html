@@ -416,8 +416,8 @@
     <footer>
         <div class="w-full h-px mt-16 bg-gray-300"></div>
         <div class="py-4 text-center bg-gray-100 [&_a]:text-blue-600 [&_*]:bg-inherit"
-            x-intersect:enter.full="if (titleMobileNavMenu !== 'Contact') { window.history.replaceState(null, null, '#contact'); titleMobileNavMenu = 'Contact'; bottomReached = true; }"
-            x-intersect:leave.full="if (bottomReached === true) { window.history.replaceState(null, null, '#portfolio'); titleMobileNavMenu = 'Portfolio'; bottomReached = false; }"
+            x-intersect:enter.full="bottomReached = true ; if (titleMobileNavMenu !== 'Contact') { updateHash('contact'); }"
+            x-intersect:leave.full="if (bottomReached === true) { updateHash('portfolio'); bottomReached = false; }"
             >
             <div class="container mx-auto">
                 <ul class="flex justify-center space-x-4">
