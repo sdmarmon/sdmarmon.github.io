@@ -101,7 +101,7 @@
 
     <div class="flex-grow">
         <!-- Apply Navigation Settings -->
-        <main :class="showMobileNavOverlay ? 'opacity-50 pointer-events-none' : 'opacity-100 pointer-events-auto'" @resize.window="showMobileNavOverlay = window.innerWidth < 1024 ? showMobileNavOverlay : false;">
+        <main :class="showMobileNavOverlay ? 'opacity-50 pointer-events-none' : 'opacity-100 pointer-events-auto'" @resize.window.debounce="showMobileNavOverlay = window.innerWidth < 1024 ? showMobileNavOverlay : false;" @resize.window.throttle="showMobileNavOverlay = window.innerWidth < 1024 ? showMobileNavOverlay : false;">
         <!-- Container Wrap -->
         <div class="container p-4 mx-auto mt-16">
             <div class="fixed top-0 left-0 right-0 z-10 block w-full h-16 bg-white shadow-lg lg:hidden"></div>
